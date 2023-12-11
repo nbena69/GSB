@@ -1,1 +1,17 @@
-<p>menu works!</p>
+<body class="body">
+<div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav left navbar-nav"> <!-- Ajoutez la classe navbar-nav ici -->
+        <li><a routerLink="/home" data-toggle="collapse" data-target=".navbar-collapse.in">Accueil</a></li>
+        <li><a routerLink="/frais/liste" data-toggle="collapse" data-target=".navbar-collapse.in">Liste Frais</a></li>
+      </ul>
+      <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <li><a routerLink="/login" data-toggle="collapse" data-target=".navbar-collapse.in">Se connecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+</body>
