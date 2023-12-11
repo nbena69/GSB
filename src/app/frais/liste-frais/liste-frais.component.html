@@ -1,2 +1,25 @@
 <app-menu></app-menu>
-<p>Page liste Frais</p>
+<div class="container">
+  <table class="table table-bordered table-striped table-responsive">
+    <thead>
+    <tr>
+      <th style="width:40%">Période</th>
+      <th style="width:20%">Nombre de Justificatifs</th>
+      <th style="width:20%">Modifier</th>
+      <th style="width:20%">Supprimer</th>
+    </tr>
+    </thead>
+    <tr>
+      <td>{{ frais.anneemois }}</td>
+      <td>{{ frais.nbjustificatifs }}</td>
+      <td style="text-align: center;">
+        <a routerLink="['/modifierFrais', frais.id_frais]">
+          <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top" title="modification"></span>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="suppression" (click)="supprimerFrais(frais.id_frais)"></span>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -58,6 +58,7 @@
   margin: 0;
   padding: 0;
   display: flex; /* Utiliser le modèle de boîte flexible pour les éléments de la liste */
+  list-style: none; /* Supprimer les puces de la liste */
 }
 
 .navbar-collapse li {
