@@ -1,2 +1,8 @@
 <app-menu></app-menu>
-<p>Page Login</p>
+<p class="form-group">
+  Nom d'utilisateur <input type="text" [formControl]="email" />
+</p>
+<p class="form-group">
+  Mot de passe <input type="password" [formControl]="password" />
+</p>
+<button class="submit-button" (click)="onSubmit()">Envoyer</button>

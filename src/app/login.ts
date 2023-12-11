@@ -5,7 +5,7 @@ export class Login {
   access_token: string;
   token_type: string;
 
-  constructor(json? : any) {
+  constructor(json?: any) {
     if (json) {
       this.visiteur = json.visiteur;
       this.access_token = json.access_token;
