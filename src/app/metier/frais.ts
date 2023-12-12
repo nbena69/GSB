@@ -18,4 +18,8 @@ export class Frais {
       this.montantvalide = json.montantvalide;
     }
   }
+
+  public getFrais(): string {
+    return `${this.id_frais}`;
+  }
 }
