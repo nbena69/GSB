@@ -7,11 +7,13 @@ export class Visiteur {
   public password: string = "";
 
   constructor(json?: any) {
-    this.id_visiteur = json.id_visiteur;
-    this.nom_visiteur = json.nom_visiteur;
-    this.prenom_visiteur = json.prenom_visiteur;
-    this.type_visiteur = json.type_visiteur;
-    this.email = json.email;
-    this.password = json.password;
+    if (json) {
+      this.id_visiteur = json.id_visiteur;
+      this.nom_visiteur = json.nom_visiteur;
+      this.prenom_visiteur = json.prenom_visiteur;
+      this.type_visiteur = json.type_visiteur;
+      this.email = json.email;
+      this.password = json.password;
+    }
   }
 }
