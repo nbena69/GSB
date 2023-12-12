@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Login} from "./login";
+import {Login} from "../metier/login";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Visiteur} from "./visiteur";
+import {Visiteur} from "../metier/visiteur";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -17,7 +17,8 @@ export class GsbLoginService {
   serviceEnvoieLogin(email: string, password: string) {
     const requestObject = new Login({"email": email, "password": password});
 
-    return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+    return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
+    //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.dataStore.login.push(new Login(data));
         this._reponses.next(this.dataStore.login);

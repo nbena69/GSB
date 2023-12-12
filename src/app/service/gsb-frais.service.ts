@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Frais } from './frais';
+import { Frais } from '../metier/frais';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GsbFraisService {
-  private apiUrl = 'http://gsb.benaissa.etu.lmdsio.com/api/frais';
+  private apiUrl = 'http://localhost/benaissa/GsbFrais/public/api/frais';
+  //private apiUrl = 'http://gsb.benaissa.etu.lmdsio.com/api/frais';
 
   constructor(private http: HttpClient) { }
 

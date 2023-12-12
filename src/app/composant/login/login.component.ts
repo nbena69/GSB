@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
-import { GsbLoginService } from '../gsb-login.service';
+import { GsbLoginService } from '../../service/gsb-login.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 
