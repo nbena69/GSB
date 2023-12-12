@@ -1,8 +1,20 @@
 <app-menu></app-menu>
-<p class="form-group">
-  Nom d'utilisateur <input type="text" [formControl]="email" />
-</p>
-<p class="form-group">
-  Mot de passe <input type="password" [formControl]="password" />
-</p>
-<button class="submit-button" (click)="onSubmit()">Envoyer</button>
+<div class="container-all">
+  <h1>Identifiez-vous</h1>
+  <div class="container">
+    <p class="form-group">
+      Nom d'utilisateur <input type="text" [formControl]="email"/>
+    </p>
+    <div class="form-group">
+      Mot de passe
+      <div class="password-container">
+        <input type="{{ showPassword ? 'text' : 'password' }}" [formControl]="password"/>
+        <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
+          👁️
+        </button>
+        <span *ngIf="showText" class="show-password-text">Afficher</span>
+      </div>
+    </div>
+    <button class="submit-button" (click)="onSubmit()">Envoyer</button>
+  </div>
+</div>

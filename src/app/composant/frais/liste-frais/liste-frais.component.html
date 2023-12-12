@@ -1,12 +1,5 @@
 <app-menu></app-menu>
 <div class="container">
-  <ul id="requeteTerminees" class="completed-requests-list">
-    @for (frais of requetes.appels_termines |async; track frais.id_frais) {
-    <li class="request-item">
-    {{ frais.getFrais() }}
-    </li>
-    }
-  </ul>
   <table class="table table-bordered table-striped table-responsive">
     <thead>
     <tr>

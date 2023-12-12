@@ -15,6 +15,9 @@ import { CommonModule } from "@angular/common";
 export class LoginComponent {
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
+  showPassword: boolean = false;
+  showText: boolean = false;
+
 
   constructor(private loginService: GsbLoginService) {}
 
@@ -24,5 +27,11 @@ export class LoginComponent {
       this.password.value
     );
     console.log("Methode onSubmit bien appellée");
+  }
+
+  voirMdp() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    passwordInput.type = this.showPassword ? 'text' : 'password';
   }
 }
