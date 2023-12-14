@@ -3,25 +3,15 @@
   <table class="table table-bordered table-striped table-responsive">
     <thead>
     <tr>
-      <th style="width:40%">Période</th>
-      <th style="width:20%">Nombre de Justificatifs</th>
-      <th style="width:20%">Modifier</th>
-      <th style="width:20%">Supprimer</th>
+      <th style="width:40%">ID</th>
+      <th style="width:20%">Année Mois</th>
+      <th style="width:20%">Etat</th>
     </tr>
     </thead>
     <tr>
-      <td>{{ frais.anneemois }}</td>
-      <td>{{ frais.nbjustificatifs }}</td>
-      <td style="text-align: center;">
-        <a routerLink="['/modifierFrais', frais.id_frais]">
-          <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top"
-                title="modification"></span>
-        </a>
-      </td>
-      <td style="text-align: center;">
-        <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="suppression"
-              (click)="supprimerFrais(frais.id_frais)"></span>
-      </td>
+      <td>{{ frais.id_frais }}</td>
+      <td>{{ frais.datemodification }}</td>
+      <td>{{ frais.lib_etat }}</td>
     </tr>
   </table>
 </div>

@@ -1,11 +1,12 @@
 export class Frais {
   public id_frais: number = 0;
   public id_etat: number = 0;
-  public anneemois: string = "";
   public id_visiteur: number = 0;
-  public nbjustificatifs: number | null = null;
-  public datemodification: string | null = null;
-  public montantvalide: number | null = null;
+  public anneemois: string = "";
+  public nbjustificatifs: number = 0;
+  public datemodification: string = "";
+  public montantvalide: number = 0;
+  public lib_etat: string = "";
 
   constructor(json?: any) {
     if (json) {
@@ -16,6 +17,7 @@ export class Frais {
       this.nbjustificatifs = json.nbjustificatifs;
       this.datemodification = json.datemodification;
       this.montantvalide = json.montantvalide;
+      this.lib_etat = json.lib_etat;
     }
   }
 

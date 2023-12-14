@@ -7,8 +7,8 @@ import { Frais } from '../metier/frais';
   providedIn: 'root'
 })
 export class GsbFraisService {
-  private apiUrl = 'http://localhost/benaissa/GsbFrais/public/api/frais';
-  //private apiUrl = 'http://gsb.benaissa.etu.lmdsio.com/api/frais';
+  //private apiUrl = 'http://localhost/benaissa/GsbFrais/public/api/frais';
+  private apiUrl = 'http://gsb.benaissa.etu.lmdsio.com/api/frais';
 
   constructor(private http: HttpClient) { }
 

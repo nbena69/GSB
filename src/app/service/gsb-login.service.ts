@@ -15,19 +15,36 @@ export class GsbLoginService {
   readonly appels_termines = this._reponses.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
   serviceEnvoieLogin(email: string, password: string) {
-    const requestObject = new Login({"email": email, "password": password});
+    //const requestObject = new Login({ "login": email, "password": password });
+    const requestObject = new Visiteur({ "login": email, "password": password });
 
-    return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
-    //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+    //return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
+    return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.dataStore.login.push(new Login(data));
         this._reponses.next(this.dataStore.login);
         this.router.navigate(['frais/liste']);
+        console.log("Appel réussi");
       },
-      error => console.log("Erreur Appel API")
+      error => {
+        console.log("Erreur Appel API", error);
+      }
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*export class GsbLoginService {
   private login: Login = new Login;
   constructor(private http: HttpClient, private router: Router) { }

@@ -1,5 +1,6 @@
 import {Visiteur} from "./visiteur";
 
+
 export class Login {
   visiteur: Visiteur;
   access_token: string;
@@ -17,3 +18,21 @@ export class Login {
     }
   }
 }
+
+
+/*
+export class Login {
+  login: string = "";
+  password: string = "";
+
+  constructor(json?: any) {
+    if (json) {
+      this.login = json.login;
+      this.password = json.password;
+    } else {
+      this.login = "";
+      this.password = "";
+    }
+  }
+}
+*/
