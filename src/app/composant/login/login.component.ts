@@ -26,7 +26,6 @@ export class LoginComponent {
       this.email.value,
       this.password.value
     );
-    console.log("Methode onSubmit bien appellée");
   }
 
   voirMdp() {
