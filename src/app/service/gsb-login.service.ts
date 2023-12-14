@@ -31,6 +31,15 @@ export class GsbLoginService {
       }
     );
   }
+
+  private login: Login = new Login;
+  recupereBearer(): string {
+    return this.login.access_token;
+  }
+
+  visiteurId(): number {
+    return this.login.visiteur.id_visiteur;
+  }
 }
 
 
