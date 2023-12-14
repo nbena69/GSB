@@ -30,4 +30,14 @@ export class GsbFraisService {
       error => console.log("Erreur Appel API liste frais")
     )
   }
+
+  chargeFrais(id_frais: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/${id_frais}`;
+
+    return this.http.get<Frais>(url, { headers: headers });
+  }
 }

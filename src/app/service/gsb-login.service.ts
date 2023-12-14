@@ -50,4 +50,28 @@ export class GsbLoginService {
     // Rediriger vers la page de connexion
     this.router.navigate(['/login']);
   }
+
+
+
+
+  /*
+  logout() {
+    // Appeler l'API de déconnexion via une requête GET
+    this.http.get<any>('http://gsb.benaissa.etu.lmdsio.com/api/logout').subscribe(
+      () => {
+        // Réinitialiser les données de connexion
+        this.login = new Login();
+        this.dataStore.login = [];
+        this._reponses.next(this.dataStore.login);
+
+        // Rediriger vers la page de connexion
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.log("Erreur lors de la déconnexion", error);
+        // Gérer les erreurs ici
+      }
+    );
+  }
+  */
 }

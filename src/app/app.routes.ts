@@ -4,10 +4,12 @@ import {ListeFraisComponent} from "./composant/frais/liste-frais/liste-frais.com
 import {HomeComponent} from "./composant/home/home.component";
 import {GsbLoginService} from "./service/gsb-login.service";
 import {inject} from "@angular/core";
+import {AfficheFraisComponent} from "./composant/frais/affiche-frais/affiche-frais.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
+  { path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
