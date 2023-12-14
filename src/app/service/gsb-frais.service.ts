@@ -20,7 +20,9 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/" + this.gsb_api.visiteurId()
+    //return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
+    return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
+      + this.gsb_api.visiteurId()
       , { headers: headers}).subscribe(
       data => {
         this.listeFrais = data;
