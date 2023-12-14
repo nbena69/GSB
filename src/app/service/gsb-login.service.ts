@@ -10,8 +10,8 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
-  private _reponses = new BehaviorSubject<Login[]>([]);
-  private dataStore: { login: Login[] } = {login: []};
+  public _reponses = new BehaviorSubject<Login[]>([]);
+  public dataStore: { login: Login[] } = {login: []};
   readonly appels_termines = this._reponses.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
   serviceEnvoieLogin(email: string, password: string) {
@@ -33,10 +33,10 @@ export class GsbLoginService {
   }
 
   private login: Login = new Login;
+
   recupereBearer(): string {
     return this.login.access_token;
   }
-
   visiteurId(): number {
     return this.login.visiteur.id_visiteur;
   }

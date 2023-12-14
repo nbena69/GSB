@@ -1,9 +1,19 @@
 <app-menu></app-menu>
 <div class="container">
-  <ul id="requetesTerminees">
+  <table>
+    <thead>
+    <tr>
+      <th>ID Frais</th>
+      <th>Année/Mois</th>
+    </tr>
+    </thead>
+    <tbody>
     @for (frais of this.getListeFrais() | async; track frais.anneemois) {
-    <li>{{ frais.id_frais }} - {{ frais.anneemois }}</li>
+    <tr>
+      <td>{{ frais.id_frais }}</td>
+      <td>{{ frais.anneemois }}</td>
+    </tr>
     }
-
-  </ul>
+    </tbody>
+  </table>
 </div>
