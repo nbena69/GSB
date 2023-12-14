@@ -10,6 +10,8 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
+
+  private login: Login = new Login;
   public _reponses = new BehaviorSubject<Login[]>([]);
   public dataStore: { login: Login[] } = {login: []};
   readonly appels_termines = this._reponses.asObservable();
@@ -21,10 +23,12 @@ export class GsbLoginService {
     //return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
     return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
-        this.dataStore.login.push(new Login(data));
+        this.login = new Login(data);
+        this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
         this.router.navigate(['frais/liste']);
         console.log("Appel réussi");
+        console.log(this.login);
       },
       error => {
         console.log("Erreur Appel API", error);
@@ -32,7 +36,6 @@ export class GsbLoginService {
     );
   }
 
-  private login: Login = new Login;
 
   recupereBearer(): string {
     return this.login.access_token;
@@ -41,25 +44,12 @@ export class GsbLoginService {
     return this.login.visiteur.id_visiteur;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*export class GsbLoginService {
   private login: Login = new Login;
   constructor(private http: HttpClient, private router: Router) { }
 
   serviceEnvoieLogin(email: string, password: string) {
-    const requestObject = new Visiteur({"email": email, "password": password});
+    const requestObject = new Visiteur({"login": email, "password": password});
 
     return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.fr/api/login', requestObject).subscribe(
       data => {
