@@ -1,25 +1,44 @@
-/* Styles généraux */
 .body {
   padding-top: 70px; /* Ajuster la marge supérieure pour éviter que le menu ne recouvre le contenu */
 }
 
 .container {
-  width: 100%; /* Utiliser la largeur maximale disponible */
+  width: 100%; /* Utilisez 100% de la largeur de la fenêtre */
 }
 
-/* Styles du menu de navigation */
 .navbar {
+  border: none;
+  position: fixed; /* Fixe la barre de navigation en haut de la page */
+  width: 100%; /* Prend 100% de la largeur */
+  top: 0; /* Place la barre en haut de la page */
+  z-index: 1000; /* Assure que la barre de navigation est au-dessus du contenu */
   background-color: #f0f0f0; /* Couleur de fond de la barre de navigation */
-  border: none; /* Supprimer la bordure de la barre de navigation */
+  left: 0;
+}
+
+.navbar-nav {
+  margin: 0; /* Réinitialisez les marges de la liste */
+}
+
+.navbar-nav > li {
+  display: inline-block;
+}
+
+.navbar-nav > li > a {
+  padding: 15px; /* Ajoutez de l'espace autour des liens pour une meilleure accessibilité tactile */
+}
+
+.navbar-right {
+  float: right; /* Alignez les éléments du côté droit de la barre de navigation */
 }
 
 .navbar-default .navbar-nav > li > a {
   color: black; /* Couleur du texte des liens du menu */
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  background-color: whitesmoke; /* Couleur de fond lorsqu'un lien est survolé ou actif */
+  display: inline-block; /* Afficher les éléments du menu en ligne */
+  padding: 15px; /* Ajouter de l'espace autour des liens pour une meilleure accessibilité tactile */
+  text-decoration: none; /* Supprimer la soulignement des liens */
+  font-family: 'Arial', sans-serif; /* Police d'écriture professionnelle */
+  font-weight: bold; /* Texte en gras */
 }
 
 .navbar-default .navbar-nav .active > a {
@@ -30,41 +49,6 @@
   border-color: #ffffff; /* Couleur de la bordure du bouton de menu déroulant */
 }
 
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #3071a9; /* Couleur de fond du bouton de menu déroulant au survol ou au focus */
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ffffff; /* Couleur des barres du bouton de menu déroulant */
-}
-
-/* Styles pour placer le menu en haut et aligner les éléments côte à côte */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* Assurez-vous que le menu est au-dessus du contenu */
-}
-
-.navbar-collapse {
-  text-align: center; /* Aligner les liens du menu au centre */
-  display: flex; /* Utiliser le modèle de boîte flexible */
-  justify-content: space-between; /* Aligner les éléments du menu côte à côte avec un espace entre eux */
-}
-
-.navbar-collapse ul {
-  margin: 0;
-  padding: 0;
-  display: flex; /* Utiliser le modèle de boîte flexible pour les éléments de la liste */
-  list-style: none; /* Supprimer les puces de la liste */
-}
-
-.navbar-collapse li {
-  margin: 0 10px; /* Ajouter de la marge entre les éléments du menu */
-}
-
-.navbar-right {
-  margin-top: 15px; /* Ajuster la marge supérieure pour l'alignement vertical */
+.navbar-nav > li > a:hover {
+  background-color: papayawhip; /* Couleur de fond lorsqu'un lien est survolé */
 }
