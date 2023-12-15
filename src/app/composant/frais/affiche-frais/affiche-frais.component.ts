@@ -7,7 +7,6 @@ import {MenuComponent} from "../../menu/menu.component";
 import {CommonModule, Location} from "@angular/common";
 import {GsbEtatService} from "../../../service/gsb-etat.service";
 
-
 @Component({
   selector: 'app-affiche-frais',
   standalone: true,
@@ -36,7 +35,6 @@ export class AfficheFraisComponent {
       error => console.log('Erreur Appel API')
     );
     this.etat_api.getListeEtats();
-    console.log(this.getListeEtat())
   }
 
   getListeEtat() {
@@ -62,14 +60,18 @@ export class AfficheFraisComponent {
   }
 
   deleteFrais(id_frais: number) {
-    this.frais_api.deleteFrais(this.id_frais).subscribe(
-      () => {
-        console.log("Appel API suppression frais réussi");
-        this.router.navigate(['liste/frais']);
-      },
-      error => {
-        console.error("Erreur lors de l'appel API suppression frais :", error);
-      }
-    );
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais ?');
+
+    if (confirmation) {
+      this.frais_api.deleteFrais(id_frais).subscribe(
+        () => {
+          console.log("Appel API suppression frais réussi");
+          this.return();
+        },
+        error => {
+          console.error("Erreur lors de l'appel API suppression frais :", error);
+        }
+      );
+    }
   }
 }

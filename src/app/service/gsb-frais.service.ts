@@ -61,7 +61,40 @@ export class GsbFraisService {
           this.frais = new Frais(data);
           this.dataStore.frais.push(this.frais);
           this._reponses.next(this.dataStore.frais);
-          this.router.navigate(['']);
+          this.router.navigate(['frais/liste']);
+          console.log("Appel réussi");
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
+  ajoutFrais(anneemois: string, nbjustificatifs: number, montantvalide: number, id_etat: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const currentDate = new Date();
+    const formattedDate = this.formatDate(currentDate);
+
+    const requestObject = {
+      "nbjustificatifs": nbjustificatifs,
+      "montantvalide": montantvalide,
+      "anneemois": anneemois,
+      "id_etat": id_etat,
+      "id_visiteur": this.gsb_api.visiteurId(),
+      "datemodification": formattedDate
+    };
+    this.http.post<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/ajoutFrais`
+      //this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/ajoutFrais`
+      , requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.frais = new Frais(data);
+          this.dataStore.frais.push(this.frais);
+          this._reponses.next(this.dataStore.frais);
+          this.router.navigate(['frais/liste']);
           console.log("Appel réussi");
         },
         error => {
