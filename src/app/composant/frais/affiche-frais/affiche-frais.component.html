@@ -16,6 +16,7 @@
     <label for="montantvalide">Montant valide:</label>
     <input type="number" class="form-control" id="montantvalide" [formControl]="montantvalide">
   </div>
-
-  <a routerLink="/liste-frais">Retour à la liste des frais</a>
+  <button class="submit-button" (click)="onSubmitFicheFrais()">Envoyer</button>
+  <button class="submit-button" (click)="return()">Annuler</button>
+  <button class="submit-button" (click)="getFraisHorsForfait()">Frais Hors Forfait</button>
 </div>

@@ -4,7 +4,8 @@ import {GsbFraisService} from "../../../service/gsb-frais.service";
 import {ActivatedRoute} from "@angular/router";
 import {Frais} from "../../../metier/frais";
 import {MenuComponent} from "../../menu/menu.component";
-import {CommonModule} from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
+
 
 @Component({
   selector: 'app-affiche-frais',
@@ -19,7 +20,7 @@ export class AfficheFraisComponent {
   nbjustificatifs: FormControl = new FormControl('');
   montantvalide: FormControl = new FormControl('');
 
-  constructor(route: ActivatedRoute, private frais_api: GsbFraisService) {
+  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
     console.log(this.id_frais);
     this.frais_api.chargeFrais(this.id_frais).
@@ -29,11 +30,26 @@ export class AfficheFraisComponent {
           this.anneemois.setValue(frais.anneemois);
           this.nbjustificatifs.setValue(frais.nbjustificatifs);
           this.montantvalide.setValue(frais.montantvalide);
-          console.log(frais.anneemois)
         },
       error => console.log('Erreur Appel API')
     );
   }
 
+  onSubmitFicheFrais() {
+    /*
+    this.loginService.serviceEnvoieLogin(
+      this.email.value,
+      this.password.value
 
+    );
+    */
+  }
+
+  return() {
+    this.location.back();
+  }
+
+  getFraisHorsForfait() {
+
+  }
 }
