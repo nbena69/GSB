@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Login} from "../metier/login";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -10,17 +10,19 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
-
   private login: Login = new Login;
   public _reponses = new BehaviorSubject<Login[]>([]);
   public dataStore: { login: Login[] } = {login: []};
   readonly appels_termines = this._reponses.asObservable();
-  constructor(private http: HttpClient, private router: Router) { }
+
+  constructor(private http: HttpClient, private router: Router) {
+  }
+
   serviceEnvoieLogin(email: string, password: string) {
-    const requestObject = new Visiteur({ "login": email, "password": password });
+    const requestObject = new Visiteur({"login": email, "password": password});
 
     return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
-    //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+      //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
@@ -37,6 +39,7 @@ export class GsbLoginService {
   recupereBearer(): string {
     return this.login.access_token;
   }
+
   visiteurId(): number {
     return this.login.visiteur.id_visiteur;
   }

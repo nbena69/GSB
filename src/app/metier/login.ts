@@ -1,6 +1,4 @@
 import {Visiteur} from "./visiteur";
-
-
 export class Login {
   visiteur: Visiteur;
   access_token: string;

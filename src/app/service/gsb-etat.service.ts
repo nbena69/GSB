@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Etat} from "../metier/etat";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -9,16 +9,17 @@ import {Frais} from "../metier/frais";
 @Injectable({
   providedIn: 'root'
 })
+
 export class GsbEtatService {
-  private etat: Etat= new Etat;
+  private etat: Etat = new Etat;
   private _reponsesEtat = new BehaviorSubject<Etat[]>([]);
   readonly appels_terminesEtat = this._reponsesEtat.asObservable();
   public listeEtat: Etat[] = [];
   public dataStoreEtat: { etat: Frais[] } = {etat: []};
 
-
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
+
   getListeEtats() {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
 import {Frais} from '../metier/frais';
 import {GsbLoginService} from "./gsb-login.service";
 import {Router} from "@angular/router";
@@ -8,15 +8,11 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class GsbFraisService {
-  //API = 'http://localhost/benaissa/GsbFrais/public/api/frais';
-  //API = 'http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/';
 
+export class GsbFraisService {
   private frais: Frais = new Frais;
   private _reponses = new BehaviorSubject<Frais[]>([]);
-
   readonly appels_termines = this._reponses.asObservable();
-
   public listeFrais: Frais[] = [];
   public dataStore: { frais: Frais[] } = {frais: []};
 
@@ -57,8 +53,9 @@ export class GsbFraisService {
       "id_visiteur": this.gsb_api.visiteurId(),
       "datemodification": formattedDate
     };
-
-    this.http.put<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/updateFrais/${id_frais}`, requestObject, { headers: headers })
+    this.http.put<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/updateFrais/${id_frais}`
+      //this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/updateFrais/${id_frais}`
+      , requestObject, {headers: headers})
       .subscribe(
         data => {
           this.frais = new Frais(data);
@@ -71,6 +68,16 @@ export class GsbFraisService {
           console.log("Erreur Appel API", error);
         }
       );
+  }
+
+  deleteFrais(id_frais: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
+    // const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/deleteFrais/${id_frais}`;
+
+    return this.http.delete<void>(url, {headers: headers});
   }
 
   chargeFrais(id_frais: number) {

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
-import { GsbLoginService } from '../../service/gsb-login.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from "@angular/common";
+import {Component} from '@angular/core';
+import {MenuComponent} from '../menu/menu.component';
+import {GsbLoginService} from '../../service/gsb-login.service';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -18,8 +18,8 @@ export class LoginComponent {
   showPassword: boolean = false;
   showText: boolean = false;
 
-
-  constructor(private loginService: GsbLoginService) {}
+  constructor(private loginService: GsbLoginService) {
+  }
 
   onSubmit() {
     this.loginService.serviceEnvoieLogin(

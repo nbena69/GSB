@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {GsbLoginService} from "../../service/gsb-login.service";
 
@@ -12,10 +12,10 @@ import {GsbLoginService} from "../../service/gsb-login.service";
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  constructor(private loginService: GsbLoginService) {}
+  constructor(private loginService: GsbLoginService) {
+  }
 
   logout() {
     this.loginService.logout();
   }
-
 }

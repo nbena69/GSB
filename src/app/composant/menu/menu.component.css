@@ -18,6 +18,8 @@
 
 .navbar-nav {
   margin: 0; /* Réinitialisez les marges de la liste */
+  display: inline-block; /* Afficher les éléments du menu en ligne */
+
 }
 
 .navbar-nav > li {
@@ -30,6 +32,8 @@
 
 .navbar-right {
   float: right; /* Alignez les éléments du côté droit de la barre de navigation */
+  display: inline-block; /* Afficher les éléments du menu en ligne */
+
 }
 
 .navbar-default .navbar-nav > li > a {

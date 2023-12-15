@@ -1,15 +1,14 @@
 <body class="body">
 <div class="container">
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-      <ul class="nav navbar-nav left navbar-nav">
-        <li><a routerLink="/home" data-toggle="collapse" data-target=".navbar-collapse.in">Accueil</a></li>
-        <li><a routerLink="/frais/liste" data-toggle="collapse" data-target=".navbar-collapse.in">Liste Frais</a></li>
-
-        <li class="collapse navbar-collapse navbar-right" ><a routerLink="/login" data-toggle="collapse"
-                                                             data-target=".navbar-collapse.in">Se connecter</a></li>
-        <li class="collapse navbar-collapse navbar-right"><a (click)="logout()" data-toggle="collapse"
-                                                             data-target=".navbar-collapse.in">Se déconnecter</a></li>
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/home">Accueil</a></li>
+        <li><a routerLink="/frais/liste">Liste Frais</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/login">Se connecter</a></li>
+        <li><a (click)="logout()">Se déconnecter</a></li>
       </ul>
     </div>
   </nav>
