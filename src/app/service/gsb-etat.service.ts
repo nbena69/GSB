@@ -24,7 +24,7 @@ export class GsbEtatService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
     return this.http.get<Etat[]>("http://localhost/benaissa/GsbFrais/public/api/frais/etats"
-      //return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/etats"
+      //return this.http.get<Etat[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/etats"
       , {headers: headers}).subscribe(
       data => {
         this.listeEtat = data;
