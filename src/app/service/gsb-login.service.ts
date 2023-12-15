@@ -10,6 +10,7 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
+  public utilisateurConnecte: boolean = false;
   private login: Login = new Login;
   public _reponses = new BehaviorSubject<Login[]>([]);
   public dataStore: { login: Login[] } = {login: []};
@@ -27,6 +28,7 @@ export class GsbLoginService {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
+        this.connecter();
         this.router.navigate(['frais/liste']);
         console.log("Appel réussi");
       },
@@ -44,6 +46,21 @@ export class GsbLoginService {
     return this.login.visiteur.id_visiteur;
   }
 
+  estConnecte(): boolean {
+    // Retourne l'état actuel de connexion
+    return this.utilisateurConnecte;
+  }
+
+  connecter() {
+    // Mettez à jour l'état de connexion lors de la connexion de l'utilisateur
+    this.utilisateurConnecte = true;
+  }
+
+  deconnecter() {
+    // Mettez à jour l'état de connexion lors de la déconnexion de l'utilisateur
+    this.utilisateurConnecte = false;
+  }
+
   logout() {
     // Réinitialiser les données de connexion
     this.login = new Login();
@@ -51,6 +68,7 @@ export class GsbLoginService {
     this._reponses.next(this.dataStore.login);
 
     // Rediriger vers la page de connexion
+    this.deconnecter();
     this.router.navigate(['/login']);
   }
 }
