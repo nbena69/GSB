@@ -37,7 +37,7 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-
+    //const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_frais}`;
     const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_frais}`;
 
     return this.http.get<Frais>(url, { headers: headers });
