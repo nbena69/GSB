@@ -12,7 +12,7 @@
     <tr *ngFor="let frais of getListeFrais() | async" (click)="afficherDetailsFrais(frais.id_frais)">
       <td>{{ frais.id_frais }}</td>
       <td>{{ frais.anneemois }}</td>
-      <td>{{ frais.id_etat }}</td>
+      <td>{{ frais.lib_etat }}</td>
     </tr>
     </tbody>
   </table>

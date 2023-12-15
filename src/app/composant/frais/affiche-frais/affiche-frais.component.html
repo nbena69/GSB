@@ -16,6 +16,16 @@
     <label for="montantvalide">Montant valide:</label>
     <input type="number" class="form-control" id="montantvalide" [formControl]="montantvalide">
   </div>
+
+  <div class="form-group">
+    <label for="id_etat">État:</label>
+    <select class="form-control" id="id_etat" [formControl]="id_etat">
+      <option *ngFor="let etat of getListeEtat() | async" [value]="etat.id_etat">
+        {{ etat.lib_etat }}
+      </option>
+    </select>
+  </div>
+
   <button class="submit-button" (click)="onSubmitFicheFrais()">Envoyer</button>
   <button class="submit-button" (click)="return()">Annuler</button>
   <button class="submit-button" (click)="getFraisHorsForfait()">Frais Hors Forfait</button>
