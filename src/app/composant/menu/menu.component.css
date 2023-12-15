@@ -12,7 +12,7 @@
   width: 100%; /* Prend 100% de la largeur */
   top: 0; /* Place la barre en haut de la page */
   z-index: 1000; /* Assure que la barre de navigation est au-dessus du contenu */
-  background-color: #f0f0f0; /* Couleur de fond de la barre de navigation */
+  background-color: #344D59 ; /* Couleur de fond de la barre de navigation */
   left: 0;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .navbar-default .navbar-nav .active > a {
-  background-color: #3071a9; /* Couleur de fond du lien actif */
+  background-color: #709CA7; /* Couleur de fond du lien actif */
 }
 
 .navbar-default .navbar-toggle {
@@ -54,5 +54,55 @@
 }
 
 .navbar-nav > li > a:hover {
-  background-color: papayawhip; /* Couleur de fond lorsqu'un lien est survolé */
+  background-color: #709CA7; /* Couleur de fond lorsqu'un lien est survolé */
+}
+
+/* Style de base pour la liste déroulante */
+.deroulant {
+  display: inline-block;
+}
+
+/* Style pour le lien principal */
+.deroulant a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Style pour la liste déroulante */
+.deroulant ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les éléments de la liste déroulante */
+.deroulant ul li {
+  padding: 10px;
+}
+
+/* Lorsque le pointeur est sur l'élément parent, afficher la liste déroulante */
+.deroulant:hover ul {
+  display: block;
+}
+
+/* Style pour les liens de la liste déroulante */
+.deroulant ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Lorsque le pointeur est sur les liens de la liste déroulante, changer la couleur de fond */
+.deroulant ul li:hover {
+  background-color: #709CA7;
+}
+
+.deroulant > a::after {
+  content: "▼";
+  font-size: 12px;
 }

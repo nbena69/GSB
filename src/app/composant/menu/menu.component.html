@@ -4,8 +4,12 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li><a routerLink="/home">Accueil</a></li>
-        <li><a routerLink="/frais/liste">Liste Frais</a></li>
-        <li><a routerLink="/frais/ajout">Ajout Frais</a></li>
+        <li class="deroulant"><a href="#">Frais &ensp;</a>
+          <ul class="sous">
+            <li><a routerLink="/frais/liste">Liste Frais</a></li>
+            <li><a routerLink="/frais/ajout">Ajout Frais</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a routerLink="/login">Se connecter</a></li>
