@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import {MenuComponent} from "../../menu/menu.component";
-import {RouterLink} from "@angular/router";
-import {GsbFraisService} from "../../../service/gsb-frais.service";
-import {CommonModule} from "@angular/common";
+import { Component } from '@angular/core';
+import { MenuComponent } from "../../menu/menu.component";
+import {Router, RouterLink} from "@angular/router";
+import { GsbFraisService } from "../../../service/gsb-frais.service";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-liste-frais',
@@ -14,7 +14,7 @@ import {CommonModule} from "@angular/common";
   styleUrl: './liste-frais.component.css'
 })
 export class ListeFraisComponent {
-  constructor(private frais_api: GsbFraisService) {
+  constructor(private frais_api: GsbFraisService, private router: Router) {
     this.frais_api.listeFraisDuVisiteur();
   }
 
@@ -22,4 +22,7 @@ export class ListeFraisComponent {
     return this.frais_api.appels_termines;
   }
 
+  afficherDetailsFrais(id_frais: number) {
+    this.router.navigate(['/frais/liste', id_frais]);
+  }
 }

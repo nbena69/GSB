@@ -20,8 +20,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
-    //return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
+    //return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
+    return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
       + this.gsb_api.visiteurId()
       , { headers: headers}).subscribe(
       data => {
@@ -38,7 +38,7 @@ export class GsbFraisService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
 
-    const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/${id_frais}`;
+    const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_frais}`;
 
     return this.http.get<Frais>(url, { headers: headers });
   }

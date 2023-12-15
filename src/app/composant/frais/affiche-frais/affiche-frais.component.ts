@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import {FormControl} from "@angular/forms";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {GsbFraisService} from "../../../service/gsb-frais.service";
 import {ActivatedRoute} from "@angular/router";
 import {Frais} from "../../../metier/frais";
+import {MenuComponent} from "../../menu/menu.component";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-affiche-frais',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent],
   templateUrl: './affiche-frais.component.html',
   styleUrl: './affiche-frais.component.css'
 })
@@ -27,6 +29,7 @@ export class AfficheFraisComponent {
           this.anneemois.setValue(frais.anneemois);
           this.nbjustificatifs.setValue(frais.nbjustificatifs);
           this.montantvalide.setValue(frais.montantvalide);
+          console.log(frais.anneemois)
         },
       error => console.log('Erreur Appel API')
     );

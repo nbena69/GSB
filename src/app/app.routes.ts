@@ -8,8 +8,8 @@ import {AfficheFraisComponent} from "./composant/frais/affiche-frais/affiche-fra
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   { path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
+  { path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];

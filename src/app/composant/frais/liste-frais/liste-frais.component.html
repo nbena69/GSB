@@ -5,15 +5,15 @@
     <tr>
       <th>ID Frais</th>
       <th>Année/Mois</th>
+      <th>Etat</th>
     </tr>
     </thead>
     <tbody>
-    @for (frais of this.getListeFrais() | async; track frais.anneemois) {
-    <tr>
+    <tr *ngFor="let frais of getListeFrais() | async" (click)="afficherDetailsFrais(frais.id_frais)">
       <td>{{ frais.id_frais }}</td>
       <td>{{ frais.anneemois }}</td>
+      <td>{{ frais.id_etat }}</td>
     </tr>
-    }
     </tbody>
   </table>
 </div>
