@@ -1,2 +1,43 @@
 <app-menu></app-menu>
-<p>Page d'accueil</p>
+
+<h1>Bienvenue sur votre nouvelle page d'accueil interactive et personnalisée</h1>
+
+<div *ngIf="utilisateurConnecte" class="container">
+  <section class="home-section">
+    <h2>Vous avez de nouveaux frais à déclarer ?</h2>
+    <p>Vous pouvez les ajouter directement ci-dessous :</p>
+    <div class="actions">
+      <a routerLink="/frais/ajout" class="action-button">Ajouter de nouveaux frais</a>
+    </div>
+  </section>
+</div>
+
+<div *ngIf="utilisateurConnecte" class="container">
+  <section class="home-section">
+    <h2>Vous souhaitez consulter vos frais ?</h2>
+    <p>Découvrez l'ensemble de vos fiches de frais en un coup d'œil :</p>
+    <div class="actions">
+      <a routerLink="/frais/liste" class="action-button">Voir mes fiches de frais</a>
+    </div>
+  </section>
+</div>
+
+<div *ngIf="utilisateurConnecte" class="container">
+  <section class="home-section">
+    <h2>Mes derniers frais</h2>
+    <app-liste-frais></app-liste-frais>
+  </section>
+</div>
+
+<div *ngIf="utilisateurConnecte == false" class="container">
+  <section class="home-section">
+    <h2>Connectez-vous pour suivre vos frais</h2>
+    <p>Connectez-vous à votre compte pour accéder à toutes les fonctionnalités de suivi de frais.</p>
+
+    <div class="actions">
+      <a routerLink="/login" class="action-button">Se connecter</a>
+    </div>
+  </section>
+</div>
+
+<br><br><br>

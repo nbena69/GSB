@@ -2,10 +2,10 @@
 <div class="container-all">
   <h1>Identifiez-vous</h1>
   <div class="container">
-    <p class="form-group">
+    <p class="form-group mb-3">
       Nom d'utilisateur <input type="text" [formControl]="email"/>
     </p>
-    <div class="form-group">
+    <div class="form-group mb-3">
       Mot de passe
       <div class="password-container">
         <input type="{{ showPassword ? 'text' : 'password' }}" [formControl]="password"/>
@@ -15,6 +15,7 @@
         <span *ngIf="showText" class="show-password-text">Afficher</span>
       </div>
     </div>
-    <button class="submit-button" (click)="onSubmit()">Envoyer</button>
+    <button class="submit-button mb-3" (click)="onSubmit()">Envoyer</button>&nbsp;
+    <button class="submit-button mb-3" (click)="return()">Annuler</button>
   </div>
 </div>
