@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MenuComponent} from '../menu/menu.component';
 import {GsbLoginService} from '../../service/gsb-login.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from "@angular/common";
+import {CommonModule, Location} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
   showPassword: boolean = false;
   showText: boolean = false;
 
-  constructor(private loginService: GsbLoginService) {
+  constructor(private loginService: GsbLoginService, private location: Location) {
   }
 
   onSubmit() {
@@ -32,5 +32,9 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     passwordInput.type = this.showPassword ? 'text' : 'password';
+  }
+
+  return() {
+    this.location.back();
   }
 }

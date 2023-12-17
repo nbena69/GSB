@@ -29,7 +29,7 @@ export class GsbLoginService {
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
         this.connecter();
-        this.router.navigate(['frais/liste']);
+        this.router.navigate(['']);
         console.log("Appel réussi");
       },
       error => {
