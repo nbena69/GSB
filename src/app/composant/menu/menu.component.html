@@ -13,6 +13,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form class="custom-search-form">
+            <input class="custom-search-input" type="search" placeholder="Rechercher" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 custom-search-button" type="submit">Rechercher</button>
+          </form>
+        </li>
         <li><a *ngIf="utilisateurConnecte == false" routerLink="/login">Se connecter</a></li>
         <li><a *ngIf="utilisateurConnecte" (click)="logout()">Se déconnecter</a></li>
       </ul>
