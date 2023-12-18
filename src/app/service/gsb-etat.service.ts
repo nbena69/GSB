@@ -15,7 +15,6 @@ export class GsbEtatService {
   private _reponsesEtat = new BehaviorSubject<Etat[]>([]);
   readonly appels_terminesEtat = this._reponsesEtat.asObservable();
   public listeEtat: Etat[] = [];
-  public dataStoreEtat: { etat: Frais[] } = {etat: []};
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
@@ -24,8 +23,8 @@ export class GsbEtatService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Etat[]>("http://localhost/benaissa/GsbFrais/public/api/frais/etats"
-      //return this.http.get<Etat[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/etats"
+    //return this.http.get<Etat[]>("http://localhost/benaissa/GsbFrais/public/api/frais/etats"
+      return this.http.get<Etat[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/etats"
       , {headers: headers}).subscribe(
       data => {
         this.listeEtat = data;

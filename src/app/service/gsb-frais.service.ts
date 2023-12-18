@@ -23,8 +23,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
-      //return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
+    //return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
+      return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
       + this.gsb_api.visiteurId()
       , {headers: headers}).subscribe(
       data => {
@@ -53,8 +53,8 @@ export class GsbFraisService {
       "id_visiteur": this.gsb_api.visiteurId(),
       "datemodification": formattedDate
     };
-    this.http.put<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/updateFrais/${id_frais}`
-      //this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/updateFrais/${id_frais}`
+    //this.http.put<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/updateFrais/${id_frais}`
+      this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/updateFrais/${id_frais}`
       , requestObject, {headers: headers})
       .subscribe(
         data => {
@@ -86,8 +86,8 @@ export class GsbFraisService {
       "id_visiteur": this.gsb_api.visiteurId(),
       "datemodification": formattedDate
     };
-    this.http.post<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/ajoutFrais`
-      //this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/ajoutFrais`
+    //this.http.post<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/ajoutFrais`
+      this.http.post<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/ajoutFrais`
       , requestObject, {headers: headers})
       .subscribe(
         data => {
@@ -107,8 +107,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
-    // const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/deleteFrais/${id_frais}`;
+    // const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
+     const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/deleteFrais/${id_frais}`;
 
     return this.http.delete<void>(url, {headers: headers});
   }
@@ -117,8 +117,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_frais}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_frais}`;
+    // const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_frais}`;
+    const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_frais}`;
 
     return this.http.get<Frais>(url, {headers: headers});
   }
