@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Frais} from "../../../metier/frais";
 import {MenuComponent} from "../../menu/menu.component";
 import {CommonModule, Location} from "@angular/common";
-import {GsbEtatService} from "../../../service/gsb-etat.service";
+import {GsbShortService} from "../../../service/gsb-short.service";
 
 @Component({
   selector: 'app-affiche-frais',
@@ -22,7 +22,7 @@ export class AfficheFraisComponent {
   montantvalide: FormControl = new FormControl('');
   id_etat: FormControl = new FormControl('');
 
-  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbEtatService, private router: Router) {
+  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService, private router: Router) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
     this.frais_api.chargeFrais(this.id_frais).subscribe(
       data => {

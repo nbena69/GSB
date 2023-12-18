@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GsbUserService } from './gsb-user.service';
+import { GsbVisiteurService } from './gsb-visiteur.service';
 
-describe('GsbUserService', () => {
-  let service: GsbUserService;
+describe('GsbVisiteurService', () => {
+  let service: GsbVisiteurService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GsbUserService);
+    service = TestBed.inject(GsbVisiteurService);
   });
 
   it('should be created', () => {

@@ -2,12 +2,12 @@
   <h1>Identifiez-vous</h1>
   <div class="container">
     <p class="form-group mb-3">
-      Nom d'utilisateur <input type="text" [formControl]="email"/>
+      Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
     </p>
     <div class="form-group mb-3">
       Mot de passe
       <div class="password-container">
-        <input type="{{ showPassword ? 'text' : 'password' }}" [formControl]="password"/>
+        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="•••••••••••" [formControl]="password"/>
         <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
           👁️
         </button>

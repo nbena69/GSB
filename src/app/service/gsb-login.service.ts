@@ -22,8 +22,8 @@ export class GsbLoginService {
   serviceEnvoieLogin(email: string, password: string) {
     const requestObject = new Visiteur({"login": email, "password": password});
 
-    //return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
-      return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+    return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
+      //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
@@ -52,22 +52,18 @@ export class GsbLoginService {
   }
 
   connecter() {
-    // Mettez à jour l'état de connexion lors de la connexion de l'utilisateur
     this.utilisateurConnecte = true;
   }
 
   deconnecter() {
-    // Mettez à jour l'état de connexion lors de la déconnexion de l'utilisateur
     this.utilisateurConnecte = false;
   }
 
   logout() {
-    // Réinitialiser les données de connexion
     this.login = new Login();
     this.dataStore.login = [];
     this._reponses.next(this.dataStore.login);
 
-    // Rediriger vers la page de connexion
     this.deconnecter();
     this.router.navigate(['/login']);
   }

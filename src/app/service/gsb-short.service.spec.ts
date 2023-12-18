@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GsbEtatService } from './gsb-etat.service';
+import { GsbShortService } from './gsb-short.service';
 
-describe('GsbEtatService', () => {
-  let service: GsbEtatService;
+describe('GsbShortService', () => {
+  let service: GsbShortService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GsbEtatService);
+    service = TestBed.inject(GsbShortService);
   });
 
   it('should be created', () => {
