@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Frais} from '../metier/frais';
 import {GsbLoginService} from "./gsb-login.service";
 import {Router} from "@angular/router";
@@ -30,6 +30,7 @@ export class GsbFraisService {
       data => {
         this.listeFrais = data;
         this._reponses.next(this.listeFrais);
+        console.log(this.appels_termines);
         console.log("Appel API liste Frais reussi")
       },
       error => console.log("Erreur Appel API liste frais")
