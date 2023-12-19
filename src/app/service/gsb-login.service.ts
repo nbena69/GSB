@@ -28,7 +28,7 @@ export class GsbLoginService {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
-        this.connecter();
+        this.utilisateurConnecte = true;
         this.router.navigate(['']);
         console.log("Appel réussi");
       },
@@ -47,16 +47,7 @@ export class GsbLoginService {
   }
 
   estConnecte(): boolean {
-    // Retourne l'état actuel de connexion
     return this.utilisateurConnecte;
-  }
-
-  connecter() {
-    this.utilisateurConnecte = true;
-  }
-
-  deconnecter() {
-    this.utilisateurConnecte = false;
   }
 
   logout() {
@@ -64,7 +55,7 @@ export class GsbLoginService {
     this.dataStore.login = [];
     this._reponses.next(this.dataStore.login);
 
-    this.deconnecter();
+    this.utilisateurConnecte = false;
     this.router.navigate(['/login']);
   }
 }

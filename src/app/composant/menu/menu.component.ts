@@ -20,7 +20,6 @@ export class MenuComponent {
 
   ngOnInit() {
     this.utilisateurConnecte = this.loginService.estConnecte();
-    console.log(this.utilisateurConnecte);
   }
 
   logout() {
