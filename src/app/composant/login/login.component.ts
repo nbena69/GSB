@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {MenuComponent} from '../menu/menu.component';
 import {GsbLoginService} from '../../service/gsb-login.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule, Location} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MenuComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

@@ -1,5 +1,4 @@
-<app-menu></app-menu>
-<div class="container-all">
+<body>
   <h1>Identifiez-vous</h1>
   <div class="container">
     <p class="form-group mb-3">
@@ -12,10 +11,12 @@
         <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
           👁️
         </button>
-        <span *ngIf="showText" class="show-password-text">Afficher</span>
+        <span *ngIf="showText" style="display:none;" class="show-password-text">Afficher</span>
       </div>
     </div>
     <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
+    <a routerLink="">Retour à la page d'accueil</a>
+
   </div>
-</div>
+</body>
