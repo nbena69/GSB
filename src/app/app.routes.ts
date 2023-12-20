@@ -1,5 +1,5 @@
 import {CanActivateFn, Router, Routes} from '@angular/router';
-import {LoginComponent} from "./composant/login/login.component";
+import {LoginComponent} from "./composant/cnx/login/login.component";
 import {ListeFraisComponent} from "./composant/frais/liste-frais/liste-frais.component";
 import {HomeComponent} from "./composant/home/home.component";
 import {GsbLoginService} from "./service/gsb-login.service";
