@@ -1,21 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {GsbLoginService} from "../../service/gsb-login.service";
+import {Router, RouterLink} from "@angular/router";
+import {GsbLoginService} from "../service/gsb-login.service";
 import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [
-    RouterLink, CommonModule
+    RouterLink, CommonModule, MenuComponent
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
-export class MenuComponent {
+
+export class MenuComponent implements OnInit {
   utilisateurConnecte: boolean = false;
 
-  constructor(private loginService: GsbLoginService) {
+  constructor(private loginService: GsbLoginService, private router: Router) {
   }
 
   ngOnInit() {
@@ -24,5 +25,6 @@ export class MenuComponent {
 
   logout() {
     this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 }
