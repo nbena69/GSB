@@ -1,1 +1,97 @@
-<p>register works!</p>
+<body>
+<h1>Inscrivez-vous</h1>
+<div class="container">
+  <div *ngIf="actuallyStep == 1" class="step1">
+    <p class="form-group mb-3">
+      Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
+    </p>
+    <div class="form-group mb-3">
+      Mot de passe
+      <div class="password-container">
+        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="•••••••••••" [formControl]="password"/>
+        <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
+          👁️
+        </button>
+        <span *ngIf="showText" style="display:none;" class="show-password-text">Afficher</span>
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      Répéter votre Mot de passe
+      <div class="password-container">
+        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="•••••••••••" [formControl]="repetPassword"/>
+        <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
+          👁️
+        </button>
+        <span *ngIf="showText" style="display:none;" class="show-password-text">Afficher</span>
+      </div>
+    </div>
+    <div style="float: right;">
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 2">Suivant ▶︎</button>
+    </div>
+  </div>
+
+  <div *ngIf="actuallyStep == 2" class="step2">
+    <p class="form-group mb-3">
+      Votre nom <input type="text" placeholder="Lepen" [formControl]="nom_visiteur"/>
+    </p>
+    <p class="form-group mb-3">
+      Votre prénom<input type="text" placeholder="Marine" [formControl]="prenom_visiteur"/>
+    </p>
+    <div style="float: right;">
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 3">Suivant ▶︎</button>
+    </div>
+  </div>
+
+  <div *ngIf="actuallyStep == 3" class="step3">
+    <p class="form-group mb-3">
+      Votre adresse <input type="text" placeholder="" [formControl]="adresse_visiteur"/>
+    </p>
+    <p class="form-group mb-3">
+      Code Postal <input type="text" placeholder="95700" [formControl]="cp_visiteur"/>
+    </p>
+    <p class="form-group mb-3">
+      Ville <input type="text" placeholder="Roissy-en-France" [formControl]="ville_visiteur"/>
+    </p>
+    <div style="float: right;">
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 4">Suivant ▶︎</button>
+    </div>
+  </div>
+
+  <div *ngIf="actuallyStep == 4" class="step4">
+    <div class="form-group">
+      <label for="id_secteur">Secteur :</label>
+      <select class="form-control" id="id_secteur" [formControl]="id_secteur">
+        <option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
+          {{ secteur.lib_secteur }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="id_laboratoire">Laboratoire :</label>
+      <select class="form-control" id="id_laboratoire" [formControl]="id_laboratoire">
+        <option *ngFor="let laboratoire of getListeLaboratoire() | async" [value]="laboratoire.id_laboratoire">
+          {{ laboratoire.nom_laboratoire }}
+        </option>
+      </select>
+    </div>
+    <div style="float: right;">
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 5">Suivant ▶︎</button>
+    </div>
+  </div>
+
+  <div *ngIf="actuallyStep == 5" class="step5">
+    <p class="form-group mb-3">
+      Date d'embauche <input type="date" [formControl]="date_embauche"/>
+    </p>
+    <p class="form-group mb-3">
+      Type <input type="text" placeholder="Type" [formControl]="type_visiteur"/>
+    </p>
+    <button type="button" class="btn btn-outline-success" (click)="onSubmit()">S'inscrire</button>&nbsp;
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
+  </div>
+  <br>
+  <a routerLink="/login">Vous avez déjà un compte ?</a>
+  <a routerLink="">Retour à la page d'accueil</a>
+</div>
+</body>

@@ -2,7 +2,7 @@
   <h1>Identifiez-vous</h1>
   <div class="container">
     <p class="form-group mb-3">
-      Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
+      Votre Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
     </p>
     <div class="form-group mb-3">
       Mot de passe
@@ -16,7 +16,7 @@
     </div>
     <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
+    <a routerLink="/register">Vous n'avez pas de compte ?</a>
     <a routerLink="">Retour à la page d'accueil</a>
-
   </div>
 </body>

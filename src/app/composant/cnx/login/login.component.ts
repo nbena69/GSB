@@ -22,10 +22,10 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.loginService.serviceEnvoieLogin(
-      this.email.value,
-      this.password.value
-    );
+      this.loginService.serviceEnvoieLogin(
+        this.email.value,
+        this.password.value
+      );
   }
 
   voirMdp() {

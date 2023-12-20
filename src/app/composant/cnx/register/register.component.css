@@ -1,0 +1,154 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url("../../../../assets/img/fondEcran/fondEcran-GsbLogin.jpg");
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgba(0, 100, 0, 0.7);
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.show-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.show-password-toggle:hover {
+  color: #45a049;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password,
+.show-password-text {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover,
+.show-password-text:hover {
+  color: #45a049;
+}
+
+.show-password-text {
+  top: -30px;
+  display: none;
+}
+
+.toggle-password.active + .show-password-text {
+  display: block;
+}
+
+.submit-button,
+.return-button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.return-button {
+  background-color: #a7001e;
+  color: white;
+}
+
+.submit-button:hover,
+.return-button:hover {
+  background-color: #45a049;
+}
+
+/* Style pour le lien de retour à la page d'accueil */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #45a049;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #A94442;
+}
