@@ -36,10 +36,28 @@ export class RegisterComponent {
     this.laboratoire_api.getListeLaboratoire();
   }
 
+  /*
   onSubmit() {
     this.loginService.serviceEnvoieLogin(
       this.email.value,
       this.password.value
+    );
+  }
+  */
+
+  onSubmitAjoutVisiteur() {
+    this.loginService.ajoutRegister(
+      this.email.value,
+      this.password.value,
+      this.id_laboratoire.value,
+      this.id_secteur.value,
+      this.nom_visiteur.value,
+      this.prenom_visiteur.value,
+      this.adresse_visiteur.value,
+      this.cp_visiteur.value,
+      this.ville_visiteur.value,
+      this.date_embauche.value,
+      this.type_visiteur.value
     );
   }
 
