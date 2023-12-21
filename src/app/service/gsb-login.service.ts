@@ -18,7 +18,8 @@ export class GsbLoginService {
   public dataStore: { login: Login[] } = {login: []};
   readonly appels_termines = this._reponses.asObservable();
 
-  private register:Visiteur = new Visiteur;
+  private envoieRegister: boolean = false;
+  private register: Visiteur = new Visiteur;
   public _reponsesRegister = new BehaviorSubject<Visiteur[]>([]);
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
@@ -31,14 +32,14 @@ export class GsbLoginService {
     const requestObject = new Visiteur({"login": email, "password": password});
 
     //return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
-      return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+    return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
         this.utilisateurConnecte = true;
         this.router.navigate(['']);
-        console.log("Appel réussi");
+        console.log("Appel réussi", data);
       },
       error => {
         console.log("Erreur Appel API", error);
@@ -51,8 +52,6 @@ export class GsbLoginService {
                 date_embauche: string, type_visiteur: string) {
 
     const requestObject = {
-      "login_visiteur": email,
-      "pwd_visiteur": password,
       "id_laboratoire": id_laboratoire,
       "id_secteur": id_secteur,
       "nom_visiteur": nom_visiteur,
@@ -61,6 +60,8 @@ export class GsbLoginService {
       "cp_visiteur": cp_visiteur,
       "ville_visiteur": ville_visiteur,
       "date_embauche": date_embauche,
+      "login_visiteur": email,
+      "pwd_visiteur": password,
       "type_visiteur": type_visiteur,
     };
 
@@ -72,8 +73,10 @@ export class GsbLoginService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
+          this.serviceEnvoieLogin(email, password);
           this.router.navigate(['/']);
           console.log("Ajout de visiteur réussi", data);
+
         },
         error => {
           console.log("Erreur lors de l'ajout de visiteur", error);

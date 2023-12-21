@@ -36,15 +36,6 @@ export class RegisterComponent {
     this.laboratoire_api.getListeLaboratoire();
   }
 
-  /*
-  onSubmit() {
-    this.loginService.serviceEnvoieLogin(
-      this.email.value,
-      this.password.value
-    );
-  }
-  */
-
   onSubmitAjoutVisiteur() {
     this.loginService.ajoutRegister(
       this.email.value,
