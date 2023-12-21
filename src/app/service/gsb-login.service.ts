@@ -31,8 +31,8 @@ export class GsbLoginService {
   serviceEnvoieLogin(email: string, password: string) {
     const requestObject = new Visiteur({"login": email, "password": password});
 
-    //return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
-    return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
+    return this.http.post<Login>('http://localhost/benaissa/GsbFrais/public/api/login', requestObject).subscribe(
+    //return this.http.post<Login>('http://gsb.benaissa.etu.lmdsio.com/api/login', requestObject).subscribe(
       data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
@@ -65,8 +65,8 @@ export class GsbLoginService {
       "type_visiteur": type_visiteur,
     };
 
-    //this.http.post<Visiteur>('http://localhost/benaissa/GsbFrais/public/api/visiteur/ajoutVisiteur'
-    this.http.post<Visiteur>('http://gsb.benaissa.etu.lmdsio.com/api/visiteur/ajoutVisiteur'
+    this.http.post<Visiteur>('http://localhost/benaissa/GsbFrais/public/api/visiteur/ajoutVisiteur'
+    //this.http.post<Visiteur>('http://gsb.benaissa.etu.lmdsio.com/api/visiteur/ajoutVisiteur'
       , requestObject)
       .subscribe(
         data => {
