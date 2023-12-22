@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
-import {MenuComponent} from "./composant/menu/menu.component";
+import {MenuComponent} from "./composant/all/menu/menu.component";
 import {GsbLoginService} from "./service/gsb-login.service";
-import {FooterComponent} from "./composant/footer/footer.component";
+import {FooterComponent} from "./composant/all/footer/footer.component";
 
 @Component({
   selector: 'app-root',

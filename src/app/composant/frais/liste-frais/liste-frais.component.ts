@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuComponent} from "../../menu/menu.component";
+import {MenuComponent} from "../../all/menu/menu.component";
 import {Router, RouterLink} from "@angular/router";
 import {GsbFraisService} from "../../../service/gsb-frais.service";
 import {CommonModule, Location} from "@angular/common";

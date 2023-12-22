@@ -1,21 +1,25 @@
 <div class="container">
-  <table>
-    <thead>
-    <tr>
-      <th>ID Frais</th>
-      <th>Année/Mois</th>
-      <th>Etat</th>
-      <th>Modifier</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let frais of getListeFrais() | async">
-      <td>{{ frais.id_frais }}</td>
-      <td>{{ frais.anneemois }}</td>
-      <td>{{ frais.lib_etat }}</td>
-      <td style="text-align: center"><button (click)="afficherDetailsFrais(frais.id_frais)" class="btn btn-info bi bi-plus"></button></td>
-    </tr>
-    </tbody>
-  </table>
+  <section class="home-section">
+    <table>
+      <thead>
+      <tr>
+        <th>ID Frais</th>
+        <th>Année/Mois</th>
+        <th>Etat</th>
+        <th>Modifier</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let frais of getListeFrais() | async">
+        <td>{{ frais.id_frais }}</td>
+        <td>{{ frais.anneemois }}</td>
+        <td>{{ frais.lib_etat }}</td>
+        <td style="text-align: center">
+          <button (click)="afficherDetailsFrais(frais.id_frais)" class="btn btn-info bi bi-plus"></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button *ngIf="isFraisListPage()" type="button" class="btn btn-outline-danger" style="text-align: left" (click)="return()">Annuler</button>&nbsp;
+  </section>
 </div>
-<button *ngIf="isFraisListPage()" type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;

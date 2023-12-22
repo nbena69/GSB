@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuComponent} from "../menu/menu.component";
+import {MenuComponent} from "../all/menu/menu.component";
 import {ListeFraisComponent} from "../frais/liste-frais/liste-frais.component";
 import {GsbLoginService} from "../../service/gsb-login.service";
 import {CommonModule} from "@angular/common";
