@@ -16,8 +16,8 @@ export class GsbVisiteurService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_visiteur}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_visiteur}`;
+    //const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_visiteur}`;
+    const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_visiteur}`;
 
     return this.http.get<Frais>(url, {headers: headers});
   }
