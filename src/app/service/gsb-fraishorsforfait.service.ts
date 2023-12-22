@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Frais} from "../metier/frais";
 import {BehaviorSubject} from "rxjs";
 import {Fraishorsforfait} from "../metier/fraishorsforfait";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -23,8 +22,8 @@ export class GsbFraishorsforfaitService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    //return this.http.get<Fraishorsforfait[]>("http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/"
-    return this.http.get<Fraishorsforfait[]>("http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/"
+    return this.http.get<Fraishorsforfait[]>("http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/"
+    //return this.http.get<Fraishorsforfait[]>("http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/"
       + id_frais
       , {headers: headers}).subscribe(
       data => {

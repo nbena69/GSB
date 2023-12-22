@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuComponent} from "../../../menu/menu.component";
+import {MenuComponent} from "../../menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule, Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";

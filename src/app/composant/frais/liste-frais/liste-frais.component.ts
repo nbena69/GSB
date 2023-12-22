@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {MenuComponent} from "../../../menu/menu.component";
+import {MenuComponent} from "../../menu/menu.component";
 import {Router, RouterLink} from "@angular/router";
 import {GsbFraisService} from "../../../service/gsb-frais.service";
-import {CommonModule} from "@angular/common";
-
+import {CommonModule, Location} from "@angular/common";
 
 @Component({
   selector: 'app-liste-frais',
@@ -16,7 +15,7 @@ import {CommonModule} from "@angular/common";
 })
 
 export class ListeFraisComponent {
-  constructor(private frais_api: GsbFraisService, private router: Router) {
+  constructor(private frais_api: GsbFraisService, private router: Router, private location: Location) {
     this.frais_api.listeFraisDuVisiteur();
   }
 
@@ -26,5 +25,13 @@ export class ListeFraisComponent {
 
   afficherDetailsFrais(id_frais: number) {
     this.router.navigate(['/frais/liste', id_frais]);
+  }
+
+  return() {
+    this.location.back();
+  }
+
+  isFraisListPage(): boolean {
+    return this.router.url === '/frais/liste';
   }
 }
