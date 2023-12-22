@@ -30,7 +30,6 @@ export class GsbFraisService {
       data => {
         this.listeFrais = data;
         this._reponses.next(this.listeFrais);
-        console.log(this.appels_termines);
         console.log("Appel API liste Frais reussi")
       },
       error => console.log("Erreur Appel API liste frais")

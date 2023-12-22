@@ -7,6 +7,9 @@ import {inject} from "@angular/core";
 import {AfficheFraisComponent} from "./composant/frais/affiche-frais/affiche-frais.component";
 import {AjoutFraisComponent} from "./composant/frais/ajout-frais/ajout-frais.component";
 import {RegisterComponent} from "./composant/cnx/register/register.component";
+import {
+  ListeFraishorsforfaitComponent
+} from "./composant/fraishorsforfait/liste-fraishorsforfait/liste-fraishorsforfait.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,6 +17,8 @@ export const routes: Routes = [
   {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
+  {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
+  {path: 'fraisHF/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];

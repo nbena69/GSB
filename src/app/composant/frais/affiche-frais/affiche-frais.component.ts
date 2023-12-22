@@ -55,7 +55,8 @@ export class AfficheFraisComponent {
     this.location.back();
   }
 
-  getFraisHorsForfait() {
+  getFraisHorsForfait(id_frais: number) {
+    this.router.navigate(['/fraisHF/liste/', id_frais]);
 
   }
 
