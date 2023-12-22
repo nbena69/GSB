@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {GsbLoginService} from "../../../service/gsb-login.service";
 import {CommonModule, Location} from "@angular/common";
@@ -12,6 +12,7 @@ import {GsbShortService} from "../../../service/gsb-short.service";
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
 export class RegisterComponent {
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
@@ -25,7 +26,6 @@ export class RegisterComponent {
   ville_visiteur: FormControl = new FormControl('');
   date_embauche: FormControl = new FormControl('');
   type_visiteur: FormControl = new FormControl('');
-
 
   showPassword: boolean = false;
   showText: boolean = false;

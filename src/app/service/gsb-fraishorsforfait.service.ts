@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Fraishorsforfait} from "../metier/fraishorsforfait";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
+import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,25 @@ export class GsbFraishorsforfaitService {
       },
       error => console.log("Erreur Appel API liste frais Hors Forfait")
     )
+  }
+
+  deleteFraisHorsForfait(id_fraishorsforfait: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/deleteFraisHorsForfait/${id_fraishorsforfait}`;
+    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/deleteFraisHorsForfait/${id_fraishorsforfait}`;
+
+    return this.http.delete<void>(url, {headers: headers});
+  }
+
+  chargeFraisHorsForfait(id_fraishorsforfait: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/getUnFraisHorsForfait/${id_fraishorsforfait}`;
+    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/getUnFraisHorsForfait/${id_fraishorsforfait}`;
+
+    return this.http.get<Fraishorsforfait>(url, {headers: headers});
   }
 }
