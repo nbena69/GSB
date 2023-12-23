@@ -13,11 +13,11 @@
       <tbody>
       <tr *ngFor="let fraisHF of getListeFraisHorsForfait() | async">
         <td>{{ fraisHF.id_fraishorsforfait }}</td>
-        <td>{{ fraisHF.date_fraishorsforfait }}</td>
+        <td>{{ fraisHF.date_fraishorsforfait  }}</td>
         <td>{{ fraisHF.montant_fraishorsforfait }}</td>
         <td>{{ fraisHF.lib_fraishorsforfait }}</td>
         <td style="text-align: center">
-          <button (click)="afficherDetailsFraisHf(fraisHF.id_frais)" class="btn btn-info bi bi-plus"></button>
+          <button (click)="afficherDetailsFraisHf(fraisHF.id_fraishorsforfait)" class="btn btn-info bi bi-plus"></button>
         </td>
       </tr>
       </tbody>

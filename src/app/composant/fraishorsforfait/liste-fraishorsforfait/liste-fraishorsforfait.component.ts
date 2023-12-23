@@ -15,7 +15,7 @@ import {MenuComponent} from "../../all/menu/menu.component";
 export class ListeFraishorsforfaitComponent {
   public id_frais: number = 0;
 
-  constructor(private location: Location, private route: ActivatedRoute, private fraisHorsForfait_api: GsbFraishorsforfaitService) {
+  constructor(private location: Location, private route: ActivatedRoute, private fraisHorsForfait_api: GsbFraishorsforfaitService, private router: Router) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
     this.fraisHorsForfait_api.listeFraisHorsForfait(this.id_frais);
   }
@@ -24,11 +24,12 @@ export class ListeFraishorsforfaitComponent {
     return this.fraisHorsForfait_api.appels_termines;
   }
 
-  afficherDetailsFraisHf(id_frais: number){
-
+  afficherDetailsFraisHf(id_fraishorsforfait: number){
+    this.router.navigate(["fraisHF/affiche", id_fraishorsforfait]);
   }
 
   return() {
     this.location.back();
   }
+
 }
