@@ -1,5 +1,5 @@
 <body>
-<h1>Inscrivez-vous</h1>
+<h1 routerLink="">Inscrivez-vous</h1>
 <div class="container">
 
   <div *ngIf="actuallyStep == 1" class="step1">
@@ -7,6 +7,7 @@
       Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
     </p>
     <div style="float: right;">
+      <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 2">Suivant ▶︎</button>
     </div>
   </div>
@@ -34,6 +35,7 @@
       </div>
     </div>
     <div style="float: right;">
+      <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 1">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 3">Suivant ▶︎</button>
     </div>
   </div>
@@ -46,6 +48,7 @@
       Votre prénom<input type="text" placeholder="Marine" [formControl]="prenom_visiteur"/>
     </p>
     <div style="float: right;">
+      <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 2">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 4">Suivant ▶︎</button>
     </div>
   </div>
@@ -61,6 +64,7 @@
       Ville <input type="text" placeholder="Roissy-en-France" [formControl]="ville_visiteur"/>
     </p>
     <div style="float: right;">
+      <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 3">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 5">Suivant ▶︎</button>
     </div>
   </div>
@@ -83,6 +87,7 @@
       </select>
     </div>
     <div style="float: right;">
+      <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 4">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 6">Suivant ▶︎</button>
     </div>
   </div>
@@ -94,8 +99,9 @@
     <p class="form-group mb-3">
       Type <input type="text" placeholder="Type" [formControl]="type_visiteur"/>
     </p>
-    <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutVisiteur()">S'inscrire</button>&nbsp;
-    <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
+    <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 5">Retour</button>&nbsp;
+    <button type="button" style="float: right;" class="btn btn-outline-success" (click)="onSubmitAjoutVisiteur()">S'inscrire</button>&nbsp;
   </div>
 
   <br>
