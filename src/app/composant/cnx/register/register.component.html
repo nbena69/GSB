@@ -1,10 +1,17 @@
 <body>
 <h1>Inscrivez-vous</h1>
 <div class="container">
+
   <div *ngIf="actuallyStep == 1" class="step1">
     <p class="form-group mb-3">
       Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
     </p>
+    <div style="float: right;">
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 2">Suivant ▶︎</button>
+    </div>
+  </div>
+
+  <div *ngIf="actuallyStep == 2" class="step step2">
     <div class="form-group mb-3">
       Mot de passe
       <div class="password-container">
@@ -27,11 +34,11 @@
       </div>
     </div>
     <div style="float: right;">
-      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 2">Suivant ▶︎</button>
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 3">Suivant ▶︎</button>
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 2" class="step2">
+  <div *ngIf="actuallyStep == 3" class="step2">
     <p class="form-group mb-3">
       Votre nom <input type="text" placeholder="Lepen" [formControl]="nom_visiteur"/>
     </p>
@@ -39,11 +46,11 @@
       Votre prénom<input type="text" placeholder="Marine" [formControl]="prenom_visiteur"/>
     </p>
     <div style="float: right;">
-      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 3">Suivant ▶︎</button>
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 4">Suivant ▶︎</button>
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 3" class="step3">
+  <div *ngIf="actuallyStep == 4" class="step3">
     <p class="form-group mb-3">
       Votre adresse <input type="text" placeholder="22 avenue du Terminal" [formControl]="adresse_visiteur"/>
     </p>
@@ -54,11 +61,11 @@
       Ville <input type="text" placeholder="Roissy-en-France" [formControl]="ville_visiteur"/>
     </p>
     <div style="float: right;">
-      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 4">Suivant ▶︎</button>
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 5">Suivant ▶︎</button>
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 4" class="step4">
+  <div *ngIf="actuallyStep == 5" class="step4">
     <div class="form-group">
       <label for="id_secteur">Secteur :</label>
       <select class="form-control" id="id_secteur" [formControl]="id_secteur">
@@ -76,7 +83,7 @@
       </select>
     </div>
     <div style="float: right;">
-      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 5">Suivant ▶︎</button>
+      <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 6">Suivant ▶︎</button>
     </div>
   </div>
 
@@ -90,6 +97,7 @@
     <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutVisiteur()">S'inscrire</button>&nbsp;
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
   </div>
+
   <br>
   <a routerLink="/login">Vous avez déjà un compte ?</a>
   <a routerLink="">Retour à la page d'accueil</a>
