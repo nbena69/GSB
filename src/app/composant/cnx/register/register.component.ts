@@ -25,7 +25,7 @@ export class RegisterComponent {
   cp_visiteur: FormControl = new FormControl('');
   ville_visiteur: FormControl = new FormControl('');
   date_embauche: FormControl = new FormControl('');
-  type_visiteur: FormControl = new FormControl('');
+  type_visiteur: FormControl = new FormControl('V');
 
   showPassword: boolean = false;
   showText: boolean = false;

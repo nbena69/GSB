@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 3" class="step2">
+  <div *ngIf="actuallyStep == 3" class="step step3">
     <p class="form-group mb-3">
       Votre nom <input type="text" placeholder="Lepen" [formControl]="nom_visiteur"/>
     </p>
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 4" class="step3">
+  <div *ngIf="actuallyStep == 4" class="step step4">
     <p class="form-group mb-3">
       Votre adresse <input type="text" placeholder="22 avenue du Terminal" [formControl]="adresse_visiteur"/>
     </p>
@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 5" class="step4">
+  <div *ngIf="actuallyStep == 5" class="step step5">
     <div class="form-group">
       <label for="id_secteur">Secteur :</label>
       <select class="form-control" id="id_secteur" [formControl]="id_secteur">
@@ -92,12 +92,12 @@
     </div>
   </div>
 
-  <div *ngIf="actuallyStep == 6" class="step5">
+  <div *ngIf="actuallyStep == 6" class="step step6">
     <p class="form-group mb-3">
       Date d'embauche <input type="date" [formControl]="date_embauche"/>
     </p>
     <p class="form-group mb-3">
-      Type <input type="text" placeholder="Type" [formControl]="type_visiteur"/>
+      Type <input type="text" [formControl]="type_visiteur" readonly/>
     </p>
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
     <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 5">Retour</button>&nbsp;
