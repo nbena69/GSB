@@ -1,18 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule, Location} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {GsbFraishorsforfaitService} from "../../../service/gsb-fraishorsforfait.service";
 import {MenuComponent} from "../../all/menu/menu.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-liste-fraishorsforfait',
   standalone: true,
-  imports: [CommonModule, RouterLink, MenuComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MenuComponent],
   templateUrl: './liste-fraishorsforfait.component.html',
   styleUrl: './liste-fraishorsforfait.component.css'
 })
 
-export class ListeFraishorsforfaitComponent {
+export class ListeFraishorsforfaitComponent{
   public id_frais: number = 0;
 
   constructor(private location: Location, private route: ActivatedRoute, private fraisHorsForfait_api: GsbFraishorsforfaitService, private router: Router) {
@@ -31,5 +32,4 @@ export class ListeFraishorsforfaitComponent {
   return() {
     this.location.back();
   }
-
 }

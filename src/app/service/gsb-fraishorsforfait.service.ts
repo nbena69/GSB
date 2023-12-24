@@ -36,6 +36,35 @@ export class GsbFraishorsforfaitService {
     )
   }
 
+  updateFraisHorsForfait(id_fraishorsforfait: number,id_frais: number, date: string, montant_fraishorsforfait: number, lib_fraishorsforfait: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "id_fraishorsforfait": id_fraishorsforfait,
+      "id_frais": id_frais,
+      "date_fraishorsforfait": date,
+      "montant_fraishorsforfait": montant_fraishorsforfait,
+      "lib_fraishorsforfait": lib_fraishorsforfait,
+    };
+    this.http.put<Fraishorsforfait>(`http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/updateFraisHorsForfait/${id_fraishorsforfait}`
+      //this.http.put<Fraishorsforfait>(`http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/updateFraisHorsForfait/${id_fraishorsforfait}`
+      , requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.fraisHorsForfait = new Fraishorsforfait(data);
+          this.dataStore.fraisHorsForfait.push(this.fraisHorsForfait);
+          this._reponses.next(this.dataStore.fraisHorsForfait);
+          this.router.navigate(['fraisHF/liste', id_frais]);
+          console.log("Appel réussi");
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
   deleteFraisHorsForfait(id_fraishorsforfait: number): Observable<void> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
