@@ -32,4 +32,8 @@ export class ListeFraishorsforfaitComponent{
   return() {
     this.location.back();
   }
+
+  ajoutFraisHF(){
+    this.router.navigate(["fraisHF/ajout"]);
+  }
 }

@@ -13,6 +13,9 @@ import {
 import {
   AfficheFraishorsforfaitComponent
 } from "./composant/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
+import {
+  AjoutFraishorsforfaitComponent
+} from "./composant/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +25,7 @@ export const routes: Routes = [
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
-  {path: 'fraisHF/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
+  {path: 'fraisHF/ajout', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];

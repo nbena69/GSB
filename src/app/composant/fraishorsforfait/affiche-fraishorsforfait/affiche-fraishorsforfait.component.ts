@@ -16,6 +16,7 @@ import {Fraishorsforfait} from "../../../metier/fraishorsforfait";
 })
 export class AfficheFraishorsforfaitComponent {
   public id_fraishorsforfait: number = 0;
+  public id_frais: number = 0;
   date_fraishorsforfait: FormControl = new FormControl('');
   montant_fraishorsforfait: FormControl = new FormControl('');
   lib_fraishorsforfait: FormControl = new FormControl('');
@@ -28,7 +29,8 @@ export class AfficheFraishorsforfaitComponent {
         this.date_fraishorsforfait.setValue(fraishorsforfait.date_fraishorsforfait);
         this.montant_fraishorsforfait.setValue(fraishorsforfait.montant_fraishorsforfait);
         this.lib_fraishorsforfait.setValue(fraishorsforfait.lib_fraishorsforfait);
-        console.log(this.id_fraishorsforfait);
+        this.id_frais = fraishorsforfait.id_frais;
+        console.log(this.id_frais);
       },
       error => console.log('Erreur Appel API')
     );
@@ -56,6 +58,12 @@ export class AfficheFraishorsforfaitComponent {
 
   onSubmitFicheFraisHorsForfait()
   {
-
+    this.fraishorsforfait_api.updateFraisHorsForfait(
+      this.id_fraishorsforfait.valueOf(),
+      this.id_frais,
+      this.date_fraishorsforfait.value,
+      this.montant_fraishorsforfait.value,
+      this.lib_fraishorsforfait.value
+    );
   }
 }
