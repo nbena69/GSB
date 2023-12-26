@@ -19,6 +19,7 @@ export class AjoutFraishorsforfaitComponent {
   lib_fraishorsforfait: FormControl = new FormControl('');
 
   constructor(private location:Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
+    this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
   }
 
   onSubmitAjoutFraisHorsForfait() {

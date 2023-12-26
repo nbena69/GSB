@@ -25,7 +25,7 @@ export const routes: Routes = [
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
-  {path: 'fraisHF/ajout', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
+  {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
