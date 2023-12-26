@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  shouldDisplayMenu(): boolean {
+  afficheMenu(): boolean {
     const currentUrl = this.router.url;
 
     if ((currentUrl === '/login') || (currentUrl === '/register')) {
