@@ -15,6 +15,7 @@ import {CommonModule, Location} from "@angular/common";
 })
 
 export class ListeFraisComponent {
+  public nombreFraisRecuperes: number = 0;
   constructor(private frais_api: GsbFraisService, private router: Router, private location: Location) {
     this.frais_api.listeFraisDuVisiteur();
   }
@@ -33,5 +34,12 @@ export class ListeFraisComponent {
 
   isFraisListPage(): boolean {
     return this.router.url === '/frais/liste';
+  }
+
+  ajoutFrais() {
+    this.router.navigate(['/frais/ajout']);
+  }
+  incrementerNombreFrais() {
+    this.nombreFraisRecuperes++;
   }
 }
