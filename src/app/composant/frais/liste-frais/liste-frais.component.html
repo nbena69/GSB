@@ -20,6 +20,14 @@
       </tr>
       </tbody>
     </table>
-    <button *ngIf="isFraisListPage()" type="button" class="btn btn-outline-danger" style="text-align: left" (click)="return()">Annuler</button>&nbsp;
+    <div *ngIf="isFraisListPage()" style="text-align: right">
+      <br>
+      <button type="button" class="btn btn-outline-danger"
+              (click)="return()">Annuler
+      </button>&nbsp;
+      <button type="button" class="btn btn-outline-info"
+              (click)="ajoutFrais()">Ajouter
+      </button>
+    </div>
   </section>
 </div>
