@@ -34,6 +34,6 @@ export class ListeFraishorsforfaitComponent{
   }
 
   ajoutFraisHF(){
-    this.router.navigate(["fraisHF/ajout"]);
+    this.router.navigate(["fraisHF/ajout", this.id_frais]);
   }
 }
