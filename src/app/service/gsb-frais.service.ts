@@ -107,8 +107,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-     const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
-     //const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/deleteFrais/${id_frais}`;
+    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
+    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/deleteFrais/${id_frais}`;
 
     return this.http.delete<void>(url, {headers: headers});
   }
