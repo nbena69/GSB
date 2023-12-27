@@ -27,4 +27,8 @@ export class MenuComponent implements OnInit {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
+
+  profil() {
+    this.router.navigate(['/profil']);
+  }
 }

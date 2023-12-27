@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="utilisateurConnecte == false" routerLink="/login">Se connecter</a></li>
         <li><a *ngIf="utilisateurConnecte" (click)="logout()">Se déconnecter</a></li>
+        <li><a *ngIf="utilisateurConnecte" (click)="profil()"><img src="../../../../assets/img/profilMenu.png" style="width: auto; height: 30px"></a> </li>
       </ul>
     </div>
   </nav>
