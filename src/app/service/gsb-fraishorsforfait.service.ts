@@ -4,7 +4,6 @@ import {Fraishorsforfait} from "../metier/fraishorsforfait";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +31,9 @@ export class GsbFraishorsforfaitService {
         this._reponses.next(this.listeFraisHF);
         console.log("Appel API liste Frais Hors Forfait reussi")
       },
-      error => console.log("Erreur Appel API liste frais Hors Forfait")
+      error => {
+        console.log("Erreur Appel API liste frais Hors Forfait", error)
+      }
     )
   }
 

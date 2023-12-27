@@ -4,7 +4,6 @@ import {Etat} from "../metier/etat";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Frais} from "../metier/frais";
 import {Laboratoire} from "../metier/laboratoire";
 import {Secteur} from "../metier/secteur";
 
@@ -44,7 +43,9 @@ export class GsbShortService {
         this._reponsesEtat.next(this.listeEtat);
         console.log("Appel API liste Etats reussi")
       },
-      error => console.log("Erreur Appel API liste Etats")
+      error => {
+        console.log("Erreur Appel API liste Etats", error)
+      }
     )
   }
 
@@ -60,7 +61,9 @@ export class GsbShortService {
         this._reponsesLaboratoire.next(this.listeLaboratoire);
         console.log("Appel API liste Laboratoire reussi")
       },
-      error => console.log("Erreur Appel API liste Laboratoire")
+      error => {
+        console.log("Erreur Appel API liste Laboratoire", error)
+      }
     )
   }
 
@@ -76,7 +79,9 @@ export class GsbShortService {
         this._reponsesSecteur.next(this.listeSecteur);
         console.log("Appel API liste Secteur reussi")
       },
-      error => console.log("Erreur Appel API liste Secteur")
+      error => {
+        console.log("Erreur Appel API liste Secteur", error)
+      }
     )
   }
 }
