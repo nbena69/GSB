@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Frais} from "../metier/frais";
+import {Visiteur} from "../metier/visiteur";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,6 @@ export class GsbVisiteurService {
     const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_visiteur}`;
     //const url = `http://gsb.benaissa.etu.lmdsio.com/api/frais/getUnFrais/${id_visiteur}`;
 
-    return this.http.get<Frais>(url, {headers: headers});
+    return this.http.get<Visiteur>(url, {headers: headers});
   }
 }
