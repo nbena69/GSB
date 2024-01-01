@@ -7,19 +7,15 @@ import {inject} from "@angular/core";
 import {AfficheFraisComponent} from "./composant/frais/affiche-frais/affiche-frais.component";
 import {AjoutFraisComponent} from "./composant/frais/ajout-frais/ajout-frais.component";
 import {RegisterComponent} from "./composant/cnx/register/register.component";
-import {
-  ListeFraishorsforfaitComponent
-} from "./composant/fraishorsforfait/liste-fraishorsforfait/liste-fraishorsforfait.component";
-import {
-  AfficheFraishorsforfaitComponent
-} from "./composant/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
-import {
-  AjoutFraishorsforfaitComponent
-} from "./composant/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
+import {ListeFraishorsforfaitComponent} from "./composant/fraishorsforfait/liste-fraishorsforfait/liste-fraishorsforfait.component";
+import {AfficheFraishorsforfaitComponent} from "./composant/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
+import {AjoutFraishorsforfaitComponent} from "./composant/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
+import {DashboardUserComponent} from "./composant/user/dashboard-user/dashboard-user.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'dashboard', component: DashboardUserComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
