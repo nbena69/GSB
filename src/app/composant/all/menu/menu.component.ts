@@ -29,6 +29,6 @@ export class MenuComponent implements OnInit {
   }
 
   profil() {
-    this.router.navigate(['/profil']);
+    this.router.navigate(['/dashboard']);
   }
 }
