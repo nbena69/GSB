@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './left-sidebar.component.css'
 })
 export class LeftSidebarComponent {
+  @Output() sectionSelected = new EventEmitter<string>();
 
+  selectSection(section: string) {
+    this.sectionSelected.emit(section);
+  }
 }
