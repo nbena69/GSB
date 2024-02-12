@@ -13,8 +13,8 @@ import {RouterLink} from "@angular/router";
 })
 
 export class LoginComponent {
-  email: FormControl = new FormControl('');
-  password: FormControl = new FormControl('');
+  email: FormControl = new FormControl('Villechalane');
+  password: FormControl = new FormControl('secret');
   showPassword: boolean = false;
   showText: boolean = false;
 
