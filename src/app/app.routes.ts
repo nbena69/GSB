@@ -11,6 +11,9 @@ import {ListeFraishorsforfaitComponent} from "./composant/fraishorsforfait/liste
 import {AfficheFraishorsforfaitComponent} from "./composant/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
 import {AjoutFraishorsforfaitComponent} from "./composant/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
 import {DashboardUserComponent} from "./composant/user/dashboard-user/dashboard-user.component";
+import {AccountSectionComponent} from "./composant/user/sections/account-section/account-section.component";
+import {NotificationSectionComponent} from "./composant/user/sections/notification-section/notification-section.component";
+import {ContactSectionComponent} from "./composant/user/sections/contact-section/contact-section.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,6 +25,9 @@ export const routes: Routes = [
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
+  {path: 'dashboard/account', component: AccountSectionComponent, canActivate: [authentificationGuard()]},
+  {path: 'dashboard/notif', component: NotificationSectionComponent, canActivate: [authentificationGuard()]},
+  {path: 'dashboard/contact', component: ContactSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
