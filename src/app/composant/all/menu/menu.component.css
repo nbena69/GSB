@@ -55,6 +55,7 @@
 
 .navbar-nav > li > a:hover {
   background-color: #709CA7; /* Couleur de fond lorsqu'un lien est survolé */
+  border-radius: 10px;
 }
 
 /* Style de base pour la liste déroulante */
@@ -89,17 +90,18 @@
 /* Lorsque le pointeur est sur l'élément parent, afficher la liste déroulante */
 .deroulant:hover ul {
   display: block;
+  border-radius: 10px;
 }
 
 /* Style pour les liens de la liste déroulante */
 .deroulant ul li a {
-  color: #333;
   text-decoration: none;
 }
 
 /* Lorsque le pointeur est sur les liens de la liste déroulante, changer la couleur de fond */
 .deroulant ul li:hover {
   background-color: #709CA7;
+  border-radius: 10px;
 }
 
 .deroulant > a::after {
