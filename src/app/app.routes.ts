@@ -19,12 +19,15 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardUserComponent, canActivate: [authentificationGuard()]},
+
   {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
+
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
+
   {path: 'dashboard/account', component: AccountSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'dashboard/notif', component: NotificationSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'dashboard/contact', component: ContactSectionComponent, canActivate: [authentificationGuard()]},
