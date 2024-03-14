@@ -8,6 +8,8 @@ import {Visiteur} from "../metier/visiteur";
   providedIn: 'root'
 })
 export class GsbVisiteurService {
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
@@ -16,9 +18,8 @@ export class GsbVisiteurService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/visiteur/${id_visiteur}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/visiteur/${id_visiteur}`;
 
-    return this.http.get<Visiteur>(url, {headers: headers});
+    return this.http.get<Visiteur>(`${this.localUrl}/visiteur/${id_visiteur}`, {headers: headers});
+  //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/${id_visiteur}`, {headers: headers});
   }
 }

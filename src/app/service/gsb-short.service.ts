@@ -12,6 +12,9 @@ import {Secteur} from "../metier/secteur";
 })
 
 export class GsbShortService {
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+
   // ETAT
   private etat: Etat = new Etat;
   private _reponsesEtat = new BehaviorSubject<Etat[]>([]);
@@ -35,8 +38,8 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Etat[]>("http://localhost/benaissa/GsbFrais/public/api/frais/etats"
-    //return this.http.get<Etat[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/etats"
+    return this.http.get<Etat[]>(`${this.localUrl}/frais/etats`
+    //return this.http.get<Etat[]>(`${this.httpUrl}/frais/etats`
       , {headers: headers}).subscribe(
       data => {
         this.listeEtat = data;
@@ -53,8 +56,8 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Laboratoire[]>("http://localhost/benaissa/GsbFrais/public/api/frais/laboratoire"
-    //return this.http.get<Laboratoire[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/laboratoire"
+    return this.http.get<Laboratoire[]>(`${this.localUrl}/frais/laboratoire`
+    //return this.http.get<Laboratoire[]>(`${this.httpUrl}/frais/laboratoire`
       , {headers: headers}).subscribe(
       data => {
         this.listeLaboratoire = data;
@@ -71,8 +74,8 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Secteur[]>("http://localhost/benaissa/GsbFrais/public/api/frais/secteur"//
-    // return this.http.get<Secteur[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/secteur"
+    return this.http.get<Secteur[]>(`${this.localUrl}/frais/secteur`
+    // return this.http.get<Secteur[]>(`${this.httpUrl}/frais/secteur`
       , {headers: headers}).subscribe(
       data => {
         this.listeSecteur = data;

@@ -10,6 +10,9 @@ import {Router} from "@angular/router";
 })
 
 export class GsbFraisService {
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+
   private frais: Frais = new Frais;
   private _reponses = new BehaviorSubject<Frais[]>([]);
   readonly appels_termines = this._reponses.asObservable();
@@ -23,8 +26,8 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Frais[]>("http://localhost/benaissa/GsbFrais/public/api/frais/visiteur/"
-    //return this.http.get<Frais[]>("http://gsb.benaissa.etu.lmdsio.com/api/frais/visiteur/"
+    return this.http.get<Frais[]>(`${this.localUrl}/frais/visiteur/`
+    //return this.http.get<Frais[]>(`${this.httpUrl}/frais/visiteur/`
       + this.gsb_api.visiteurId()
       , {headers: headers}).subscribe(
       data => {
@@ -55,8 +58,8 @@ export class GsbFraisService {
       "id_visiteur": this.gsb_api.visiteurId(),
       "datemodification": formattedDate
     };
-    this.http.put<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/updateFrais/${id_frais}`
-    //this.http.put<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/updateFrais/${id_frais}`
+    this.http.put<Frais>(`${this.localUrl}/frais/updateFrais/${id_frais}`
+    //this.http.put<Frais>(`${this.httpUrl}/frais/updateFrais/${id_frais}`
       , requestObject, {headers: headers})
       .subscribe(
         data => {
@@ -88,8 +91,8 @@ export class GsbFraisService {
       "id_visiteur": this.gsb_api.visiteurId(),
       "datemodification": formattedDate
     };
-    this.http.post<Frais>(`http://localhost/benaissa/GsbFrais/public/api/frais/ajoutFrais`
-    //this.http.post<Frais>(`http://gsb.benaissa.etu.lmdsio.com/api/frais/ajoutFrais`
+    this.http.post<Frais>(`${this.localUrl}/frais/ajoutFrais`
+    //this.http.post<Frais>(`${this.httpUrl}/frais/ajoutFrais`
       , requestObject, {headers: headers})
       .subscribe(
         data => {
