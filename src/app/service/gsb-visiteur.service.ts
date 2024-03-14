@@ -8,8 +8,8 @@ import {Visiteur} from "../metier/visiteur";
   providedIn: 'root'
 })
 export class GsbVisiteurService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }

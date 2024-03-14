@@ -9,8 +9,8 @@ import {GsbLoginService} from "./gsb-login.service";
   providedIn: 'root'
 })
 export class GsbFraishorsforfaitService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   private fraisHorsForfait: Fraishorsforfait = new Fraishorsforfait();
   private _reponses = new BehaviorSubject<Fraishorsforfait[]>([]);

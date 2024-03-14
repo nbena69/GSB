@@ -12,8 +12,8 @@ import {Secteur} from "../metier/secteur";
 })
 
 export class GsbShortService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   // ETAT
   private etat: Etat = new Etat;

@@ -10,8 +10,8 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   public utilisateurConnecte: boolean = false;
 

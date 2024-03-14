@@ -10,8 +10,8 @@ import {Router} from "@angular/router";
 })
 
 export class GsbFraisService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api/';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api/";
+  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   private frais: Frais = new Frais;
   private _reponses = new BehaviorSubject<Frais[]>([]);
