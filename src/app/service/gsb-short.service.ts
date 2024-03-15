@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Laboratoire} from "../metier/laboratoire";
 import {Secteur} from "../metier/secteur";
+import {Visiteur} from "../metier/visiteur";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class GsbShortService {
   private _reponsesSecteur = new BehaviorSubject<Secteur[]>([]);
   readonly appels_terminesSecteur = this._reponsesSecteur.asObservable();
   public listeSecteur: Secteur[] = [];
+  // VISITEUR
+  private visiteur: Visiteur = new Visiteur;
+  private _reponsesVisiteur = new BehaviorSubject<Visiteur[]>([]);
+  readonly appels_terminesVisiteur = this._reponsesVisiteur.asObservable();
+  public listeVisiteur: Visiteur[] = [];
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
@@ -84,6 +90,24 @@ export class GsbShortService {
       },
       error => {
         console.log("Erreur Appel API liste Secteur", error)
+      }
+    )
+  }
+
+  getListeVisiteur() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur`
+      // return this.http.get<Visiteur[]>(`${this.httpUrl}/visiteur`
+      , {headers: headers}).subscribe(
+      data => {
+        this.listeVisiteur = data;
+        this._reponsesVisiteur.next(this.listeVisiteur);
+        console.log("Appel API liste Visiteur reussi")
+      },
+      error => {
+        console.log("Erreur Appel API liste Visiteur", error)
       }
     )
   }

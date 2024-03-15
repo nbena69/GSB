@@ -22,4 +22,13 @@ export class GsbVisiteurService {
     return this.http.get<Visiteur>(`${this.localUrl}/visiteur/${id_visiteur}`, {headers: headers});
   //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/${id_visiteur}`, {headers: headers});
   }
+
+  searchVisiteur() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    return this.http.get<Visiteur>(`${this.localUrl}/visiteur/filtreVisiteur`, {headers: headers});
+    //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/filtreVisiteur`, {headers: headers});
+  }
 }

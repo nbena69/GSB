@@ -11,6 +11,14 @@
             <li><a routerLink="/frais/ajout">Ajout Frais</a></li>
           </ul>
         </li>
+        <li *ngIf="utilisateurConnecte" class="deroulant">
+          <a routerLink="/frais/liste">Activité &ensp;</a>
+          <ul class="sous">
+            <li><a routerLink="/frais/liste">Liste Activité</a></li>
+            <li><a routerLink="/frais/ajout">Ajout Activité</a></li>
+          </ul>
+        </li>
+        <li *ngIf="utilisateurConnecte"><a routerLink="/searchVisiteur">Rechercher un Visiteur</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="utilisateurConnecte == false" routerLink="/login">Se connecter</a></li>

@@ -14,6 +14,7 @@ import {DashboardUserComponent} from "./composant/user/dashboard-user/dashboard-
 import {AccountSectionComponent} from "./composant/user/sections/account-section/account-section.component";
 import {NotificationSectionComponent} from "./composant/user/sections/notification-section/notification-section.component";
 import {ContactSectionComponent} from "./composant/user/sections/contact-section/contact-section.component";
+import {SearchVisiteurComponent} from "./composant/user/search-visiteur/search-visiteur.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -27,6 +28,8 @@ export const routes: Routes = [
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
+
+  {path: 'searchVisiteur', component: SearchVisiteurComponent, canActivate: [authentificationGuard()]},
 
   {path: 'dashboard/account', component: AccountSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'dashboard/notif', component: NotificationSectionComponent, canActivate: [authentificationGuard()]},
