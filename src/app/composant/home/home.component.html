@@ -1,45 +1,90 @@
 <body>
 <h1>Bienvenue sur votre nouvelle page d'accueil interactive et personnalisée</h1>
 
-<div *ngIf="utilisateurConnecte" class="container">
-  <section class="home-section">
-    <h2>Vous avez de nouveaux frais à déclarer ?</h2>
-    <p>Vous pouvez les ajouter directement ci-dessous :</p>
-    <div class="actions">
-      <a routerLink="/frais/ajout" type="button" class="btn btn-outline-info">Ajouter de nouveaux frais</a>
-    </div>
-  </section>
+<div *ngIf="utilisateurConnecte">
+  <div class="container">
+    <section class="home-section">
+      <h2>Vous avez de nouveaux frais à déclarer ?</h2>
+      <p>Vous pouvez les ajouter directement ci-dessous :</p>
+      <div class="actions">
+        <a routerLink="/frais/ajout" type="button" class="btn btn-outline-info">Ajouter de nouveaux frais</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="home-section">
+      <h2>Vous souhaitez consulter vos frais ?</h2>
+      <p>Découvrez l'ensemble de vos fiches de frais en un coup d'œil :</p>
+      <div class="actions">
+        <a routerLink="/frais/liste" type="button" class="btn btn-outline-info">Voir mes fiches de frais</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="home-section">
+      <h2>Mes derniers frais</h2>
+      <app-liste-frais></app-liste-frais>
+      <div class="actions">
+        <a routerLink="/frais/liste" type="button" class="btn btn-outline-info">Voir mes frais</a>
+      </div>
+    </section>
+  </div>
 </div>
 
-<div *ngIf="utilisateurConnecte" class="container">
-  <section class="home-section">
-    <h2>Vous souhaitez consulter vos frais ?</h2>
-    <p>Découvrez l'ensemble de vos fiches de frais en un coup d'œil :</p>
-    <div class="actions">
-      <a routerLink="/frais/liste" type="button" class="btn btn-outline-info">Voir mes fiches de frais</a>
-    </div>
-  </section>
-</div>
+<div *ngIf="utilisateurConnecte == false">
+  <div class="container">
+    <section class="home-section">
+      <h2>GSB fait peau neuve : découvrez de nouvelle fonctionnalités</h2>
+      <p>GSB adopte une nouvelle interface qui inclut d'avantage d'options. Testez notre nouvelle interface modernisée et intuitive !</p>
 
-<div *ngIf="utilisateurConnecte" class="container">
-  <section class="home-section">
-    <h2>Mes derniers frais</h2>
-    <app-liste-frais></app-liste-frais>
-    <div class="actions">
-      <a routerLink="/frais/liste" type="button" class="btn btn-outline-info">Voir mes frais</a>
-    </div>
-  </section>
-</div>
+      <div class="actions">
+        <a routerLink="/login" type="button" class="btn btn-outline-info btn-lg">Testez</a>
+      </div>
+    </section>
+  </div>
 
-<div *ngIf="utilisateurConnecte == false" class="container">
-  <section class="home-section">
-    <h2>Connectez-vous pour suivre vos frais</h2>
-    <p>Connectez-vous à votre compte pour accéder à toutes les fonctionnalités de suivi de frais.</p>
+  <div class="container">
+    <section class="key-metrics">
+      <div class="metric">
+        <h3>Nombre d'utilisateurs</h3>
+        <p>3562</p>
+      </div>
+      <div class="metric">
+        <h3>Revenu mensuel</h3>
+        <p>25 000 €</p>
+      </div>
+      <div class="metric">
+        <h3>Taux de conversion</h3>
+        <p>12.5%</p>
+      </div>
+    </section>
+  </div>
 
-    <div class="actions">
-      <a routerLink="/login" type="button" class="btn btn-outline-info btn-lg">Se connecter</a>
-    </div>
-  </section>
+  <div class="container">
+    <section class="testimonial-section">
+      <h2>Ils ont aimé, alors pourquoi pas vous ?</h2>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"Grâce à cette application, j'ai pu suivre mes dépenses de manière plus organisée et efficace. Cela m'a vraiment aidé à mieux gérer mes finances."</p>
+          <p class="author">- Jeanne D.</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"Je recommande vivement cette application à tous ceux qui ont besoin d'un moyen simple et pratique de suivre leurs frais. Elle a simplifié ma vie de manière significative."</p>
+          <p class="author">- Paul R.</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"L'interface conviviale et les fonctionnalités utiles de cette application en font mon outil de choix pour gérer mes dépenses quotidiennes. Merci pour ce superbe outil!"</p>
+          <p class="author">- Marie L.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <br><br><br>

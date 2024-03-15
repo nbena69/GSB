@@ -36,3 +36,48 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.testimonial-section {
+  text-align: center;
+}
+
+.testimonial {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.key-metrics {
+  display: flex;
+  justify-content: space-between;
+}
+
+.metric {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metric h3 {
+  margin-top: 0;
+}
+
+.metric p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
