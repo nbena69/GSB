@@ -1,25 +1,39 @@
-<h2>Recherche de visiteur par filtre</h2>
-<div class="form-group">
-  <label for="id_visiteur">Visiteur :</label>
-  <select class="form-control" id="id_visiteur">
-    <option *ngFor="let visiteur of getListeVisiteur() | async" [value]="visiteur.id_visiteur">
-      {{ visiteur.nom_visiteur }}
-    </option>
-  </select>
-</div>
-<div class="form-group">
-  <label for="id_secteur">Secteur :</label>
-  <select class="form-control" id="id_secteur" [formControl]="id_secteur">
-    <option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
-      {{ secteur.lib_secteur }}
-    </option>
-  </select>
-</div>
-<div class="form-group">
-  <label for="id_secteur">Visiteur :</label>
-  <select class="form-control" id="id_secteur">
-    <option *ngFor="let visiteur of getListeVisiteur() | async" [value]="visiteur.id_visiteur">
-      {{ visiteur.nom_visiteur }}
-    </option>
-  </select>
+<div class="container">
+  <h2>Filtrez votre recherche !</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="id_visiteur">Visiteur :</label>
+        <select class="form-control" id="id_visiteur" [formControl]="id_visiteur">
+          <option value="">Sélectionner un visiteur</option>
+          <option *ngFor="let visiteur of getListeVisiteur() | async" [value]="visiteur.id_visiteur">
+            {{ visiteur.nom_visiteur }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="id_secteur">Secteur :</label>
+        <select class="form-control" id="id_secteur" [formControl]="id_secteur">
+          <option value="">Sélectionner un secteur</option>
+          <option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
+            {{ secteur.lib_secteur }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="id_laboratoire">Laboratoire :</label>
+        <select class="form-control" id="id_laboratoire" [formControl]="id_laboratoire">
+          <option value="">Sélectionner un laboratoire</option>
+          <option *ngFor="let laboratoire of getListeLaboratoire() | async" [value]="laboratoire.id_laboratoire">
+            {{ laboratoire.nom_laboratoire }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Rechercher</button>
 </div>
