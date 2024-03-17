@@ -8,6 +8,7 @@
           <option value="">Sélectionner un visiteur</option>
           <option *ngFor="let visiteur of getListeVisiteur() | async" [value]="visiteur.id_visiteur">
             {{ visiteur.nom_visiteur }}
+            {{ visiteur.prenom_visiteur }}
           </option>
         </select>
       </div>
