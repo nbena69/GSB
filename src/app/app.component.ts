@@ -13,7 +13,7 @@ import {FooterComponent} from "./composant/all/footer/footer.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'GSB Frais';
+  title = 'GSB';
 
   constructor(private loginService: GsbLoginService, private cdr: ChangeDetectorRef, private router: Router) {
   }
