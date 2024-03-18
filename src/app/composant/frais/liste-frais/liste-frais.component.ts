@@ -39,6 +39,7 @@ export class ListeFraisComponent {
   ajoutFrais() {
     this.router.navigate(['/frais/ajout']);
   }
+
   incrementerNombreFrais() {
     this.nombreFraisRecuperes++;
   }
