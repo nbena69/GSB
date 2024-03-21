@@ -48,6 +48,31 @@ export class GsbVisiteurService {
           this.dataStore.visiteur.push(this.visiteur);
           this._reponses.next(this.dataStore.visiteur);
           console.log(data);
+          console.log("1")
+        },
+        error => {
+          console.error('Une erreur s\'est produite : ', error);
+        }
+      );
+  }
+
+  searchShort(nom: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestBody = {
+      "nom": nom,
+    };
+
+    this.http.post<Visiteur>(`${this.localUrl}/visiteur/filtreAvancee`, requestBody, { headers: headers })
+      .subscribe(
+        data => {
+          this.visiteur = new Visiteur(data);
+          this.dataStore.visiteur.push(this.visiteur);
+          this._reponses.next(this.dataStore.visiteur);
+          console.log(data);
+          console.log("2")
         },
         error => {
           console.error('Une erreur s\'est produite : ', error);

@@ -23,13 +23,8 @@ export class SearchVisiteurComponent {
   active: boolean = false;
 
   constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
-    this.shortService.getListeVisiteur();
     this.shortService.getListeSecteur();
     this.shortService.getListeLaboratoire();
-  }
-
-  getListeVisiteur() {
-    return this.shortService.appels_terminesVisiteur;
   }
 
   getListeSecteur() {
@@ -41,12 +36,18 @@ export class SearchVisiteurComponent {
   }
 
   researchVisiteur() {
-    this.visiteurService.searchVisiteur(
-      this.nom_visiteur.value,
-      this.id_secteur.value,
-      this.id_laboratoire.value,
-    );
-    this.active = true;
+    if(this.selector) {
+      this.visiteurService.searchVisiteur(
+        this.nom_visiteur.value,
+        this.id_secteur.value,
+        this.id_laboratoire.value,
+      );
+    } else {
+      this.visiteurService.searchShort(
+        this.nom_visiteur.value,
+      );
+      this.active = true;
+    }
   }
 
   researchAvancee() {
