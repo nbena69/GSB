@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Filtrez votre recherche !</h2>
-  <div class="row">
+  <div class="row" *ngIf="selector == true">
     <div class="col-md-4">
       <div class="form-group">
         <label>Nom du Visiteur :</label>
@@ -30,7 +30,20 @@
       </div>
     </div>
   </div>
+  <div class="row" *ngIf="selector == false">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Saisissez le laboratoire, le nom ou le secteur</label>
+        <input type="text" class="form-control" placeholder="Nom, laboratoire ou secteur" [formControl]="nom_visiteur">
+      </div>
+    </div>
+  </div>
   <button class="btn btn-primary" (click)="researchVisiteur()">Rechercher</button>
+  <button class="btn btn-primary" (click)="researchAvancee()" *ngIf="selector == true">Essayer la recherche avancée !
+  </button>
+  <button class="btn btn-primary" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche
+    classique
+  </button>
 </div>
 <div class="container">
 
