@@ -16,7 +16,7 @@ import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
 })
 
 export class SearchVisiteurComponent {
-  id_visiteur: FormControl = new FormControl("");
+  nom_visiteur: FormControl = new FormControl("");
   id_secteur: FormControl = new FormControl("");
   id_laboratoire: FormControl = new FormControl("");
 
@@ -40,7 +40,7 @@ export class SearchVisiteurComponent {
 
   researchVisiteur() {
     this.visiteurService.searchVisiteur(
-      this.id_visiteur.value,
+      this.nom_visiteur.value,
       this.id_secteur.value,
       this.id_laboratoire.value,
     );

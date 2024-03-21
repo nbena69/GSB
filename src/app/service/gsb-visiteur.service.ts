@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Visiteur} from "../metier/visiteur";
 import {BehaviorSubject} from "rxjs";
-import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,6 @@ export class GsbVisiteurService {
   readonly appels_termines = this._reponses.asObservable();
   public listeVisiteur: Visiteur[] = [];
   public dataStore: { visiteur: Visiteur[] } = {visiteur: []};
-
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }

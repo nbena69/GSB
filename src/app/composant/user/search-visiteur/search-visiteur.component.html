@@ -3,14 +3,8 @@
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
-        <label for="id_visiteur">Visiteur :</label>
-        <select class="form-control" id="id_visiteur" [formControl]="id_visiteur">
-          <option value="">Sélectionner un visiteur</option>
-          <option *ngFor="let visiteur of getListeVisiteur() | async" [value]="visiteur.id_visiteur">
-            {{ visiteur.nom_visiteur }}
-            {{ visiteur.prenom_visiteur }}
-          </option>
-        </select>
+        <label>Nom du Visiteur :</label>
+        <input type="text" class="form-control" placeholder="Nom" [formControl]="nom_visiteur">
       </div>
     </div>
     <div class="col-md-4">
@@ -37,4 +31,7 @@
     </div>
   </div>
   <button class="btn btn-primary" (click)="researchVisiteur()">Rechercher</button>
+</div>
+<div class="container">
+
 </div>
