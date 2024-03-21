@@ -1,0 +1,43 @@
+.popup-containe {
+  margin: 0 auto;
+  padding: 20px;
+  color: #1C2942; /* Bleu foncé pour le texte */
+  font-family: 'Arial', sans-serif; /* Choisir une police de caractères appropriée */
+  border-radius: 25px;
+}
+
+.popup-containe h2 {
+  color: #1C2942;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.popup-container input,
+.popup-container select,
+.popup-container textarea {
+  width: 100%;
+  padding: 2px; /* Ajusté pour un meilleur espacement */
+  border: 1px solid #3B556D;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical; /* Permet le redimensionnement vertical uniquement */
+  color: #1C2942; /* Bleu foncé pour le texte */
+  font-size: 16px; /* Ajusté pour une meilleure lisibilité */
+}
+
+.buttonSubmit {
+  background-color: #3B556D; /* Bleu plus clair */
+  color: white; /* Blanc */
+  padding: 12px 20px; /* Ajusté pour un meilleur espacement */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease; /* Transition de couleur en douceur */
+}
+
+.buttonSubmit:hover {
+  background-color: #1C2942; /* Changement de couleur au survol */
+}
