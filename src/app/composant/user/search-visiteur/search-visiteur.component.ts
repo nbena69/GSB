@@ -38,7 +38,10 @@ export class SearchVisiteurComponent {
   }
 
   openUpdate() {
-    this.dialog.open(UpdateVisiteurPopupComponent)
+    this.dialog.open(UpdateVisiteurPopupComponent, {
+      height: '90%',
+      width: '40%',
+    });
     console.log('reussi');
   }
 }
