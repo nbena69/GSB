@@ -5,6 +5,7 @@ import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UpdateVisiteurPopupComponent} from "../../../pop-up/update-visiteur-popup/update-visiteur-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
 
 @Component({
   selector: 'app-search-visiteur',
@@ -19,7 +20,7 @@ export class SearchVisiteurComponent {
   id_secteur: FormControl = new FormControl("");
   id_laboratoire: FormControl = new FormControl("");
 
-  constructor(private shortService: GsbShortService, public dialog: MatDialog) {
+  constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeVisiteur();
     this.shortService.getListeSecteur();
     this.shortService.getListeLaboratoire();
@@ -35,6 +36,14 @@ export class SearchVisiteurComponent {
 
   getListeLaboratoire() {
     return this.shortService.appels_terminesLaboratoire;
+  }
+
+  researchVisiteur() {
+    this.visiteurService.searchVisiteur(
+      this.id_visiteur.value,
+      this.id_secteur.value,
+      this.id_laboratoire.value,
+    );
   }
 
   openUpdate() {
