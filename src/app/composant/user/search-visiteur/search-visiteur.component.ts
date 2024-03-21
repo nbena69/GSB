@@ -46,8 +46,8 @@ export class SearchVisiteurComponent {
       this.visiteurService.searchShort(
         this.nom_visiteur.value,
       );
-      this.active = true;
     }
+    this.active = true;
   }
 
   researchAvancee() {
