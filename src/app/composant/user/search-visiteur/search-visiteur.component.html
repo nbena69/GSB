@@ -38,13 +38,11 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="researchVisiteur()">Rechercher</button>
-  <button class="btn btn-primary" (click)="researchAvancee()" *ngIf="selector == true">Essayer la recherche avancée !
-  </button>
-  <button class="btn btn-primary" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche
-    classique
-  </button>
+  <button class="btn btn-outline-primary" (click)="researchVisiteur()">Rechercher</button>&nbsp;
+  <button class="btn btn-outline-warning" (click)="goBack()" *ngIf="active == true">Retour</button>&nbsp;
+  <button class="btn btn-outline-info" (click)="researchAvancee()" *ngIf="selector == true">Essayer la recherche avancée !</button>
+  <button class="btn btn-info" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche classique</button>
 </div>
-<div class="container">
-
+<div class="container" *ngIf="active == true">
+    Hello world
 </div>

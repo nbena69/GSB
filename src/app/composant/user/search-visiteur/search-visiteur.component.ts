@@ -20,6 +20,7 @@ export class SearchVisiteurComponent {
   id_secteur: FormControl = new FormControl("");
   id_laboratoire: FormControl = new FormControl("");
   selector: boolean = true;
+  active: boolean = false;
 
   constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeVisiteur();
@@ -45,6 +46,7 @@ export class SearchVisiteurComponent {
       this.id_secteur.value,
       this.id_laboratoire.value,
     );
+    this.active = true;
   }
 
   researchAvancee() {
@@ -57,5 +59,9 @@ export class SearchVisiteurComponent {
       width: '40%',
     });
     console.log('reussi');
+  }
+
+  goBack() {
+    this.active = false;
   }
 }
