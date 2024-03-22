@@ -7,11 +7,12 @@ import {UpdateVisiteurPopupComponent} from "../../../pop-up/update-visiteur-popu
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
 import {Visiteur} from "../../../metier/visiteur";
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 
 @Component({
   selector: 'app-search-visiteur',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent],
   templateUrl: './search-visiteur.component.html',
   styleUrl: './search-visiteur.component.css'
 })
@@ -23,7 +24,7 @@ export class SearchVisiteurComponent {
   selector: boolean = true;
   active: boolean = false;
   visiteurs: Visiteur[] = [];
-  listNom: FormControl = new FormControl("");
+  errorMessage: string | null = null;
 
   constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeSecteur();
@@ -45,9 +46,11 @@ export class SearchVisiteurComponent {
           data => {
             this.visiteurs = data;
             console.log(data, "1");
+            this.errorMessage = "Une erreur s'est produite : ";
           },
           error => {
             console.error('Une erreur s\'est produite : ', error);
+            this.errorMessage = "Une erreur s'est produite : ";
           }
         );
     } else {
@@ -67,6 +70,7 @@ export class SearchVisiteurComponent {
 
   researchAvancee() {
     this.selector = !this.selector;
+    this.nom_visiteur.setValue("");
   }
 
   openUpdate(id_visiteur: number) {

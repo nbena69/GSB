@@ -43,6 +43,7 @@
   <button class="btn btn-outline-info" (click)="researchAvancee()" *ngIf="selector == true">Essayer la recherche avancée !</button>
   <button class="btn btn-info" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche classique</button>
 </div>
+<app-error-message [errorMessage]="errorMessage"></app-error-message>
 
 <div class="container" *ngIf="active == true">
   <section class="home-section">
