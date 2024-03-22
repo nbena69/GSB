@@ -11,6 +11,7 @@ import {GsbShortService} from "../../service/gsb-short.service";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {GsbVisiteurService} from "../../service/gsb-visiteur.service";
 import {InfosVisiteur} from "../../metier/infos-visiteur";
+import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
 
 @Component({
   selector: 'app-update-visiteur-popup',
@@ -21,7 +22,8 @@ import {InfosVisiteur} from "../../metier/infos-visiteur";
     AsyncPipe,
     CommonModule,
     ReactiveFormsModule,
-    MatDialogActions
+    MatDialogActions,
+    ErrorMessageComponent
   ],
   templateUrl: './update-visiteur-popup.component.html',
   styleUrl: './update-visiteur-popup.component.css'
@@ -34,8 +36,9 @@ export class UpdateVisiteurPopupComponent {
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
   id_visiteur: number;
+  errorMessage: string | null = null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<UpdateVisiteurPopupComponent>, private shortService: GsbShortService, private visiteurService: GsbVisiteurService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdateVisiteurPopupComponent>, private shortService: GsbShortService, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeSecteur();
     this.shortService.getListeLaboratoire();
     this.shortService.getListeRegion();
@@ -49,7 +52,12 @@ export class UpdateVisiteurPopupComponent {
         this.id_laboratoire.setValue(infosVisiteur.id_laboratoire);
         this.id_secteur.setValue(infosVisiteur.id_secteur);
       },
-      error => console.log('Erreur Appel API')
+      error => {
+        this.errorMessage = "Une erreur s'est produite : " + error.error.error;
+        setTimeout(() => {
+          this.errorMessage = null;
+        }, 5000);
+      }
     );
   }
 

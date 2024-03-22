@@ -12,4 +12,7 @@ import {NgIf} from "@angular/common";
 })
 export class ErrorMessageComponent {
   @Input() errorMessage: string | null = null;
+  closeErrorMessage() {
+    this.errorMessage = null;
+  }
 }

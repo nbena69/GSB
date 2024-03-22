@@ -1,3 +1,5 @@
-<div class="error-message" *ngIf="errorMessage">
-  <p>{{ errorMessage }}</p>
+<div class="error-overlay" (click)="closeErrorMessage()" *ngIf="errorMessage">
+  <div class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
 </div>

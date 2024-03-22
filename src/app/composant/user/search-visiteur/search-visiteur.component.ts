@@ -46,11 +46,12 @@ export class SearchVisiteurComponent {
           data => {
             this.visiteurs = data;
             console.log(data, "1");
-            this.errorMessage = "Une erreur s'est produite : ";
           },
           error => {
-            console.error('Une erreur s\'est produite : ', error);
-            this.errorMessage = "Une erreur s'est produite : ";
+            this.errorMessage = "Une erreur s'est produite : " + error.error.error;
+            setTimeout(() => {
+              this.errorMessage = null;
+            }, 5000);
           }
         );
     } else {
@@ -61,7 +62,10 @@ export class SearchVisiteurComponent {
             console.log(data, "2");
           },
           error => {
-            console.error('Une erreur s\'est produite : ', error);
+            this.errorMessage = "Une erreur s'est produite : " + error.error.error;
+            setTimeout(() => {
+              this.errorMessage = null;
+            }, 5000);
           }
         );
     }
