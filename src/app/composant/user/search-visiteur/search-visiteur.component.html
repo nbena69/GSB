@@ -45,5 +45,24 @@
 </div>
 
 <div class="container" *ngIf="active == true">
-  Hello world
+  <section class="home-section">
+    <table>
+      <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Modifier</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let visiteur of visiteurs">
+        <td>{{ visiteur.nom_visiteur }}</td>
+        <td>{{ visiteur.prenom_visiteur }}</td>
+        <td style="text-align: center">
+          <button (click)="openUpdate(visiteur.id_visiteur)" class="btn btn-warning bi bi-plus"></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </div>

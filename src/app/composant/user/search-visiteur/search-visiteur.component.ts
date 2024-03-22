@@ -6,6 +6,7 @@ import {RouterLink} from "@angular/router";
 import {UpdateVisiteurPopupComponent} from "../../../pop-up/update-visiteur-popup/update-visiteur-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
+import {Visiteur} from "../../../metier/visiteur";
 
 @Component({
   selector: 'app-search-visiteur',
@@ -21,6 +22,8 @@ export class SearchVisiteurComponent {
   id_laboratoire: FormControl = new FormControl("");
   selector: boolean = true;
   active: boolean = false;
+  visiteurs: Visiteur[] = [];
+  listNom: FormControl = new FormControl("");
 
   constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeSecteur();
@@ -37,24 +40,37 @@ export class SearchVisiteurComponent {
 
   researchVisiteur() {
     if(this.selector) {
-      this.visiteurService.searchVisiteur(
-        this.nom_visiteur.value,
-        this.id_secteur.value,
-        this.id_laboratoire.value,
-      );
+      this.visiteurService.searchVisiteur(this.nom_visiteur.value, this.id_secteur.value, this.id_laboratoire.value)
+        .subscribe(
+          data => {
+            this.visiteurs = data;
+            console.log(data, "1");
+          },
+          error => {
+            console.error('Une erreur s\'est produite : ', error);
+          }
+        );
     } else {
-      this.visiteurService.searchShort(
-        this.nom_visiteur.value,
-      );
+      this.visiteurService.searchShort(this.nom_visiteur.value)
+        .subscribe(
+          data => {
+            this.visiteurs = data;
+            console.log(data, "2");
+          },
+          error => {
+            console.error('Une erreur s\'est produite : ', error);
+          }
+        );
     }
     this.active = true;
   }
+
 
   researchAvancee() {
     this.selector = !this.selector;
   }
 
-  openUpdate() {
+  openUpdate(id_visiteur: number) {
     this.dialog.open(UpdateVisiteurPopupComponent, {
       height: '90%',
       width: '40%',

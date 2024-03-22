@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Visiteur} from "../metier/visiteur";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -31,53 +31,26 @@ export class GsbVisiteurService {
   //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/${id_visiteur}`, {headers: headers});
   }
 
-  searchVisiteur(nom: string, id_secteur: number, id_laboratoire: number) {
+  searchVisiteur(nom: string, id_secteur: number, id_laboratoire: number): Observable<Visiteur[]> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
 
-    const requestBody = {
-      "nom": nom,
-      "id_secteur": id_secteur.toString(),
-      "id_laboratoire": id_laboratoire.toString()
-    };
+    const params = new HttpParams()
+      .set('nom', nom)
+      .set('id_secteur', id_secteur.toString())
+      .set('id_laboratoire', id_laboratoire.toString());
 
-    this.http.post<Visiteur>(`${this.localUrl}/visiteur/filtreVisiteur`, requestBody, { headers: headers })
-      .subscribe(
-        data => {
-          this.visiteur = new Visiteur(data);
-          this.dataStore.visiteur.push(this.visiteur);
-          this._reponses.next(this.dataStore.visiteur);
-          console.log(data);
-          console.log("1")
-        },
-        error => {
-          console.error('Une erreur s\'est produite : ', error);
-        }
-      );
+    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur/filtreVisiteur`, { headers: headers, params: params });
   }
 
-  searchShort(nom: string) {
+  searchShort(nom: string): Observable<Visiteur[]> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
 
-    const requestBody = {
-      "nom": nom,
-    };
+    const params = new HttpParams().set('nom', nom);
 
-    this.http.post<Visiteur>(`${this.localUrl}/visiteur/filtreAvancee`, requestBody, { headers: headers })
-      .subscribe(
-        data => {
-          this.visiteur = new Visiteur(data);
-          this.dataStore.visiteur.push(this.visiteur);
-          this._reponses.next(this.dataStore.visiteur);
-          console.log(data);
-          console.log("2")
-        },
-        error => {
-          console.error('Une erreur s\'est produite : ', error);
-        }
-      );
+    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur/filtreAvancee`, { headers: headers, params: params });
   }
 }
