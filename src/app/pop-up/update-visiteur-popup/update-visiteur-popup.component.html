@@ -9,22 +9,6 @@
         <label for="prenom_visiteur">Prénom:</label>
         <input type="text" class="form-control" id="prenom_visiteur" disabled>
       </div>
-      <div class="form-group">
-        <label for="adresse_visiteur">Adresse:</label>
-        <input type="text" class="form-control" id="adresse_visiteur">
-      </div>
-      <div class="form-group">
-        <label for="cp_visiteur">Code postal:</label>
-        <input type="text" class="form-control" id="cp_visiteur">
-      </div>
-      <div class="form-group">
-        <label for="ville_visiteur">Ville:</label>
-        <input type="text" class="form-control" id="ville_visiteur">
-      </div>
-      <div class="form-group">
-        <label for="date_embauche">Date d'embauche:</label>
-        <input type="text" class="form-control" id="date_embauche" disabled>
-      </div>
     <div class="form-group">
       <label for="id_laboratoire">Laboratoire :</label>
       <select class="form-control" id="id_laboratoire" [formControl]="id_laboratoire">
@@ -40,6 +24,15 @@
         <option value="">Sélectionner un secteur</option>
         <option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
           {{ secteur.lib_secteur }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="id_region">Secteur :</label>
+      <select class="form-control" id="id_region" [formControl]="id_region">
+        <option value="">Sélectionner une région</option>
+        <option *ngFor="let region of getListeRegion() | async" [value]="region.id_region">
+          {{ region.nom_region }}
         </option>
       </select>
     </div>

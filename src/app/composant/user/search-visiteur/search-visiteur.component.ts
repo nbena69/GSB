@@ -65,14 +65,13 @@ export class SearchVisiteurComponent {
     this.active = true;
   }
 
-
   researchAvancee() {
     this.selector = !this.selector;
   }
 
   openUpdate(id_visiteur: number) {
     this.dialog.open(UpdateVisiteurPopupComponent, {
-      height: '90%',
+      height: '55%',
       width: '40%',
     });
     console.log('reussi');
