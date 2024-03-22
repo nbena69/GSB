@@ -13,7 +13,7 @@
       <label for="id_laboratoire">Laboratoire :</label>
       <select class="form-control" id="id_laboratoire" [formControl]="id_laboratoire">
         <option value="">Sélectionner un laboratoire</option>
-        <option *ngFor="let laboratoire of getListeLaboratoire() | async" [value]="laboratoire.id_laboratoire" disabled>
+        <option *ngFor="let laboratoire of getListeLaboratoire() | async" [value]="laboratoire.id_laboratoire" selected>
           {{ laboratoire.nom_laboratoire }}
         </option>
       </select>

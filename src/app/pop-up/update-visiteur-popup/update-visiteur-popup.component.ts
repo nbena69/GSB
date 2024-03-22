@@ -50,6 +50,9 @@ export class UpdateVisiteurPopupComponent {
         this.prenom_visiteur.setValue(infosVisiteur.prenom_visiteur);
         this.id_region.setValue(infosVisiteur.id_region);
         this.id_laboratoire.setValue(infosVisiteur.id_laboratoire);
+        this.id_laboratoire.disable();
+        this.nom_visiteur.disable();
+        this.prenom_visiteur.disable();
         this.id_secteur.setValue(infosVisiteur.id_secteur);
       },
       error => {

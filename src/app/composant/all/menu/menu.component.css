@@ -19,7 +19,6 @@
 .navbar-nav {
   margin: 0; /* Réinitialisez les marges de la liste */
   display: inline-block; /* Afficher les éléments du menu en ligne */
-
 }
 
 .navbar-nav > li {
@@ -107,31 +106,6 @@
 .deroulant > a::after {
   content: "▼";
   font-size: 12px;
-}
-
-.custom-search-form {
-  display: flex;
-  align-items: center;
-}
-
-.custom-search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 5px; /* Ajoute une marge entre le champ de recherche et le bouton */
-}
-
-.custom-search-button {
-  padding: 8px 12px;
-  border: 1px solid #28a745;
-  border-radius: 4px;
-  background-color: #28a745;
-  color: #fff;
-}
-
-.custom-search-button:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
 }
 
 #menuImg {
