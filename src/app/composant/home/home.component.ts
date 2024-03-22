@@ -15,6 +15,7 @@ import {RouterLink} from "@angular/router";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent {
   utilisateurConnecte: boolean = false;
   constructor(private loginService: GsbLoginService) {

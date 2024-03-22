@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Visiteur} from "../metier/visiteur";
 import {BehaviorSubject, catchError, Observable, tap} from "rxjs";
+import {Frais} from "../metier/frais";
+import {InfosVisiteur} from "../metier/infos-visiteur";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,7 @@ export class GsbVisiteurService {
   //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/${id_visiteur}`, {headers: headers});
   }
 
+  //FILTRE VISITEUR
   searchVisiteur(nom: string, id_secteur: number, id_laboratoire: number): Observable<Visiteur[]> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
@@ -52,5 +55,15 @@ export class GsbVisiteurService {
     const params = new HttpParams().set('nom', nom);
 
     return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur/filtreAvancee`, { headers: headers, params: params });
+  }
+
+  obtenirInfosVisiteur(id_visiteur: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `http://localhost/benaissa/GsbFrais/public/api/visiteur/obtenirInfosVisiteur/${id_visiteur}`;
+    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/visiteur/obtenirInfosVisiteur/${id_visiteur}`;
+
+    return this.http.get<InfosVisiteur>(url, {headers: headers});
   }
 }
