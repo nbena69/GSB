@@ -26,6 +26,7 @@ import {InfosVisiteur} from "../../metier/infos-visiteur";
   templateUrl: './update-visiteur-popup.component.html',
   styleUrl: './update-visiteur-popup.component.css'
 })
+
 export class UpdateVisiteurPopupComponent {
   id_laboratoire: FormControl = new FormControl("");
   id_region: FormControl = new FormControl("");

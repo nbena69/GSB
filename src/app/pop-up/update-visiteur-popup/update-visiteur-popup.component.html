@@ -1,18 +1,18 @@
 <div class="popup-container">
   <div class="container">
     <h3 mat-dialog-title>Informations du visiteur</h3>
-    <div class="form-group">
-      <label for="nom_visiteur">Nom:</label>
-      <input type="text" class="form-control" id="nom_visiteur" [formControl]="nom_visiteur">
-    </div>
-    <div class="form-group">
-      <label for="prenom_visiteur">Prénom:</label>
-      <input type="text" class="form-control" id="prenom_visiteur" [formControl]="prenom_visiteur">
-    </div>
+      <div class="form-group">
+        <label for="nom_visiteur">Nom:</label>
+        <input type="text" class="form-control" id="nom_visiteur" [formControl]="nom_visiteur">
+      </div>
+      <div class="form-group">
+        <label for="prenom_visiteur">Prénom:</label>
+        <input type="text" class="form-control" id="prenom_visiteur" [formControl]="prenom_visiteur">
+      </div>
     <div class="form-group">
       <label for="id_laboratoire">Laboratoire :</label>
       <select class="form-control" id="id_laboratoire" [formControl]="id_laboratoire">
-        <option value="">Votre laboratoire</option>
+        <option value="">Sélectionner un laboratoire</option>
         <option *ngFor="let laboratoire of getListeLaboratoire() | async" [value]="laboratoire.id_laboratoire" disabled>
           {{ laboratoire.nom_laboratoire }}
         </option>
@@ -36,6 +36,6 @@
         </option>
       </select>
     </div>
-    <button type="button" mat-dialog-actions class="btn btn-primary buttonSubmit" (click)="onSubmit()">Modifier</button>
+      <button type="button" mat-dialog-actions class="btn btn-primary buttonSubmit" (click)="onSubmit()">Modifier</button>
   </div>
 </div>
