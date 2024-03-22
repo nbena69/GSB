@@ -4,11 +4,17 @@ import {GsbLoginService} from "../../../service/gsb-login.service";
 import {CommonModule, Location} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {GsbShortService} from "../../../service/gsb-short.service";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDividerModule} from "@angular/material/divider";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -26,10 +32,8 @@ export class RegisterComponent {
   ville_visiteur: FormControl = new FormControl('');
   date_embauche: FormControl = new FormControl('');
   type_visiteur: FormControl = new FormControl('V');
-
-  showPassword: boolean = false;
-  showText: boolean = false;
   actuallyStep: number = 1;
+  hide = true;
 
   constructor(private loginService: GsbLoginService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
     this.secteur_api.getListeSecteur();
@@ -50,12 +54,6 @@ export class RegisterComponent {
       this.date_embauche.value,
       this.type_visiteur.value
     );
-  }
-
-  voirMdp() {
-    this.showPassword = !this.showPassword;
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    passwordInput.type = this.showPassword ? 'text' : 'password';
   }
 
   return() {

@@ -3,9 +3,11 @@
 <div class="container">
 
   <div *ngIf="actuallyStep == 1" class="step1">
-    <p class="form-group mb-3">
-      Nom d'utilisateur <input type="text" placeholder="Ex : nbena" [formControl]="email"/>
-    </p>
+    <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Entrez votre login</mat-label>
+      <input matInput #input maxlength="15" placeholder="Ex. Nougat" [formControl]="email">
+      <mat-hint align="end">{{input.value.length}}/15</mat-hint>
+    </mat-form-field>
     <div style="float: right;">
       <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 2">Suivant ▶︎</button>
@@ -13,27 +15,22 @@
   </div>
 
   <div *ngIf="actuallyStep == 2" class="step step2">
-    <div class="form-group mb-3">
-      Mot de passe
-      <div class="password-container">
-        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="•••••••••••" [formControl]="password"/>
-        <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
-          👁️
-        </button>
-        <span *ngIf="showText" style="display:none;" class="show-password-text">Afficher</span>
-      </div>
-    </div>
-
-    <div class="form-group mb-3">
-      Répéter votre Mot de passe
-      <div class="password-container">
-        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="•••••••••••" [formControl]="repetPassword"/>
-        <button class="toggle-password" (mouseenter)="showText=true" (mouseleave)="showText=false" (click)="voirMdp()">
-          👁️
-        </button>
-        <span *ngIf="showText" style="display:none;" class="show-password-text">Afficher</span>
-      </div>
-    </div>
+    <mat-form-field style="width: 100%;">
+      <mat-label>Entrez votre mot de passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <mat-label>Répétez votre mot de passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="repetPassword">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
     <div style="float: right;">
       <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 1">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 3">Suivant ▶︎</button>
@@ -41,12 +38,16 @@
   </div>
 
   <div *ngIf="actuallyStep == 3" class="step step3">
-    <p class="form-group mb-3">
-      Votre nom <input type="text" placeholder="Lepen" [formControl]="nom_visiteur"/>
-    </p>
-    <p class="form-group mb-3">
-      Votre prénom<input type="text" placeholder="Marine" [formControl]="prenom_visiteur"/>
-    </p>
+    <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Entrez votre nom</mat-label>
+      <input matInput #input maxlength="15" placeholder="Ex. Nguyen">
+      <mat-hint align="end">{{input.value.length}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Entrez votre Prénom</mat-label>
+      <input matInput #input maxlength="15" placeholder="Ex. Mathéo">
+      <mat-hint align="end">{{input.value.length}}/15</mat-hint>
+    </mat-form-field>
     <div style="float: right;">
       <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 2">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 4">Suivant ▶︎</button>
@@ -54,15 +55,21 @@
   </div>
 
   <div *ngIf="actuallyStep == 4" class="step step4">
-    <p class="form-group mb-3">
-      Votre adresse <input type="text" placeholder="22 avenue du Terminal" [formControl]="adresse_visiteur"/>
-    </p>
-    <p class="form-group mb-3">
-      Code Postal <input type="text" placeholder="95700" [formControl]="cp_visiteur"/>
-    </p>
-    <p class="form-group mb-3">
-      Ville <input type="text" placeholder="Roissy-en-France" [formControl]="ville_visiteur"/>
-    </p>
+    <mat-form-field hintLabel="Max 30 caractères" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Votre Adresse</mat-label>
+      <input matInput #input maxlength="30" placeholder="Ex. 12 avenue Andrei Sakharov" [formControl]="adresse_visiteur">
+      <mat-hint align="end">{{input.value.length}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 5 chiffres" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Votre Code Postal</mat-label>
+      <input matInput #input maxlength="5" placeholder="Ex. 69009" [formControl]="cp_visiteur">
+      <mat-hint align="end">{{input.value.length}}/5</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 50 caractères" style="padding-bottom: 5px;width: 100%">
+      <mat-label>Votre Ville</mat-label>
+      <input matInput #input maxlength="50" placeholder="Ex. Lyon" [formControl]="ville_visiteur">
+      <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+    </mat-form-field>
     <div style="float: right;">
       <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 3">Retour</button>&nbsp;
       <button type="button" class="btn btn-outline-info" (click)="actuallyStep = 5">Suivant ▶︎</button>
@@ -101,7 +108,9 @@
     </p>
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
     <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 5">Retour</button>&nbsp;
-    <button type="button" style="float: right;" class="btn btn-outline-success" (click)="onSubmitAjoutVisiteur()">S'inscrire</button>&nbsp;
+    <button type="button" style="float: right;" class="btn btn-outline-success" (click)="onSubmitAjoutVisiteur()">
+      S'inscrire
+    </button>&nbsp;
   </div>
 
   <br>

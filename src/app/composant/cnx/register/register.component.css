@@ -39,35 +39,6 @@ h1 {
   position: relative;
 }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-}
-
-.show-password-toggle {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #777;
-  transition: color 0.3s ease;
-}
-
-.show-password-toggle:hover {
-  color: #45a049;
-}
-
 .logo {
   text-align: center;
   margin-bottom: 20px;
@@ -77,32 +48,6 @@ input[type="password"] {
 
 .password-container {
   position: relative;
-}
-
-.toggle-password,
-.show-password-text {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #777;
-  transition: color 0.3s ease;
-}
-
-.toggle-password:hover,
-.show-password-text:hover {
-  color: #45a049;
-}
-
-.show-password-text {
-  top: -30px;
-  display: none;
-}
-
-.toggle-password.active + .show-password-text {
-  display: block;
 }
 
 .submit-button,
