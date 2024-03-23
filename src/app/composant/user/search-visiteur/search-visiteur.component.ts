@@ -8,11 +8,14 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
 import {Visiteur} from "../../../metier/visiteur";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
+import {MatIcon} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-search-visiteur',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent, MatIcon, MatTableModule, MatButtonModule],
   templateUrl: './search-visiteur.component.html',
   styleUrl: './search-visiteur.component.css'
 })

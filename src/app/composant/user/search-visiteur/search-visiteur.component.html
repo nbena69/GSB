@@ -45,25 +45,31 @@
   <button class="btn btn-info" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche classique</button>
 </div>
 
-<div class="container" *ngIf="active == true">
+<div class="container" *ngIf="active == true" style="padding-bottom: 70px">
   <section class="home-section">
-    <table>
-      <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th style="text-align: center">Modifier</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let visiteur of visiteurs">
-        <td>{{ visiteur.nom_visiteur }}</td>
-        <td>{{ visiteur.prenom_visiteur }}</td>
-        <td style="text-align: center">
-          <button (click)="openUpdate(visiteur.id_visiteur)" class="btn btn-warning bi bi-plus"></button>
+    <table mat-table [dataSource]="visiteurs">
+      <ng-container matColumnDef="nom_visiteur">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let visiteur">{{ visiteur.nom_visiteur }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prenom_visiteur">
+        <th mat-header-cell *matHeaderCellDef>Prénom</th>
+        <td mat-cell *matCellDef="let visiteur">{{ visiteur.prenom_visiteur }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Modifier</th>
+        <td mat-cell *matCellDef="let visiteur" style="text-align: center">
+          <button mat-icon-button color="warn" (click)="openUpdate(visiteur.id_visiteur)">
+            <mat-icon>update</mat-icon>
+          </button>
         </td>
-      </tr>
-      </tbody>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['nom_visiteur', 'prenom_visiteur', 'modifier']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['nom_visiteur', 'prenom_visiteur', 'modifier'];"></tr>
     </table>
   </section>
+
 </div>
