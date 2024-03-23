@@ -11,11 +11,14 @@ import {ErrorMessageComponent} from "../../all/error-message/error-message.compo
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
 
 @Component({
   selector: 'app-search-visiteur',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent, MatIcon, MatTableModule, MatButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption],
   templateUrl: './search-visiteur.component.html',
   styleUrl: './search-visiteur.component.css'
 })
