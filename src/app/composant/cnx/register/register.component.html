@@ -101,9 +101,14 @@
   </div>
 
   <div *ngIf="actuallyStep == 6" class="step step6">
-    <p class="form-group mb-3">
-      Date d'embauche <input type="date" [formControl]="date_embauche"/>
-    </p>
+    <mat-form-field style="width: 100%">
+      <mat-label> Choisissez une date</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl]="date_embauche">
+      <mat-hint> DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
     <p class="form-group mb-3">
       Type <input type="text" [formControl]="type_visiteur" readonly/>
     </p>
