@@ -1,6 +1,9 @@
 <div class="popup-container">
   <div class="container">
     <h3 mat-dialog-title>Informations du visiteur</h3>
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon aria-label="Close dialog">close</mat-icon>
+    </button>
     <mat-form-field class="form-group">
       <mat-label>Nom:</mat-label>
       <input matInput type="text" id="nom_visiteur" [formControl]="nom_visiteur">
