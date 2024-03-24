@@ -44,6 +44,7 @@ export class UpdateVisiteurPopupComponent {
   id_secteur: FormControl = new FormControl("");
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
+  affectations: FormControl = new FormControl();
   id_visiteur: number;
   errorMessage: string | null = null;
 
@@ -57,12 +58,11 @@ export class UpdateVisiteurPopupComponent {
         let infosVisiteur = new InfosVisiteur(data);
         this.nom_visiteur.setValue(infosVisiteur.nom_visiteur);
         this.prenom_visiteur.setValue(infosVisiteur.prenom_visiteur);
-        this.id_region.setValue(infosVisiteur.id_region);
         this.id_laboratoire.setValue(infosVisiteur.id_laboratoire);
+        this.affectations.setValue(infosVisiteur.regions);
         this.id_laboratoire.disable();
         this.nom_visiteur.disable();
         this.prenom_visiteur.disable();
-        this.id_secteur.setValue(infosVisiteur.id_secteur);
       },
       error => {
         this.errorMessage = "Une erreur s'est produite : " + error.error.error;
@@ -71,6 +71,10 @@ export class UpdateVisiteurPopupComponent {
         }, 5000);
       }
     );
+  }
+
+  getListeAffectation() {
+    return this.affectations.value;
   }
 
   getListeSecteur() {
@@ -87,9 +91,5 @@ export class UpdateVisiteurPopupComponent {
 
   onSubmit() {
 
-  }
-
-  closePopup() {
-    this.dialogRef.close();
   }
 }

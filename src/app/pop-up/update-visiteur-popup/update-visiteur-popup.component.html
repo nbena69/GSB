@@ -21,18 +21,10 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="form-group">
-      <mat-label>Secteur :</mat-label>
-      <mat-select id="id_secteur" [formControl]="id_secteur">
-        <mat-option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
-          {{ secteur.lib_secteur }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="form-group">
-      <mat-label>Région :</mat-label>
-      <mat-select id="id_region" [formControl]="id_region">
-        <mat-option *ngFor="let region of getListeRegion() | async" [value]="region.id_region">
-          {{ region.nom_region }}
+      <mat-label>Affectation :</mat-label>
+      <mat-select id="affectation" [formControl]="affectations">
+        <mat-option *ngFor="let affectation of getListeAffectation()" [value]="affectation.id_region">
+          {{ affectation.nom_region }} - {{ affectation.jjmmaa }}
         </mat-option>
       </mat-select>
     </mat-form-field>

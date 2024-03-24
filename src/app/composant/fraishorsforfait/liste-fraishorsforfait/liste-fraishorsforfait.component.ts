@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule, Location} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {GsbFraishorsforfaitService} from "../../../service/gsb-fraishorsforfait.service";

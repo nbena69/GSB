@@ -39,7 +39,6 @@ export class GsbLoginService {
         this._reponses.next(this.dataStore.login);
         this.utilisateurConnecte = true;
         this.router.navigate(['']);
-        console.log("Appel réussi", data);
       },
       error => {
         console.log("Erreur Appel API", error);

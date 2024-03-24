@@ -23,6 +23,5 @@ export class HomeComponent {
 
   ngOnInit() {
     this.utilisateurConnecte = this.loginService.estConnecte();
-    console.log(this.utilisateurConnecte);
   }
 }
