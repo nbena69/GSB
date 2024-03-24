@@ -4,13 +4,21 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../all/menu/menu.component";
 import {GsbFraishorsforfaitService} from "../../../service/gsb-fraishorsforfait.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Frais} from "../../../metier/frais";
 import {Fraishorsforfait} from "../../../metier/fraishorsforfait";
+import {MatInputModule} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatSelect} from "@angular/material/select";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-affiche-fraishorsforfait',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MenuComponent],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle],
   templateUrl: './affiche-fraishorsforfait.component.html',
   styleUrl: './affiche-fraishorsforfait.component.css'
 })
@@ -21,7 +29,7 @@ export class AfficheFraishorsforfaitComponent {
   montant_fraishorsforfait: FormControl = new FormControl('');
   lib_fraishorsforfait: FormControl = new FormControl('');
 
-  constructor(private location:Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService, private router: Router) {
+  constructor(private location:Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
     this.id_fraishorsforfait = parseInt(route.snapshot.paramMap.get('id_fraishorsforfait')!);
     this.fraishorsforfait_api.chargeFraisHorsForfait(this.id_fraishorsforfait).subscribe(
       data => {
@@ -38,22 +46,6 @@ export class AfficheFraishorsforfaitComponent {
 
   return() {
     this.location.back();
-  }
-
-  deleteFraisHorsForfait(id_fraishorsforfait: number) {
-    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais HF ?');
-
-    if (confirmation) {
-      this.fraishorsforfait_api.deleteFraisHorsForfait(id_fraishorsforfait).subscribe(
-        () => {
-          console.log("Appel API suppression frais HF réussi");
-          this.return();
-        },
-        error => {
-          console.error("Erreur lors de l'appel API suppression frais HF :", error);
-        }
-      );
-    }
   }
 
   onSubmitFicheFraisHorsForfait()

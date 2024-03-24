@@ -1,28 +1,50 @@
 <div class="container">
   <section class="home-section">
-    <table>
-      <thead>
-      <tr>
-        <th>ID Frais HF</th>
-        <th>Date</th>
-        <th>Montant</th>
-        <th>Libellé</th>
-        <th>Modifier</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let fraisHF of getListeFraisHorsForfait() | async">
-        <td>{{ fraisHF.id_fraishorsforfait }}</td>
-        <td>{{ fraisHF.date_fraishorsforfait }}</td>
-        <td>{{ fraisHF.montant_fraishorsforfait }}</td>
-        <td>{{ fraisHF.lib_fraishorsforfait }}</td>
-        <td style="text-align: center">
-          <button (click)="afficherDetailsFraisHf(fraisHF.id_fraishorsforfait)" class="btn btn-warning bi bi-plus"></button>
+    <table mat-table [dataSource]="getListeFraisHorsForfait()" class="mat-elevation-z8">
+      <ng-container matColumnDef="id_fraishorsforfait">
+        <th mat-header-cell *matHeaderCellDef>ID Frais HF</th>
+        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.id_fraishorsforfait }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date_fraishorsforfait">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.date_fraishorsforfait }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="montant_fraishorsforfait">
+        <th mat-header-cell *matHeaderCellDef>Montant</th>
+        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.montant_fraishorsforfait }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lib_fraishorsforfait">
+        <th mat-header-cell *matHeaderCellDef>Libellé</th>
+        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.lib_fraishorsforfait }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Modifier</th>
+        <td mat-cell *matCellDef="let fraisHF" style="text-align: center">
+          <button mat-icon-button color="warn" (click)="afficherDetailsFraisHf(fraisHF.id_fraishorsforfait)">
+            <mat-icon>update</mat-icon>
+          </button>
         </td>
-      </tr>
-      </tbody>
+      </ng-container>
+
+      <ng-container matColumnDef="supprimer">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Supprimer</th>
+        <td mat-cell *matCellDef="let fraisHF" style="text-align: center">
+          <button mat-icon-button color="warn" (click)="deleteFraisHorsForfait(fraisHF.id_fraishorsforfait)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['id_fraishorsforfait', 'date_fraishorsforfait', 'montant_fraishorsforfait', 'lib_fraishorsforfait', 'modifier', 'supprimer']"></tr>
+      <tr mat-row *matRowDef="let fraisHF; columns: ['id_fraishorsforfait', 'date_fraishorsforfait', 'montant_fraishorsforfait', 'lib_fraishorsforfait', 'modifier', 'supprimer'];"></tr>
     </table>
-    <button type="button" class="btn btn-outline-danger" style="text-align: left" (click)="return()">Annuler</button>&nbsp;
-    <button type="button" class="btn btn-outline-info" style="text-align: left" (click)="ajoutFraisHF()">Ajouter</button>&nbsp;
+    <div style="text-align: right">
+      <br>
+      <button type="button" class="btn btn-outline-danger" (click)="return()">Retour</button>&nbsp;
+      <button type="button" class="btn btn-outline-primary" (click)="ajoutFraisHF()">Ajouter</button>
+    </div>
   </section>
 </div>

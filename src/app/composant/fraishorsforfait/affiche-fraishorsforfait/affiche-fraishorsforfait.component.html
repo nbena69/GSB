@@ -1,24 +1,24 @@
-<div class="container">
-  <h2>Détails du Frais Hors Forfait</h2>
+<div class="container mat-elevation-z8">
+  <h1>Détails du Frais Hors Forfait</h1>
 
-  <div class="form-group">
-    <label for="date_fraishorsforfait">Date:</label>
-    <input type="text" class="form-control" id="date_fraishorsforfait" [formControl]="date_fraishorsforfait" readonly [value]="date_fraishorsforfait.value?.slice(0, 10)">
-  </div>
+  <mat-form-field class="form-group">
+    <mat-label>Date:</mat-label>
+    <input matInput type="text" id="date_fraishorsforfait" [formControl]="date_fraishorsforfait" readonly
+           [value]="date_fraishorsforfait.value?.slice(0, 10)">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="montant_fraishorsforfait">Montant:</label>
-    <input type="number" class="form-control" id="montant_fraishorsforfait" [formControl]="montant_fraishorsforfait">
-  </div>
+  <mat-form-field class="form-group">
+    <mat-label>Montant:</mat-label>
+    <input matInput type="number" id="montant_fraishorsforfait" [formControl]="montant_fraishorsforfait">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="lib_fraishorsforfait">Libellé:</label>
-    <input type="text" class="form-control" id="lib_fraishorsforfait" [formControl]="lib_fraishorsforfait">
-  </div>
-
+  <mat-form-field class="form-group">
+    <mat-label>Libellé:</mat-label>
+    <input matInput type="text" id="lib_fraishorsforfait" [formControl]="lib_fraishorsforfait">
+  </mat-form-field>
   <br>
-
-  <button type="button" class="btn btn-outline-primary" (click)="onSubmitFicheFraisHorsForfait()">Envoyer</button>&nbsp;
-  <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
-  <button type="button" class="btn btn-outline-warning" (click)="deleteFraisHorsForfait(id_fraishorsforfait)">Supprimer</button>&nbsp;
+  <div class="form-button">
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Retour</button>&nbsp;
+    <button type="button" class="btn btn-outline-success" (click)="onSubmitFicheFraisHorsForfait()">Modifier</button>&nbsp;
+  </div>
 </div>
