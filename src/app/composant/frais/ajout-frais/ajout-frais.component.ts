@@ -5,12 +5,21 @@ import {CommonModule, Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {GsbFraisService} from "../../../service/gsb-frais.service";
 import {GsbShortService} from "../../../service/gsb-short.service";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatSelect} from "@angular/material/select";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-ajout-frais',
   standalone: true,
   imports: [
-    MenuComponent, ReactiveFormsModule, CommonModule
+    MenuComponent, ReactiveFormsModule, CommonModule, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle
   ],
   templateUrl: './ajout-frais.component.html',
   styleUrl: './ajout-frais.component.css'
