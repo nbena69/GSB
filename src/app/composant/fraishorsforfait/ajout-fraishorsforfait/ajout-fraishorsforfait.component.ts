@@ -21,7 +21,7 @@ import {provideNativeDateAdapter} from "@angular/material/core";
   selector: 'app-ajout-fraishorsforfait',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MenuComponent, ReactiveFormsModule, CommonModule, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle, MatDividerModule, MatDatepickerToggle, MatDatepicker, MatDatepickerModule
+  imports: [MenuComponent, ReactiveFormsModule, CommonModule, MatInputModule, MatIcon, MatButtonModule, MatFormField, MatLabel, MatOption, MatDialogModule, MatCardTitle, MatDividerModule, MatDatepickerToggle, MatDatepicker, MatDatepickerModule
   ],
   templateUrl: './ajout-fraishorsforfait.component.html',
   styleUrl: './ajout-fraishorsforfait.component.css'

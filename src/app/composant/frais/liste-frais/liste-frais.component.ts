@@ -24,7 +24,6 @@ import {MatOption, MatSelect} from "@angular/material/select";
 })
 
 export class ListeFraisComponent {
-  public nombreFraisRecuperes: number = 0;
   constructor(private frais_api: GsbFraisService, private router: Router, private location: Location) {
     this.frais_api.listeFraisDuVisiteur();
   }
@@ -47,10 +46,6 @@ export class ListeFraisComponent {
 
   ajoutFrais() {
     this.router.navigate(['/frais/ajout']);
-  }
-
-  incrementerNombreFrais() {
-    this.nombreFraisRecuperes++;
   }
 
   deleteFrais(id_frais: number) {
