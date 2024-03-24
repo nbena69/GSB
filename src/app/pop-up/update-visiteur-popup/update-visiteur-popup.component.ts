@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
-  MatDialogContent,
+  MatDialogContent, MatDialogModule,
   MatDialogRef,
   MatDialogTitle
 } from "@angular/material/dialog";
@@ -12,6 +12,14 @@ import {AsyncPipe, CommonModule} from "@angular/common";
 import {GsbVisiteurService} from "../../service/gsb-visiteur.service";
 import {InfosVisiteur} from "../../metier/infos-visiteur";
 import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatSelect} from "@angular/material/select";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-update-visiteur-popup',
@@ -23,7 +31,8 @@ import {ErrorMessageComponent} from "../../composant/all/error-message/error-mes
     CommonModule,
     ReactiveFormsModule,
     MatDialogActions,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle
   ],
   templateUrl: './update-visiteur-popup.component.html',
   styleUrl: './update-visiteur-popup.component.css'

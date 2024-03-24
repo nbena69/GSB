@@ -86,7 +86,7 @@ export class SearchVisiteurComponent {
   openUpdate(id_visiteur: number) {
     this.dialog.open(UpdateVisiteurPopupComponent, {
       height: '55%',
-      width: '40%',
+      width: '30%',
       data: { id_visiteur: id_visiteur }
     });
     console.log('reussi');

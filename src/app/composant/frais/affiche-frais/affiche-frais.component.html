@@ -1,34 +1,32 @@
-<div class="container">
-  <h2>Détails du Frais</h2>
+<div class="container mat-elevation-z8">
+  <h1>Détails du Frais</h1>
 
-  <div class="form-group">
-    <label for="anneemois">Année et mois:</label>
-    <input type="text" class="form-control" id="anneemois" [formControl]="anneemois">
-  </div>
+  <mat-form-field class="form-group">
+    <mat-label>Année et mois:</mat-label>
+    <input matInput type="text" id="anneemois" [formControl]="anneemois">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="nbjustificatifs">Nombre de justificatifs:</label>
-    <input type="number" class="form-control" id="nbjustificatifs" [formControl]="nbjustificatifs">
-  </div>
+  <mat-form-field class="form-group">
+    <mat-label>Nombre de justificatifs:</mat-label>
+    <input matInput type="number" id="nbjustificatifs" [formControl]="nbjustificatifs">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="montantvalide">Montant valide:</label>
-    <input type="number" class="form-control" id="montantvalide" [formControl]="montantvalide">
-  </div>
+  <mat-form-field class="form-group">
+    <mat-label>Montant valide:</mat-label>
+    <input matInput type="number" id="montantvalide" [formControl]="montantvalide">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="id_etat">État:</label>
-    <select class="form-control" id="id_etat" [formControl]="id_etat">
-      <option *ngFor="let etat of getListeEtat() | async" [value]="etat.id_etat">
+  <mat-form-field class="form-group">
+    <mat-label>État:</mat-label>
+    <mat-select id="id_etat" [formControl]="id_etat">
+      <mat-option *ngFor="let etat of getListeEtat() | async" [value]="etat.id_etat">
         {{ etat.lib_etat }}
-      </option>
-    </select>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="form-button">
+    <button type="button" class="btn btn-outline-secondary" (click)="getFraisHorsForfait(id_frais)">Frais Hors Forfait</button>&nbsp;
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Retour</button>&nbsp;
+    <button type="button" class="btn btn-outline-success" (click)="onSubmitFicheFrais()">Modifier</button>
   </div>
-
-  <br>
-
-  <button type="button" class="btn btn-outline-primary" (click)="onSubmitFicheFrais()">Envoyer</button>&nbsp;
-  <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
-  <button type="button" class="btn btn-outline-warning" (click)="deleteFrais(id_frais)">Supprimer</button>&nbsp;
-  <button type="button" class="btn btn-outline-secondary" (click)="getFraisHorsForfait(id_frais)">Frais Hors Forfait</button>
 </div>

@@ -52,4 +52,19 @@ export class ListeFraisComponent {
   incrementerNombreFrais() {
     this.nombreFraisRecuperes++;
   }
+
+  deleteFrais(id_frais: number) {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais ?');
+
+    if (confirmation) {
+      this.frais_api.deleteFrais(id_frais).subscribe(
+        () => {
+          console.log("Appel API suppression frais réussi");
+        },
+        error => {
+          console.error("Erreur lors de l'appel API suppression frais :", error);
+        }
+      );
+    }
+  }
 }

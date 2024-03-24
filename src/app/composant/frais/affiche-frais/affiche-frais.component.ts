@@ -6,11 +6,20 @@ import {Frais} from "../../../metier/frais";
 import {MenuComponent} from "../../all/menu/menu.component";
 import {CommonModule, Location} from "@angular/common";
 import {GsbShortService} from "../../../service/gsb-short.service";
+import {MatInputModule} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatSelect} from "@angular/material/select";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-affiche-frais',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MenuComponent],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle],
   templateUrl: './affiche-frais.component.html',
   styleUrl: './affiche-frais.component.css'
 })
@@ -57,21 +66,5 @@ export class AfficheFraisComponent {
 
   getFraisHorsForfait(id_frais: number) {
     this.router.navigate(['/fraisHF/liste/', id_frais]);
-  }
-
-  deleteFrais(id_frais: number) {
-    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais ?');
-
-    if (confirmation) {
-      this.frais_api.deleteFrais(id_frais).subscribe(
-        () => {
-          console.log("Appel API suppression frais réussi");
-          this.return();
-        },
-        error => {
-          console.error("Erreur lors de l'appel API suppression frais :", error);
-        }
-      );
-    }
   }
 }

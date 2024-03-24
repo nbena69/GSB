@@ -1,39 +1,11 @@
-.popup-container {
-  margin: 0 auto; /* Centre la pop-up horizontalement */
-  color: #1C2942; /* Bleu foncé pour le texte */
-  font-family: 'Arial', sans-serif; /* Choisir une police de caractères appropriée */
-  border-radius: 25px;
-  width: 95%;
-  height: 100%;
-}
-
-.popup-container h3 {
-  color: #1C2942;
+.container {
+  padding-bottom: 12px;
 }
 
 .form-group {
-  width: 100%;
+  display: flex;
 }
 
-.popup-container input,
-.popup-container select,
-.popup-container textarea {
-  width: 100%;
-  padding: 8px; /* Ajusté pour un meilleur espacement */
-  border: 1px solid #3B556D;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical; /* Permet le redimensionnement vertical uniquement */
-  color: #1C2942; /* Bleu foncé pour le texte */
-  font-size: 16px; /* Ajusté pour une meilleure lisibilité */
-}
-
-.buttonSubmit {
-  cursor: pointer;
-  display: block; /* Affiche le bouton en tant que bloc pour le centrer */
-  margin: 0 auto; /* Centre le bouton horizontalement */
-}
-
-.container {
-  padding-bottom: 20px;
+.form-button {
+  text-align: center;
 }
