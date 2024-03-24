@@ -10,7 +10,7 @@ import {BehaviorSubject} from "rxjs";
 })
 
 export class GsbLoginService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
   private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   public utilisateurConnecte: boolean = false;
@@ -32,8 +32,7 @@ export class GsbLoginService {
   serviceEnvoieLogin(email: string, password: string) {
     const requestObject = new Visiteur({"login": email, "password": password});
 
-    return this.http.post<Login>(`${this.localUrl}/login`, requestObject).subscribe(
-    //return this.http.post<Login>(`${this.httpUrl}/login`, requestObject).subscribe(
+    return this.http.post<Login>(`${this.Url}/login`, requestObject).subscribe(
       data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
@@ -65,9 +64,7 @@ export class GsbLoginService {
       "type_visiteur": type_visiteur,
     };
 
-    this.http.post<Visiteur>(`${this.localUrl}/ajoutVisiteur`
-    //this.http.post<Visiteur>(`${this.httpUrl}/visiteur/ajoutVisiteur`
-      , requestObject)
+    this.http.post<Visiteur>(`${this.Url}/ajoutVisiteur`, requestObject)
       .subscribe(
         data => {
           this.register = new Visiteur(data);

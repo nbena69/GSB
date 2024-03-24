@@ -14,7 +14,7 @@ import {Region} from "../metier/region";
 })
 
 export class GsbShortService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
   private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   // ETAT
@@ -50,9 +50,7 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Etat[]>(`${this.localUrl}/etats`
-    //return this.http.get<Etat[]>(`${this.httpUrl}/etats`
-      , {headers: headers}).subscribe(
+    return this.http.get<Etat[]>(`${this.Url}/etats`, {headers: headers}).subscribe(
       data => {
         this.listeEtat = data;
         this._reponsesEtat.next(this.listeEtat);
@@ -68,9 +66,7 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Laboratoire[]>(`${this.localUrl}/laboratoire`
-    //return this.http.get<Laboratoire[]>(`${this.httpUrl}/laboratoire`
-      , {headers: headers}).subscribe(
+    return this.http.get<Laboratoire[]>(`${this.Url}/laboratoire`, {headers: headers}).subscribe(
       data => {
         this.listeLaboratoire = data;
         this._reponsesLaboratoire.next(this.listeLaboratoire);
@@ -86,9 +82,7 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Secteur[]>(`${this.localUrl}/secteur`
-    // return this.http.get<Secteur[]>(`${this.httpUrl}/secteur`
-      , {headers: headers}).subscribe(
+    return this.http.get<Secteur[]>(`${this.Url}/secteur`, {headers: headers}).subscribe(
       data => {
         this.listeSecteur = data;
         this._reponsesSecteur.next(this.listeSecteur);
@@ -104,9 +98,7 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Region[]>(`${this.localUrl}/region`
-      // return this.http.get<Region[]>(`${this.httpUrl}/region`
-      , {headers: headers}).subscribe(
+    return this.http.get<Region[]>(`${this.Url}/region`, {headers: headers}).subscribe(
       data => {
         this.listeRegion = data;
         this._reponsesRegion.next(this.listeRegion);
@@ -122,9 +114,7 @@ export class GsbShortService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur`
-      // return this.http.get<Visiteur[]>(`${this.httpUrl}/visiteur`
-      , {headers: headers}).subscribe(
+    return this.http.get<Visiteur[]>(`${this.Url}/visiteur`, {headers: headers}).subscribe(
       data => {
         this.listeVisiteur = data;
         this._reponsesVisiteur.next(this.listeVisiteur);

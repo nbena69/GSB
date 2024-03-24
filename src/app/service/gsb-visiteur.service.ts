@@ -12,7 +12,7 @@ import {InfosVisiteur} from "../metier/infos-visiteur";
 })
 
 export class GsbVisiteurService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
   private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   private visiteur: Visiteur = new Visiteur;
@@ -29,8 +29,7 @@ export class GsbVisiteurService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
 
-    return this.http.get<Visiteur>(`${this.localUrl}/visiteur/${id_visiteur}`, {headers: headers});
-  //    return this.http.get<Visiteur>(`${this.httpUrl}/visiteur/${id_visiteur}`, {headers: headers});
+    return this.http.get<Visiteur>(`${this.Url}/visiteur/${id_visiteur}`, {headers: headers});
   }
 
   //FILTRE VISITEUR
@@ -44,7 +43,7 @@ export class GsbVisiteurService {
       .set('id_secteur', id_secteur.toString())
       .set('id_laboratoire', id_laboratoire.toString());
 
-    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur/filtreVisiteur`, { headers: headers, params: params });
+    return this.http.get<Visiteur[]>(`${this.Url}/visiteur/filtreVisiteur`, { headers: headers, params: params });
   }
 
   searchShort(nom: string): Observable<Visiteur[]> {
@@ -54,7 +53,7 @@ export class GsbVisiteurService {
 
     const params = new HttpParams().set('nom', nom);
 
-    return this.http.get<Visiteur[]>(`${this.localUrl}/visiteur/filtreAvancee`, { headers: headers, params: params });
+    return this.http.get<Visiteur[]>(`${this.Url}/visiteur/filtreAvancee`, { headers: headers, params: params });
   }
 
   obtenirInfosVisiteur(id_visiteur: number) {
@@ -62,7 +61,6 @@ export class GsbVisiteurService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
     const url = `http://localhost/benaissa/GsbFrais/public/api/visiteur/obtenirInfosVisiteur/${id_visiteur}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/visiteur/obtenirInfosVisiteur/${id_visiteur}`;
 
     return this.http.get<InfosVisiteur>(url, {headers: headers});
   }

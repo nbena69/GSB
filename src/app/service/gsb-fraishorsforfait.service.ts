@@ -9,7 +9,7 @@ import {GsbLoginService} from "./gsb-login.service";
   providedIn: 'root'
 })
 export class GsbFraishorsforfaitService {
-  private localUrl = 'http://localhost/benaissa/GsbFrais/public/api';
+  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
   private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
 
   private fraisHorsForfait: Fraishorsforfait = new Fraishorsforfait();
@@ -25,10 +25,7 @@ export class GsbFraishorsforfaitService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    return this.http.get<Fraishorsforfait[]>(`${this.localUrl}/fraishorsforfait/`
-    //return this.http.get<Fraishorsforfait[]>(`${this.httpUrl}/fraishorsforfait/`
-      + id_frais
-      , {headers: headers}).subscribe(
+    return this.http.get<Fraishorsforfait[]>(`${this.Url}/fraishorsforfait/` + id_frais, {headers: headers}).subscribe(
       data => {
         this.listeFraisHF = data;
         this._reponses.next(this.listeFraisHF);
@@ -52,9 +49,7 @@ export class GsbFraishorsforfaitService {
       "montant_fraishorsforfait": montant_fraishorsforfait,
       "lib_fraishorsforfait": lib_fraishorsforfait,
     };
-    this.http.put<Fraishorsforfait>(`${this.localUrl}/fraishorsforfait/updateFraisHorsForfait/${id_fraishorsforfait}`
-      //this.http.put<Fraishorsforfait>(`${this.httpUrl}/fraishorsforfait/updateFraisHorsForfait/${id_fraishorsforfait}`
-      , requestObject, {headers: headers})
+    this.http.put<Fraishorsforfait>(`${this.Url}/fraishorsforfait/updateFraisHorsForfait/${id_fraishorsforfait}`, requestObject, {headers: headers})
       .subscribe(
         data => {
           this.fraisHorsForfait = new Fraishorsforfait(data);
@@ -81,9 +76,7 @@ export class GsbFraishorsforfaitService {
       "lib_fraishorsforfait": lib_fraishorsforfait
     };
 
-    this.http.post<Fraishorsforfait>(`${this.localUrl}/fraishorsforfait/ajoutFraisHorsForfait`
-      //this.http.post<Fraishorsforfait>(`${this.httpUrl}/fraishorsforfait/ajoutFraisHorsForfait`
-      , requestObject, {headers: headers})
+    this.http.post<Fraishorsforfait>(`${this.Url}/fraishorsforfait/ajoutFraisHorsForfait`, requestObject, {headers: headers})
       .subscribe(
         data => {
           this.fraisHorsForfait = new Fraishorsforfait(data);
@@ -103,7 +96,6 @@ export class GsbFraishorsforfaitService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
     const url = `http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/deleteFraisHorsForfait/${id_fraishorsforfait}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/deleteFraisHorsForfait/${id_fraishorsforfait}`;
 
     return this.http.delete<void>(url, {headers: headers});
   }
@@ -113,7 +105,6 @@ export class GsbFraishorsforfaitService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
     const url = `http://localhost/benaissa/GsbFrais/public/api/fraishorsforfait/getUnFraisHorsForfait/${id_fraishorsforfait}`;
-    //const url = `http://gsb.benaissa.etu.lmdsio.com/api/fraishorsforfait/getUnFraisHorsForfait/${id_fraishorsforfait}`;
 
     return this.http.get<Fraishorsforfait>(url, {headers: headers});
   }
