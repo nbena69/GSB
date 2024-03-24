@@ -1,5 +1,5 @@
 <div class="container mat-elevation-z8">
-  <h2>Ajouter un Frais</h2>
+  <h1>Ajouter un Frais</h1>
 
   <mat-form-field class="form-group">
     <mat-label>Année et mois:</mat-label>
@@ -24,10 +24,9 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
   <br>
-  <div style="padding-bottom: 10px; text-align: right">
-    <button mat-button color="warn" (click)="return()">Annuler</button>
-    <button mat-button color="primary" (click)="onSubmitAjoutFrais()">Envoyer</button>
+  <div class="form-button">
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
+    <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutFrais()">Ajouter</button>
   </div>
 </div>

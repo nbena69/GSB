@@ -26,7 +26,6 @@ export class GsbLoginService {
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
 
-
   constructor(private http: HttpClient, private router: Router) {
   }
 
@@ -52,7 +51,6 @@ export class GsbLoginService {
   ajoutRegister(email: string, password: string, id_laboratoire: string, id_secteur: string, nom_visiteur: string,
                 prenom_visiteur: string, adresse_visiteur: string, cp_visiteur: string, ville_visiteur: string,
                 date_embauche: string, type_visiteur: string) {
-
     const requestObject = {
       "id_laboratoire": id_laboratoire,
       "id_secteur": id_secteur,
@@ -67,7 +65,7 @@ export class GsbLoginService {
       "type_visiteur": type_visiteur,
     };
 
-    this.http.post<Visiteur>(`${this.localUrl}/visiteur/ajoutVisiteur`
+    this.http.post<Visiteur>(`${this.localUrl}/ajoutVisiteur`
     //this.http.post<Visiteur>(`${this.httpUrl}/visiteur/ajoutVisiteur`
       , requestObject)
       .subscribe(
@@ -78,7 +76,6 @@ export class GsbLoginService {
           this.serviceEnvoieLogin(email, password);
           this.router.navigate(['/']);
           console.log("Ajout de visiteur réussi", data);
-
         },
         error => {
           console.log("Erreur lors de l'ajout de visiteur", error);

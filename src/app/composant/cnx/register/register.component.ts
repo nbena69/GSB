@@ -70,4 +70,16 @@ export class RegisterComponent {
   getListeLaboratoire() {
     return this.laboratoire_api.appels_terminesLaboratoire;
   }
+
+  validateNumberInput(event: KeyboardEvent) {
+    // Récupérer le caractère entré
+    const charCode = event.which ? event.which : event.keyCode;
+    const charStr = String.fromCharCode(charCode);
+
+    // Vérifier si le caractère est un chiffre
+    if (!/^\d+$/.test(charStr)) {
+      // Si ce n'est pas un chiffre, empêcher l'entrée
+      event.preventDefault();
+    }
+  }
 }

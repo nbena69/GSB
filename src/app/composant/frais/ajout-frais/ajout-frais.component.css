@@ -6,3 +6,15 @@
 .form-group {
   display: flex;
 }
+
+.form-button {
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
