@@ -8,6 +8,7 @@ import {Laboratoire} from "../metier/laboratoire";
 import {Secteur} from "../metier/secteur";
 import {Visiteur} from "../metier/visiteur";
 import {Region} from "../metier/region";
+import {Specialite} from "../metier/specialite";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,11 @@ export class GsbShortService {
   private _reponsesRegion = new BehaviorSubject<Region[]>([]);
   readonly appels_terminesRegion = this._reponsesRegion.asObservable();
   public listeRegion: Region[] = [];
+  // SPECIALITE
+  private specialite: Specialite = new Specialite;
+  private _reponsesSpecialite = new BehaviorSubject<Specialite[]>([]);
+  readonly appels_terminesSpecialite = this._reponsesSpecialite.asObservable();
+  public listeSpecialite: Specialite[] = [];
   // VISITEUR
   private visiteur: Visiteur = new Visiteur;
   private _reponsesVisiteur = new BehaviorSubject<Visiteur[]>([]);
@@ -106,6 +112,22 @@ export class GsbShortService {
       },
       error => {
         console.log("Erreur Appel API liste Region", error)
+      }
+    )
+  }
+
+  getListeSpecialite() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<Specialite[]>(`${this.Url}/specialite`, {headers: headers}).subscribe(
+      data => {
+        this.listeSpecialite = data;
+        this._reponsesSpecialite.next(this.listeSpecialite);
+        console.log("Appel API liste Specialite reussi")
+      },
+      error => {
+        console.log("Erreur Appel API liste Specialite", error)
       }
     )
   }

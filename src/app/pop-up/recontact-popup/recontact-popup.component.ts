@@ -13,6 +13,7 @@ import {MatCardTitle} from "@angular/material/card";
 import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
 import {merge} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {GsbShortService} from "../../service/gsb-short.service";
 
 @Component({
   selector: 'app-recontact-popup',
@@ -38,7 +39,8 @@ export class RecontactPopupComponent {
   objetDemande: FormControl = new FormControl("");
   errorMessage = '';
 
-  constructor() {
+  constructor(private shortService: GsbShortService) {
+    this.shortService.getListeSpecialite();
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
@@ -52,5 +54,9 @@ export class RecontactPopupComponent {
     } else {
       this.errorMessage = '';
     }
+  }
+
+  getListeSpecialite() {
+    return this.shortService.appels_terminesSpecialite;
   }
 }
