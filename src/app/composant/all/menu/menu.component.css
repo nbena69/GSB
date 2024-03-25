@@ -65,3 +65,8 @@
   background-color: #107aca;
   color: white;
 }
+
+.button-primary:hover {
+  background-color: #045fae;
+  color: white;
+}

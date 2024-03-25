@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {CommonModule} from "@angular/common";
@@ -8,7 +8,7 @@ import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form
 import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelect} from "@angular/material/select";
-import {MatOption} from "@angular/material/autocomplete";
+import {MatAutocompleteModule, MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
 import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
 import {merge} from "rxjs";
@@ -24,7 +24,7 @@ import {GsbShortService} from "../../service/gsb-short.service";
     CommonModule,
     ReactiveFormsModule,
     MatDialogActions,
-    ErrorMessageComponent, MatFormFieldModule, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle
+    ErrorMessageComponent, MatFormFieldModule, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle, MatAutocompleteModule
   ],
   templateUrl: './recontact-popup.component.html',
   styleUrl: './recontact-popup.component.css'
@@ -48,9 +48,9 @@ export class RecontactPopupComponent {
 
   updateErrorMessage() {
     if (this.email.hasError('required')) {
-      this.errorMessage = 'You must enter a value';
+      this.errorMessage = 'Veuillez saisir une adresse email\n';
     } else if (this.email.hasError('email')) {
-      this.errorMessage = 'Not a valid email';
+      this.errorMessage = 'Veuillez saisir une adresse email valide\n';
     } else {
       this.errorMessage = '';
     }
