@@ -89,7 +89,6 @@ export class SearchVisiteurComponent {
       width: '30%',
       data: { id_visiteur: id_visiteur }
     });
-    console.log('reussi');
   }
 
   goBack() {

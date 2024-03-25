@@ -4,31 +4,21 @@
     <button mat-button class="header_logo" routerLink="/home"><img src="../../../../assets/img/logo_GSB.svg"></button>
     <div class="header_menu">
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button"
-                [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais
-        </button>
+        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button" [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais</button>
       </div>
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button" [matMenuTriggerFor]="activite"
-                *ngIf="utilisateurConnecte">Activité
-        </button>
+        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button" [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité</button>
       </div>
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button" routerLink="/searchVisiteur"
-                *ngIf="utilisateurConnecte">Rechercher un visiteur
-        </button>
+        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button" routerLink="/searchVisiteur" *ngIf="utilisateurConnecte">Rechercher un visiteur</button>
       </div>
     </div>
     <div class="header_links">
-      <button type="button" class="button button-primary">Être recontacté</button>
-      <button mat-icon-button class="size" [matMenuTriggerFor]="options"
-              aria-label="Options">
-        <mat-icon style="color: white">dialpad</mat-icon>
-      </button>
+      <button type="button" class="button button-primary" (click)="openRecontact()">Être recontacté</button>
+      <button mat-icon-button class="size" [matMenuTriggerFor]="options" aria-label="Options"><mat-icon style="color: white">dialpad</mat-icon></button>
     </div>
   </div>
 </div>
-
 
 <mat-menu #frais="matMenu">
   <button mat-menu-item routerLink="/frais/liste">Liste Frais</button>

@@ -5,6 +5,8 @@ import {CommonModule} from "@angular/common";
 import {MatMenu, MatMenuItem, MatMenuModule} from "@angular/material/menu";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {RecontactPopupComponent} from "../../../pop-up/recontact-popup/recontact-popup.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +21,7 @@ import {MatIconModule} from "@angular/material/icon";
 export class MenuComponent implements OnInit {
   utilisateurConnecte: boolean = false;
 
-  constructor(private loginService: GsbLoginService, private router: Router) {
+  constructor(private loginService: GsbLoginService, private router: Router, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -33,5 +35,12 @@ export class MenuComponent implements OnInit {
 
   profil() {
     this.router.navigate(['/dashboard']);
+  }
+
+  openRecontact() {
+    this.dialog.open(RecontactPopupComponent, {
+      height: '694px',
+      width: '864px'
+    });
   }
 }
