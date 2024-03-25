@@ -1,31 +1,22 @@
 <body class="body">
-<div class="container">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a routerLink="/home">Accueil</a></li>
-        <li *ngIf="utilisateurConnecte" class="deroulant">
-          <a routerLink="/frais/liste">Frais &ensp;</a>
-          <ul class="sous">
-            <li><a routerLink="/frais/liste">Liste Frais</a></li>
-            <li><a routerLink="/frais/ajout">Ajout Frais</a></li>
-          </ul>
-        </li>
-        <li *ngIf="utilisateurConnecte" class="deroulant">
-          <a routerLink="/frais/liste">Activité &ensp;</a>
-          <ul class="sous">
-            <li><a routerLink="/frais/liste">Liste Activité</a></li>
-            <li><a routerLink="/frais/ajout">Ajout Activité</a></li>
-          </ul>
-        </li>
-        <li *ngIf="utilisateurConnecte"><a routerLink="/searchVisiteur">Rechercher un Visiteur</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a *ngIf="utilisateurConnecte == false" routerLink="/login">Se connecter</a></li>
-        <li><a *ngIf="utilisateurConnecte" (click)="logout()">Se déconnecter</a></li>
-        <li><a *ngIf="utilisateurConnecte" (click)="profil()"><img src="../../../../assets/img/menuProfil.png" id="menuImg"></a> </li>
-      </ul>
-    </div>
-  </nav>
-</div>
+  <div class="nav navbar-nav">
+    <button mat-button class="size" routerLink="/home">Accueil</button>
+    <button mat-button class="size" [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais</button>
+    <button mat-button class="size" [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité</button>
+    <button mat-button class="size" routerLink="/searchVisiteur" *ngIf="utilisateurConnecte">Rechercher un visiteur</button>
+  </div>
+  <div class="nav navbar-nav navbar-right">
+    <button mat-button class="size" routerLink="/login" *ngIf="utilisateurConnecte  == false">Se connecter</button>
+    <button mat-button class="size" (click)="logout()" *ngIf="utilisateurConnecte">Se déconnecter</button>
+    <button mat-button class="size" (click)="profil()" *ngIf="utilisateurConnecte"><img src="../../../../assets/img/menuProfil.png" id="menuImg"></button>
+  </div>
 </body>
+
+<mat-menu #frais="matMenu">
+  <button mat-menu-item routerLink="/frais/liste">Liste Frais</button>
+  <button mat-menu-item routerLink="/frais/ajout">Ajout Frais</button>
+</mat-menu>
+<mat-menu #activite="matMenu">
+  <button mat-menu-item routerLink="/frais/liste">Liste Activité</button>
+  <button mat-menu-item routerLink="/frais/ajout">Ajout Activité</button>
+</mat-menu>

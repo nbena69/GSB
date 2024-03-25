@@ -1,114 +1,33 @@
 .body {
-  padding-top: 70px; /* Ajuster la marge supérieure pour éviter que le menu ne recouvre le contenu */
-}
-
-.container {
-  width: 100%; /* Utilisez 100% de la largeur de la fenêtre */
+  width: 100%;
+  background-color: #344D59;
+  height: 50px;
 }
 
 .navbar {
   border: none;
-  position: fixed; /* Fixe la barre de navigation en haut de la page */
-  width: 100%; /* Prend 100% de la largeur */
-  top: 0; /* Place la barre en haut de la page */
-  z-index: 1000; /* Assure que la barre de navigation est au-dessus du contenu */
-  background-color: #344D59 ; /* Couleur de fond de la barre de navigation */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: #344D59 ;
   left: 0;
 }
 
 .navbar-nav {
-  margin: 0; /* Réinitialisez les marges de la liste */
-  display: inline-block; /* Afficher les éléments du menu en ligne */
-}
-
-.navbar-nav > li {
+  margin: 0;
   display: inline-block;
-}
-
-.navbar-nav > li > a {
-  padding: 15px; /* Ajoutez de l'espace autour des liens pour une meilleure accessibilité tactile */
 }
 
 .navbar-right {
-  float: right; /* Alignez les éléments du côté droit de la barre de navigation */
-  display: inline-block; /* Afficher les éléments du menu en ligne */
-
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: black; /* Couleur du texte des liens du menu */
-  display: inline-block; /* Afficher les éléments du menu en ligne */
-  padding: 15px; /* Ajouter de l'espace autour des liens pour une meilleure accessibilité tactile */
-  text-decoration: none; /* Supprimer la soulignement des liens */
-  font-family: 'Arial', sans-serif; /* Police d'écriture professionnelle */
-  font-weight: bold; /* Texte en gras */
-}
-
-.navbar-default .navbar-nav .active > a {
-  background-color: #709CA7; /* Couleur de fond du lien actif */
-}
-
-.navbar-default .navbar-toggle {
-  border-color: #ffffff; /* Couleur de la bordure du bouton de menu déroulant */
-}
-
-.navbar-nav > li > a:hover {
-  background-color: #709CA7; /* Couleur de fond lorsqu'un lien est survolé */
-  border-radius: 10px;
-}
-
-/* Style de base pour la liste déroulante */
-.deroulant {
-  display: inline-block;
-}
-
-/* Style pour le lien principal */
-.deroulant a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
-
-/* Style pour la liste déroulante */
-.deroulant ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* Style pour les éléments de la liste déroulante */
-.deroulant ul li {
-  padding: 10px;
-}
-
-/* Lorsque le pointeur est sur l'élément parent, afficher la liste déroulante */
-.deroulant:hover ul {
-  display: block;
-  border-radius: 10px;
-}
-
-/* Style pour les liens de la liste déroulante */
-.deroulant ul li a {
-  text-decoration: none;
-}
-
-/* Lorsque le pointeur est sur les liens de la liste déroulante, changer la couleur de fond */
-.deroulant ul li:hover {
-  background-color: #709CA7;
-  border-radius: 10px;
-}
-
-.deroulant > a::after {
-  content: "▼";
-  font-size: 12px;
+  float: right;
 }
 
 #menuImg {
   width: auto;
   height: 30px;
+}
+
+.size {
+  line-height: 50px; /* Ajustez la hauteur selon la hauteur de votre menu */
 }
