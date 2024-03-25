@@ -1,8 +1,11 @@
-<div *ngIf="!isLoading">
-  <div *ngIf="afficheMenu()">
-    <app-menu></app-menu>
+<div *ngIf="!isLoading && afficheMenu()">
+  <app-menu></app-menu>
+  <div style="padding-top: 72px">
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
   <app-footer></app-footer>
+</div>
+<div *ngIf="!afficheMenu() && !isLoading">
+  <router-outlet></router-outlet>
 </div>
 <app-loader *ngIf="isLoading"></app-loader>
