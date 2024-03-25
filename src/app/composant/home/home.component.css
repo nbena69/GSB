@@ -81,3 +81,31 @@ h1 {
   font-weight: bold;
   margin: 10px 0;
 }
+
+.button {
+  align-self: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto, Helvetica Neue, sans-serif", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 7px 15px;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+  word-break: keep-all;
+  border-radius: 7px;
+  color: white;
+}
+
+.button-primary {
+  background-color: #107aca;
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: #045fae;
+  color: white;
+}
