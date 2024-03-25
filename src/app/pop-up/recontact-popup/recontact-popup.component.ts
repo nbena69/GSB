@@ -29,6 +29,7 @@ import {GsbShortService} from "../../service/gsb-short.service";
   templateUrl: './recontact-popup.component.html',
   styleUrl: './recontact-popup.component.css'
 })
+
 export class RecontactPopupComponent {
   nom: FormControl = new FormControl("");
   prenom: FormControl = new FormControl("");
