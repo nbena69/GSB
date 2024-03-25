@@ -1,0 +1,45 @@
+.container {
+  padding: 0;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.content-left {
+  overflow: auto;
+  width: 54%;
+  padding: 40px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.content-right {
+  background: #f1f7fe;
+  overflow: auto;
+  width: 46%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.picture {
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.picture_img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.champ {
+  display: flex;
+}

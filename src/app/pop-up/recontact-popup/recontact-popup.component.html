@@ -1,1 +1,47 @@
-<p>recontact-popup works!</p>
+<div class="container">
+  <div class="content-left">
+    <div class="content-tittle">
+      <p class="tittle">Vous êtes praticien ? Un de nos conseillers vous recontacte</p>
+    </div>
+    <div class="champ">
+      <mat-form-field class="form-group">
+        <mat-label>Nom *</mat-label>
+        <input matInput type="text" id="nom" [formControl]="nom">
+      </mat-form-field>&nbsp;&nbsp;
+      <mat-form-field class="form-group">
+        <mat-label>Prenom *</mat-label>
+        <input matInput type="text" id="prenom" [formControl]="prenom">
+      </mat-form-field>
+    </div>
+    <div class="champ">
+      <mat-form-field class="form-group">
+        <mat-label>Code postal cabinet *</mat-label>
+        <input matInput type="text" id="codePostal" [formControl]="codePostal">
+      </mat-form-field>&nbsp;&nbsp;
+      <mat-form-field class="form-group">
+        <mat-label>Téléphone portable *</mat-label>
+        <input matInput type="text" id="telephone" [formControl]="telephone">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Adresse email *</mat-label>
+      <input matInput
+             placeholder="pat@example.com"
+             [formControl]="email"
+             (blur)="updateErrorMessage()"
+             required>
+      @if (email.invalid) {
+      <mat-error>{{errorMessage}}</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="content-right">
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon aria-label="Close dialog">close</mat-icon>
+    </button>
+    <div class="picture">
+      <img class="picture_img" src="../../../assets/img/contact-popup.png" alt="">
+    </div>
+  </div>
+</div>

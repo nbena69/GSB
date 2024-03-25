@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
 
   openRecontact() {
     this.dialog.open(RecontactPopupComponent, {
-      height: '694px',
+      height: '650px',
       width: '864px'
     });
   }
