@@ -1,26 +1,19 @@
 .body {
   width: 100%;
-  background-color: #344D59;
+  background-color: #00264c;
   height: 50px;
-}
-
-.navbar {
-  border: none;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  background-color: #344D59 ;
-  left: 0;
+  color: white;
 }
 
 .navbar-nav {
   margin: 0;
   display: inline-block;
+  color: white;
 }
 
 .navbar-right {
   float: right;
+  color: white;
 }
 
 #menuImg {
@@ -29,5 +22,9 @@
 }
 
 .size {
-  line-height: 50px; /* Ajustez la hauteur selon la hauteur de votre menu */
+  font-family: "Lato";
+  font-size: large;
+  font-weight: bold;
+  padding: 15px;
+  color: white;
 }

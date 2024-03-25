@@ -5,7 +5,7 @@
     <button mat-button class="size" [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité</button>
     <button mat-button class="size" routerLink="/searchVisiteur" *ngIf="utilisateurConnecte">Rechercher un visiteur</button>
   </div>
-  <div class="nav navbar-nav navbar-right">
+  <div class="nav navbar-nav">
     <button mat-button class="size" routerLink="/login" *ngIf="utilisateurConnecte  == false">Se connecter</button>
     <button mat-button class="size" (click)="logout()" *ngIf="utilisateurConnecte">Se déconnecter</button>
     <button mat-button class="size" (click)="profil()" *ngIf="utilisateurConnecte"><img src="../../../../assets/img/menuProfil.png" id="menuImg"></button>
