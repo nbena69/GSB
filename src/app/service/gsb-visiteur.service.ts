@@ -12,8 +12,7 @@ import {InfosVisiteur} from "../metier/infos-visiteur";
 })
 
 export class GsbVisiteurService {
-  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
+  private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   private visiteur: Visiteur = new Visiteur;
   private _reponses = new BehaviorSubject<Visiteur[]>([]);

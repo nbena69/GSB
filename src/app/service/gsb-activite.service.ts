@@ -8,8 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class GsbActiviteService {
-  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
+  private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   private activite: ActiviteCompl = new ActiviteCompl;
   private _reponses = new BehaviorSubject<ActiviteCompl[]>([]);

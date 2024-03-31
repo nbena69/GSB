@@ -15,8 +15,7 @@ import {Specialite} from "../metier/specialite";
 })
 
 export class GsbShortService {
-  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
+  private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   // ETAT
   private etat: Etat = new Etat;

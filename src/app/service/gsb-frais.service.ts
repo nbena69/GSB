@@ -10,8 +10,7 @@ import {Router} from "@angular/router";
 })
 
 export class GsbFraisService {
-  private Url = 'http://localhost/benaissa/GsbFrais/public/api';
-  private httpUrl = "http://gsb.benaissa.etu.lmdsio.com/api";
+  private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   private frais: Frais = new Frais;
   private _reponses = new BehaviorSubject<Frais[]>([]);
@@ -105,7 +104,7 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/deleteFrais/${id_frais}`;
+    const url = `${this.Url}/frais/deleteFrais/${id_frais}`;
 
     return this.http.delete<void>(url, {headers: headers});
   }
@@ -114,7 +113,7 @@ export class GsbFraisService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
-    const url = `http://localhost/benaissa/GsbFrais/public/api/frais/getUnFrais/${id_frais}`;
+    const url = `${this.Url}/frais/getUnFrais/${id_frais}`;
 
     return this.http.get<Frais>(url, {headers: headers});
   }
