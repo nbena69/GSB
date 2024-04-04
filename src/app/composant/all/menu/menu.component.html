@@ -4,17 +4,17 @@
     <button mat-button class="header_logo" routerLink="/home"><img src="../../../../assets/img/logo_GSB.svg"></button>
     <div class="header_menu">
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button"
+        <button mat-button class="button header-button"
                 [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais
         </button>
       </div>
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button"
+        <button mat-button class="button header-button"
                 [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité
         </button>
       </div>
       <div>
-        <button mat-button style="color: white; font-weight: 700; font-size: 14px;" class="button"
+        <button mat-button class="button header-button"
                 routerLink="/searchVisiteur" *ngIf="utilisateurConnecte">Rechercher un visiteur
         </button>
       </div>
@@ -31,8 +31,19 @@
 </div>
 
 <mat-menu #frais="matMenu">
-  <button mat-menu-item routerLink="/frais/liste">Liste Frais</button>
-  <button mat-menu-item routerLink="/frais/ajout">Ajout Frais</button>
+  <div class="header_submenu">
+    <button routerLink="/frais/liste">
+      <div class="content_submenu">
+        <div class="tittle_submenu">
+          Liste Frais
+        </div>
+        <div class="paragraph_submenu">
+          Visualisez votre liste de frais détaillées
+        </div>
+      </div>
+    </button>
+    <button routerLink="/frais/ajout">Ajout Frais</button>
+  </div>
 </mat-menu>
 <mat-menu #activite="matMenu">
   <button mat-menu-item routerLink="/frais/liste">Liste Activité</button>
