@@ -10,10 +10,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelect} from "@angular/material/select";
 import {MatAutocompleteModule, MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
-import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {merge} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {GsbShortService} from "../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/gsb-short.service";
 
 @Component({
   selector: 'app-recontact-popup',

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {CommonModule, Location} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {MenuComponent} from "../../all/menu/menu.component";
-import {GsbFraishorsforfaitService} from "../../../service/gsb-fraishorsforfait.service";
+import {MenuComponent} from "../../../all/menu/menu.component";
+import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Fraishorsforfait} from "../../../metier/fraishorsforfait";
+import {Fraishorsforfait} from "../../../../metier/fraishorsforfait";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";

@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {GsbFraisService} from "../../../service/gsb-frais.service";
+import {GsbFraisService} from "../../../../service/gsb-frais.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Frais} from "../../../metier/frais";
-import {MenuComponent} from "../../all/menu/menu.component";
+import {Frais} from "../../../../metier/frais";
+import {MenuComponent} from "../../../all/menu/menu.component";
 import {CommonModule, Location} from "@angular/common";
-import {GsbShortService} from "../../../service/gsb-short.service";
+import {GsbShortService} from "../../../../service/gsb-short.service";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";

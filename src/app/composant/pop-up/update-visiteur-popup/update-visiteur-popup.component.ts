@@ -7,11 +7,11 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {GsbShortService} from "../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/gsb-short.service";
 import {AsyncPipe, CommonModule} from "@angular/common";
-import {GsbVisiteurService} from "../../service/gsb-visiteur.service";
-import {InfosVisiteur} from "../../metier/infos-visiteur";
-import {ErrorMessageComponent} from "../../composant/all/error-message/error-message.component";
+import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
+import {InfosVisiteur} from "../../../metier/infos-visiteur";
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";

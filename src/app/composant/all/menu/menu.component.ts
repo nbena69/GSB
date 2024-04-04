@@ -5,7 +5,7 @@ import {CommonModule} from "@angular/common";
 import {MatMenu, MatMenuItem, MatMenuModule} from "@angular/material/menu";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {RecontactPopupComponent} from "../../../pop-up/recontact-popup/recontact-popup.component";
+import {RecontactPopupComponent} from "../../pop-up/recontact-popup/recontact-popup.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
