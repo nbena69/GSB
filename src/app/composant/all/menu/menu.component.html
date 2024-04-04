@@ -23,14 +23,15 @@
       <button type="button" class="button button-primary" (click)="openRecontact()"
               *ngIf="utilisateurConnecte  == false">Être recontacté
       </button>
-      <button mat-icon-button class="size" [matMenuTriggerFor]="options" aria-label="Options">
-        <mat-icon style="color: white">dialpad</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="options" aria-label="Options">
+        <mat-icon>dialpad</mat-icon>
       </button>
     </div>
   </div>
 </div>
 
 <mat-menu #frais="matMenu">
+  <!--
   <div class="header_submenu">
     <button routerLink="/frais/liste">
       <div class="content_submenu">
@@ -44,13 +45,16 @@
     </button>
     <button routerLink="/frais/ajout">Ajout Frais</button>
   </div>
+  -->
+  <button mat-menu-item routerLink="/frais/liste">Liste Frais</button>
+  <button mat-menu-item routerLink="/frais/ajout">Ajout Frais</button>
 </mat-menu>
 <mat-menu #activite="matMenu">
   <button mat-menu-item routerLink="/frais/liste">Liste Activité</button>
   <button mat-menu-item routerLink="/frais/ajout">Ajout Activité</button>
 </mat-menu>
 
-<mat-menu #options="matMenu">
+<mat-menu #options="matMenu" xPosition="before">
   <button mat-menu-item (click)="profil()" *ngIf="utilisateurConnecte">Mon profil</button>
   <button mat-menu-item routerLink="/login" *ngIf="utilisateurConnecte  == false">Se connecter</button>
   <button mat-menu-item (click)="logout()" *ngIf="utilisateurConnecte">Se déconnecter</button>
