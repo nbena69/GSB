@@ -48,7 +48,7 @@ export class UpdateVisiteurPopupComponent {
   id_visiteur: number;
   errorMessage: string | null = null;
   valuePage: number = 1;
-  boolPage: boolean;
+  boolPage: boolean = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdateVisiteurPopupComponent>, private shortService: GsbShortService, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeSecteur();
