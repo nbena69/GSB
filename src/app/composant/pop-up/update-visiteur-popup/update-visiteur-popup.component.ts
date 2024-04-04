@@ -47,6 +47,8 @@ export class UpdateVisiteurPopupComponent {
   affectations: FormControl = new FormControl();
   id_visiteur: number;
   errorMessage: string | null = null;
+  valuePage: number = 1;
+  boolPage: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdateVisiteurPopupComponent>, private shortService: GsbShortService, private visiteurService: GsbVisiteurService) {
     this.shortService.getListeSecteur();

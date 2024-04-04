@@ -28,8 +28,16 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="form-button" style="padding-top: 125px">
-      <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Modifier</button>
+    <div class="form-button">
+      <div style="padding-bottom: 3px">
+        <button type="button" class="btn btn-outline-info">Ajouter une Affectation</button><br>
+      </div>
+      <div style="padding-bottom: 3px">
+        <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Modifier l'affectation</button><br>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-danger">Supprimer l'affectation</button>
+      </div>
     </div>
     <app-error-message [errorMessage]="errorMessage"></app-error-message>
   </div>
