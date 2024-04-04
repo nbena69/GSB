@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {ActiviteCompl} from "../metier/activite-compl";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {GsbLoginService} from "./gsb-login.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,21 @@ export class GsbActiviteService {
   public listeActivite: ActiviteCompl[] = [];
   public dataStore: { activite: ActiviteCompl[] } = {activite: []};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private gsb_api: GsbLoginService) { }
+
+  getListeActivite() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<ActiviteCompl[]>(`${this.Url}/activite`, {headers: headers}).subscribe(
+      data => {
+        this.listeActivite = data;
+        this._reponses.next(this.listeActivite);
+        console.log("Appel API liste Activite reussi", data)
+      },
+      error => {
+        console.log("Erreur Appel API Activite Specialite", error)
+      }
+    )
+  }
 }
