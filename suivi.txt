@@ -1,0 +1,5 @@
+Delete clé étrangère Contrainte
+Gestion des erreurs
+
+TSLint :
+coommande : ./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'
