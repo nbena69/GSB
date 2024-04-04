@@ -107,10 +107,7 @@
   transition: all .3s;
   width: 100%;
 }
-*/
 
-
-/*
 .content_submenu {
   display: flex;
   flex-direction: column;
@@ -138,7 +135,3 @@
   line-height: 24px;
 }
 */
-
-.header_submenu {
-  width: 900px !important;
-}
