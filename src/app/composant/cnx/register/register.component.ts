@@ -12,12 +12,13 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatDatepickerModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatDatepickerModule, ErrorMessageComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -37,6 +38,7 @@ export class RegisterComponent {
   type_visiteur: FormControl = new FormControl('V');
   actuallyStep: number = 1;
   hide = true;
+  errorMessage: string | null = null;
 
   constructor(private loginService: GsbLoginService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
     this.secteur_api.getListeSecteur();
@@ -44,7 +46,11 @@ export class RegisterComponent {
   }
 
   onSubmitAjoutVisiteur() {
-    this.loginService.ajoutRegister(
+    this.errorMessage = "Une erreur s'est produite : L'administrateur a bloquer les inscriptions.";
+    setTimeout(() => {
+      this.errorMessage = null;
+    }, 5000);
+    /*this.loginService.ajoutRegister(
       this.email.value,
       this.password.value,
       this.id_laboratoire.value,
@@ -56,7 +62,7 @@ export class RegisterComponent {
       this.ville_visiteur.value,
       this.date_embauche.value,
       this.type_visiteur.value
-    );
+    );*/
   }
 
   return() {
