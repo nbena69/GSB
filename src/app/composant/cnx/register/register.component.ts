@@ -46,7 +46,7 @@ export class RegisterComponent {
   }
 
   onSubmitAjoutVisiteur() {
-    this.errorMessage = "Une erreur s'est produite : L'administrateur a bloquer les inscriptions!";
+    this.errorMessage = "Une erreur s'est produite : L'administrateur a bloquer les inscriptions.";
     setTimeout(() => {
       this.errorMessage = null;
     }, 5000);
