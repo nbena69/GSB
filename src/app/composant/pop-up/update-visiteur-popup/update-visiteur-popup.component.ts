@@ -94,4 +94,8 @@ export class UpdateVisiteurPopupComponent {
   onSubmit() {
 
   }
+
+  deleteAffectation() {
+
+  }
 }
