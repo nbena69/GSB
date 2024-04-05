@@ -20,3 +20,7 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
 
     ng build
 fi
+
+
+angular.json pour cache :
+      "outputHashing": "all",
