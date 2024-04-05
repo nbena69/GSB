@@ -14,15 +14,9 @@ Script ((post-commit)PAS D'EXTENSION !!)
 # Récupère la branche actuelle
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-# Déclenche le déploiement uniquement si vous êtes sur la branche principale (par exemple, 'main' ou 'master')
+# Déclenche le déploiement avec condition
 if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
-    # Accédez au répertoire de votre projet Angular
     cd C:/Users/naelb/WebstormProjects/GSB
 
-    # Effectuez les actions nécessaires pour déployer votre projet
-    # Par exemple, si vous utilisez Angular CLI :
     ng build
-
-    # Ajoutez ici toute autre étape de déploiement nécessaire
-
 fi
