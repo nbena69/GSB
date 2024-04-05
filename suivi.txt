@@ -38,7 +38,7 @@ EOF
     user lg9zzv_naelbenaissa Anc18613.
     cd /sites/gsb.naelbenaissa.fr
     prompt
-    put -r dist/gsbfrais-client/browser/*
+    mput -r dist/gsbfrais-client/browser/*
     bye
 EOF
 
@@ -58,7 +58,7 @@ EOF
     user benaissagsb Sio2023.
     cd /web
     prompt
-    put -r dist/gsbfrais-client/browser/*
+    mput -r dist/gsbfrais-client/browser/*
     bye
 EOF
 
