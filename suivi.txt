@@ -20,14 +20,25 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
 
     ng build
 
-        ftp -n <<EOF
-        open lg9zzv.ftp.infomaniak.com
-        user lg9zzv_naelbenaissa Anc18613.
-        cd /sites/gsb.naelbenaissa.fr
-        prompt
-        mput -r dist/gsbfrais-client/browser/*
-        bye
-    EOF
+    sleep 60
+
+    ftp -n <<EOF
+    open lg9zzv.ftp.infomaniak.com
+    user lg9zzv_naelbenaissa Anc18613.
+    cd /sites/gsb.naelbenaissa.fr
+    prompt
+    mput -r dist/gsbfrais-client/browser/*
+    bye
+EOF
+
+    ftp -n <<EOF
+    open etu.lmdsio.com
+    user 	benaissagsb Sio2023.
+    cd /web
+    prompt
+    mput -r dist/gsbfrais-client/browser/*
+    bye
+EOF
 fi
 
 
