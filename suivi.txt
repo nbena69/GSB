@@ -19,6 +19,15 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
     cd C:/Users/naelb/WebstormProjects/GSB
 
     ng build
+
+        ftp -n <<EOF
+        open lg9zzv.ftp.infomaniak.com
+        user lg9zzv_naelbenaissa Anc18613.
+        cd /sites/gsb.naelbenaissa.fr
+        prompt
+        mput -r dist/gsbfrais-client/browser/*
+        bye
+    EOF
 fi
 
 
