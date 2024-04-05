@@ -72,4 +72,3 @@ angular.json pour cache :
       "outputHashing": "all",
 
 
-test
