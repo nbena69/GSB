@@ -22,6 +22,17 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
 
     sleep 60
 
+    # Supprimer tout le contenu sur le serveur Infomaniak
+    ftp -n <<EOF
+    open lg9zzv.ftp.infomaniak.com
+    user lg9zzv_naelbenaissa Anc18613.
+    cd /sites/gsb.naelbenaissa.fr
+    prompt
+    rm -rf *
+    bye
+EOF
+
+    # Envoyer les fichiers sur le serveur Infomaniak
     ftp -n <<EOF
     open lg9zzv.ftp.infomaniak.com
     user lg9zzv_naelbenaissa Anc18613.
@@ -31,6 +42,17 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
     bye
 EOF
 
+    # Supprimer tout le contenu sur le serveur etu.lmdsio.com
+    ftp -n <<EOF
+    open etu.lmdsio.com
+    user benaissagsb Sio2023.
+    cd /web
+    prompt
+    rm -rf *
+    bye
+EOF
+
+    # Envoyer les fichiers sur le serveur etu.lmdsio.com
     ftp -n <<EOF
     open etu.lmdsio.com
     user benaissagsb Sio2023.
@@ -40,6 +62,7 @@ EOF
     bye
 EOF
 fi
+
 
 
 angular.json pour cache :
