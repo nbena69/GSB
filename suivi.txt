@@ -33,7 +33,7 @@ EOF
 
     ftp -n <<EOF
     open etu.lmdsio.com
-    user 	benaissagsb Sio2023.
+    user benaissagsb Sio2023.
     cd /web
     prompt
     mput -r dist/gsbfrais-client/browser/*
