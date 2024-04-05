@@ -61,6 +61,8 @@ EOF
     mput -r dist/gsbfrais-client/browser/*
     bye
 EOF
+
+    mv dist dist-old
 fi
 
 
