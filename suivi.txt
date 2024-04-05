@@ -20,17 +20,7 @@ if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
 
     ng build
 
-    sleep 60
-
-    # Supprimer tout le contenu sur le serveur Infomaniak
-    ftp -n <<EOF
-    open lg9zzv.ftp.infomaniak.com
-    user lg9zzv_naelbenaissa Anc18613.
-    cd /sites/gsb.naelbenaissa.fr
-    prompt
-    rm -rf *
-    bye
-EOF
+    sleep 25
 
     # Envoyer les fichiers sur le serveur Infomaniak
     ftp -n <<EOF
@@ -39,16 +29,6 @@ EOF
     cd /sites/gsb.naelbenaissa.fr
     prompt
     mput -r dist/gsbfrais-client/browser/*
-    bye
-EOF
-
-    # Supprimer tout le contenu sur le serveur etu.lmdsio.com
-    ftp -n <<EOF
-    open etu.lmdsio.com
-    user benaissagsb Sio2023.
-    cd /web
-    prompt
-    rm -rf *
     bye
 EOF
 
@@ -61,6 +41,8 @@ EOF
     mput -r dist/gsbfrais-client/browser/*
     bye
 EOF
+
+sleep 10
 
     # Renommer le dossier dist en dist-old
     mv dist dist-old
