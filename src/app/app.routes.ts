@@ -16,6 +16,7 @@ import {NotificationSectionComponent} from "./composant/user/sections/notificati
 import {ContactSectionComponent} from "./composant/user/sections/contact-section/contact-section.component";
 import {SearchVisiteurComponent} from "./composant/user/search-visiteur/search-visiteur.component";
 import {ListeActiviteComponent} from "./composant/classic/activite/liste-activite/liste-activite.component";
+import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -27,7 +28,7 @@ export const routes: Routes = [
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
 
   {path: 'activite/liste', component: ListeActiviteComponent, canActivate: [authentificationGuard()]},
-  {path: 'activite/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
+  {path: 'activite/ajout', component: AjoutActiviteComponent, canActivate: [authentificationGuard()]},
 
   {path: 'fraisHF/liste/:id_frais', component: ListeFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},

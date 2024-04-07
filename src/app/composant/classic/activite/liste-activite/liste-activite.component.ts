@@ -16,11 +16,12 @@ import {MatOption, MatSelect} from "@angular/material/select";
 @Component({
   selector: 'app-liste-activite',
   standalone: true,
-  imports: [    MenuComponent, CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption
+  imports: [ MenuComponent, CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink, ErrorMessageComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption
   ],
   templateUrl: './liste-activite.component.html',
   styleUrl: './liste-activite.component.css'
 })
+
 export class ListeActiviteComponent {
   constructor(private activite_api: GsbActiviteService, private router: Router, private location: Location) {
     this.activite_api.getListeActivite();
