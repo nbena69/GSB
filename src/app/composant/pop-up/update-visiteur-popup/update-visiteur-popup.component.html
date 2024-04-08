@@ -23,8 +23,8 @@
     <mat-form-field class="form-group">
       <mat-label>Affectation :</mat-label>
       <mat-select id="affectation" [formControl]="affectations">
-        <mat-option *ngFor="let affectation of getListeAffectation()" [value]="{ idRegion: affectation.id_region, idVisiteur: affectation.id_visiteur, date: affectation.jjmmaa }">
-          {{ affectation.id_visiteur }} - {{ affectation.nom_region }} - {{ affectation.jjmmaa }}
+        <mat-option *ngFor="let affectation of affectations.value" [value]="affectation.id_travail">
+          {{ affectation.nom_region }} - {{ affectation.jjmmaa }}
         </mat-option>
       </mat-select>
     </mat-form-field>

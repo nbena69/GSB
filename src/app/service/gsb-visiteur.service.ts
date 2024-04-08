@@ -28,7 +28,16 @@ export class GsbVisiteurService {
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
 
-    return this.http.get<Visiteur>(`${this.Url}/visiteur/${id_visiteur}`, {headers: headers});
+    return this.http.get<Visiteur[]>(`${this.Url}/visiteur/getUnVisiteur/${id_visiteur}`, {headers: headers}).subscribe(
+      data => {
+        this.listeVisiteur = data;
+        this._reponses.next(this.listeVisiteur);
+        console.log("Appel API liste Frais reussi")
+      },
+      error => {
+        console.log("Erreur Appel API liste frais", error)
+      }
+    )
   }
 
   //FILTRE VISITEUR

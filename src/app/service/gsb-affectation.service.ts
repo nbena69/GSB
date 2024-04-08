@@ -4,12 +4,11 @@ import {Travailler} from "../metier/travailler";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Secteur} from "../metier/secteur";
-import {InfosVisiteur} from "../metier/infos-visiteur";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class GsbAffectationService {
   private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
@@ -45,5 +44,18 @@ export class GsbAffectationService {
     return this.http.get<Travailler>(url, {headers: headers});
   }
 
+  getListeAffectationUnique(id_visiteur: number, jjmmaa: string, id_region: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
 
+    const requestObject = {
+      "jjmmaa": jjmmaa,
+      "id_region": id_region
+    };
+
+    const url = `${this.Url}/affectation/affectationUnique/${id_visiteur}`;
+
+    return this.http.post<Travailler>(url, requestObject, {headers: headers});
+  }
 }
