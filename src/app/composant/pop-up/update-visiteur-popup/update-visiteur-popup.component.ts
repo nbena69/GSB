@@ -55,7 +55,7 @@ export class UpdateVisiteurPopupComponent {
     this.shortService.getListeLaboratoire();
     this.shortService.getListeRegion();
     this.id_visiteur = this.data.id_visiteur;
-    this.visiteurService.obtenirInfosVisiteur(this.id_visiteur).subscribe(
+    this.visiteurService.obtenirInfosAffectation(this.id_visiteur).subscribe(
       data => {
         let infosVisiteur = new InfosVisiteur(data);
         this.nom_visiteur.setValue(infosVisiteur.nom_visiteur);

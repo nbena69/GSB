@@ -53,7 +53,7 @@ export class GsbVisiteurService {
     return this.http.get<Visiteur[]>(`${this.Url}/visiteur/filtreAffectAvancee`, { headers: headers, params: params });
   }
 
-  obtenirInfosVisiteur(id_visiteur: number) {
+  obtenirInfosAffectation(id_visiteur: number) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
