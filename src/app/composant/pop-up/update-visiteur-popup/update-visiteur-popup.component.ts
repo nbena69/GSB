@@ -44,7 +44,7 @@ export class UpdateVisiteurPopupComponent {
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
   id_laboratoire: FormControl = new FormControl('');
-  id_travail: FormControl = new FormControl('');
+  id_travail: FormControl = new FormControl(0);
 
   id_secteur: FormControl = new FormControl('');
   id_region: FormControl = new FormControl('');
@@ -69,6 +69,7 @@ export class UpdateVisiteurPopupComponent {
     this.nom_visiteur.disable();
     this.prenom_visiteur.disable();
     this.id_laboratoire.disable();
+    this.role_visiteur.disable();
     this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     this.shortService.getListeLaboratoire();
   }
@@ -82,19 +83,36 @@ export class UpdateVisiteurPopupComponent {
   }
 
   updatePage() {
-    this.affectationService.getListeAffectationUnique(this.id_travail.value).subscribe(
-      dataUnique => {
-        let travailler = new Travailler(dataUnique);
-        this.id_secteur.setValue(travailler.id_secteur);
-        this.id_region.setValue(travailler.id_region);
-        this.role_visiteur.setValue(travailler.role_visiteur);
-        this.jjmmaa.setValue(travailler.jjmmaa);
-        this.shortService.getListeSecteur();
-        this.shortService.getListeRegion();
-        console.log(dataUnique);
-      }
-    )
-    this.valuePage = 3;
+    if (this.id_travail.value != 0) {
+      this.affectationService.getListeAffectationUnique(this.id_travail.value).subscribe(
+        dataUnique => {
+          let travailler = new Travailler(dataUnique);
+          this.id_secteur.setValue(travailler.id_secteur);
+          this.id_region.setValue(travailler.id_region);
+          this.role_visiteur.setValue(travailler.role_visiteur);
+          this.jjmmaa.setValue(travailler.jjmmaa);
+          this.shortService.getListeSecteur();
+          this.shortService.getListeRegion();
+          console.log(dataUnique);
+        }
+      )
+      this.valuePage = 3;
+    }
+    if (this.id_travail.value == 0) {
+      this.errorMessage = "Aucune affectation sélectionnée.";
+    }
+  }
+
+  ajoutPage() {
+    this.id_secteur.setValue("");
+    this.id_region.setValue("");
+    this.role_visiteur.setValue("");
+    this.jjmmaa.setValue("");
+
+    this.shortService.getListeSecteur();
+    this.shortService.getListeRegion();
+
+    this.valuePage = 2;
   }
 
   getListeSecteur() {
