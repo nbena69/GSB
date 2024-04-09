@@ -3,9 +3,9 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Visiteur} from "../metier/visiteur";
-import {BehaviorSubject, catchError, Observable, tap} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+import {Travailler} from "../metier/travailler";
 import {Frais} from "../metier/frais";
-import {InfosVisiteur} from "../metier/infos-visiteur";
 
 @Injectable({
   providedIn: 'root'
@@ -27,17 +27,9 @@ export class GsbVisiteurService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
+    const url = `${this.Url}/visiteur/getUnVisiteur/${id_visiteur}`;
 
-    return this.http.get<Visiteur[]>(`${this.Url}/visiteur/getUnVisiteur/${id_visiteur}`, {headers: headers}).subscribe(
-      data => {
-        this.listeVisiteur = data;
-        this._reponses.next(this.listeVisiteur);
-        console.log("Appel API liste Frais reussi")
-      },
-      error => {
-        console.log("Erreur Appel API liste frais", error)
-      }
-    )
+    return this.http.get<Visiteur>(url, {headers: headers});
   }
 
   //FILTRE VISITEUR
@@ -60,14 +52,5 @@ export class GsbVisiteurService {
     const params = new HttpParams().set('nom', nom);
 
     return this.http.get<Visiteur[]>(`${this.Url}/visiteur/filtreAffectAvancee`, { headers: headers, params: params });
-  }
-
-  obtenirInfosAffectation(id_visiteur: number) {
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
-    });
-    const url = `${this.Url}/visiteur/obtenirInfosAffectation/${id_visiteur}`;
-
-    return this.http.get<InfosVisiteur>(url, {headers: headers});
   }
 }

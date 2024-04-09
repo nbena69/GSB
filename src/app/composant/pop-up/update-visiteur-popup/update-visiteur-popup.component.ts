@@ -18,6 +18,8 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
+import {Visiteur} from "../../../metier/visiteur";
+import {GsbAffectationService} from "../../../service/gsb-affectation.service";
 
 @Component({
   selector: 'app-update-visiteur-popup',
@@ -37,28 +39,34 @@ import {MatCardTitle} from "@angular/material/card";
 })
 
 export class UpdateVisiteurPopupComponent {
-  id_laboratoire: FormControl = new FormControl("");
-  id_region: FormControl = new FormControl("");
-  id_secteur: FormControl = new FormControl("");
+  public id_visiteur: number = 0;
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
-  affectations: FormControl = new FormControl();
-  id_visiteur: number;
-  id_travail: number = 0;
+  id_laboratoire: FormControl = new FormControl('');
+  id_travail: FormControl = new FormControl('');
   errorMessage: string | null = null;
   valuePage: number = 1;
   boolPage: boolean = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService) {
-    this.shortService.getListeSecteur();
+  constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
+    this.id_visiteur = this.dialogData.id_visiteur;
+    this.visiteurService.chargeVisiteur(this.id_visiteur).subscribe(
+      dataVisiteur => {
+        let visiteur = new Visiteur(dataVisiteur);
+        this.id_laboratoire.setValue(visiteur.id_laboratoire);
+        this.nom_visiteur.setValue(visiteur.nom_visiteur);
+        this.prenom_visiteur.setValue(visiteur.prenom_visiteur);
+      },
+      error => console.log('Erreur Appel API')
+    );
+    this.nom_visiteur.disable();
+    this.prenom_visiteur.disable();
+    this.id_laboratoire.disable();
+    this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     this.shortService.getListeLaboratoire();
-    this.shortService.getListeRegion();
-    this.visiteurService.chargeVisiteur(data.id_visiteur);
-    console.log(data.id_visiteur);
   }
 
   getListeAffectation() {
-    return this.affectations.value;
   }
 
   getListeSecteur() {
@@ -67,6 +75,10 @@ export class UpdateVisiteurPopupComponent {
 
   getListeLaboratoire() {
     return this.shortService.appels_terminesLaboratoire;
+  }
+
+  getListeAffectationVisiteur() {
+    return this.affectationService.appels_terminesAffectationVisiteur
   }
 
   getListeRegion() {
