@@ -28,14 +28,14 @@
       <mat-label>Affectation :</mat-label>
       <mat-select id="id_travail" [formControl]="id_travail">
         <mat-option *ngFor="let affectation of getListeAffectationVisiteur() | async" [value]="affectation.id_travail">
-          {{ affectation.id_region }} - {{ affectation.jjmmaa }}
+          {{ affectation.nom_region }} - {{ affectation.jjmmaa }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="form-button">
       <button type="button" class="btn btn-outline-primary" (click)="valuePage = 2">Ajouter une Affectation</button>&nbsp;
-      <button type="button" class="btn btn-outline-success" (click)="valuePage = 3">Modifier l'affectation</button>
+      <button type="button" class="btn btn-outline-success" (click)="updatePage()">Modifier l'affectation</button>
     </div>
   </div>
 
@@ -49,12 +49,32 @@
       <button type="button" class="btn btn-outline-success">Ajouter</button>
     </div>
   </div>
+
+
   <div *ngIf="valuePage == 3" class="container updateAffectation">
     <h1>Salut {{ valuePage }}</h1>
+
+    <mat-form-field class="form-group">
+      <mat-label>Rôle :</mat-label>
+      <input matInput type="text" id="role_visiteur" [formControl]="role_visiteur">
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <mat-label>Région :</mat-label>
+      <mat-select id="id_region" [formControl]="id_region">
+        <mat-option *ngFor="let region of getListeRegion() | async" [value]="region.id_region">
+          {{ region.nom_region }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <div class="form-button">
-      <button type="button" class="btn btn-outline-danger" (click)="deleteAffectation">Supprimer</button>
+      <button type="button" class="btn btn-outline-danger" (click)="deleteAffectation()">Supprimer</button>
       <button type="button" class="btn btn-outline-success">Modifier</button>
     </div>
   </div>
+
+
+
 </div>
 <app-error-message [errorMessage]="errorMessage"></app-error-message>

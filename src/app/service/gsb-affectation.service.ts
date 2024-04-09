@@ -4,7 +4,7 @@ import {Travailler} from "../metier/travailler";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Etat} from "../metier/etat";
+import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -23,23 +23,11 @@ export class GsbAffectationService {
   readonly appels_terminesAffectationVisiteur = this._reponsesAffectationVisiteur.asObservable();
   public listeAffectationVisiteur: Travailler[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
-  }
+  private _reponsesAffectationUnique = new BehaviorSubject<Travailler[]>([]);
+  readonly appels_terminesAffectationUnique = this._reponsesAffectationUnique.asObservable();
+  public listeAffectationUnique: Travailler[] = [];
 
-  getListeAffectation() {
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
-    });
-    return this.http.get<Travailler[]>(`${this.Url}/affectation`, {headers: headers}).subscribe(
-      data => {
-        this.listeAffectation = data;
-        this._reponses.next(this.listeAffectation);
-        console.log("Appel API liste Secteur reussi")
-      },
-      error => {
-        console.log("Erreur Appel API liste Secteur", error)
-      }
-    )
+  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
 
   getListeAffectationVisiteur(id_visiteur: number) {
@@ -59,18 +47,12 @@ export class GsbAffectationService {
     )
   }
 
-  getListeAffectationUnique(id_visiteur: number, jjmmaa: string, id_region: number) {
+  getListeAffectationUnique(id_travail: number) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
     });
+    const url = `${this.Url}/affectation/affectationUnique/${id_travail}`;
 
-    const requestObject = {
-      "jjmmaa": jjmmaa,
-      "id_region": id_region
-    };
-
-    const url = `${this.Url}/affectation/affectationUnique/${id_visiteur}`;
-
-    return this.http.post<Travailler>(url, requestObject, {headers: headers});
+    return this.http.get<Travailler>(url, {headers: headers});
   }
 }

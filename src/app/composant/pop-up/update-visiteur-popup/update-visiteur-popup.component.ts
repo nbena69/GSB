@@ -20,6 +20,7 @@ import {MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
 import {Visiteur} from "../../../metier/visiteur";
 import {GsbAffectationService} from "../../../service/gsb-affectation.service";
+import {Travailler} from "../../../metier/travailler";
 
 @Component({
   selector: 'app-update-visiteur-popup',
@@ -44,6 +45,12 @@ export class UpdateVisiteurPopupComponent {
   prenom_visiteur: FormControl = new FormControl('');
   id_laboratoire: FormControl = new FormControl('');
   id_travail: FormControl = new FormControl('');
+
+  id_secteur: FormControl = new FormControl('');
+  id_region: FormControl = new FormControl('');
+  role_visiteur: FormControl = new FormControl('');
+  jjmmaa: FormControl = new FormControl('');
+
   errorMessage: string | null = null;
   valuePage: number = 1;
   boolPage: boolean = true;
@@ -66,20 +73,34 @@ export class UpdateVisiteurPopupComponent {
     this.shortService.getListeLaboratoire();
   }
 
-  getListeAffectation() {
+  getListeLaboratoire() {
+    return this.shortService.appels_terminesLaboratoire;
+  }
+
+  getListeAffectationVisiteur() {
+    return this.affectationService.appels_terminesAffectationVisiteur;
+  }
+
+  updatePage() {
+    this.affectationService.getListeAffectationUnique(this.id_travail.value).subscribe(
+      dataUnique => {
+        let travailler = new Travailler(dataUnique);
+        this.id_secteur.setValue(travailler.id_secteur);
+        this.id_region.setValue(travailler.id_region);
+        this.role_visiteur.setValue(travailler.role_visiteur);
+        this.jjmmaa.setValue(travailler.jjmmaa);
+        this.shortService.getListeSecteur();
+        this.shortService.getListeRegion();
+        console.log(dataUnique);
+      }
+    )
+    this.valuePage = 3;
   }
 
   getListeSecteur() {
     return this.shortService.appels_terminesSecteur;
   }
 
-  getListeLaboratoire() {
-    return this.shortService.appels_terminesLaboratoire;
-  }
-
-  getListeAffectationVisiteur() {
-    return this.affectationService.appels_terminesAffectationVisiteur
-  }
 
   getListeRegion() {
     return this.shortService.appels_terminesRegion;

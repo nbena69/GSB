@@ -4,8 +4,6 @@ import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
 import {Visiteur} from "../metier/visiteur";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Travailler} from "../metier/travailler";
-import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
