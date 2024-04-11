@@ -15,3 +15,8 @@
   top: 0;
   right: 0;
 }
+
+.back-button {
+  position: absolute;
+  left: 0;
+}

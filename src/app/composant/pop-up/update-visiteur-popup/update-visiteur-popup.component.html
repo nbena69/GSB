@@ -69,10 +69,16 @@
       <button type="button" class="btn btn-outline-success" (click)="updatePage()">Modifier l'affectation</button>
     </div>
     <div class="form-button" *ngIf="valuePage == 2">
+      <button mat-icon-button class="back-button" (click)="goBack()">
+        <mat-icon aria-label="Retour">arrow_back</mat-icon>
+      </button>
       <button type="button" class="btn btn-outline-success">Ajouter</button>
     </div>
     <div class="form-button" *ngIf="valuePage == 3">
-      <button type="button" class="btn btn-outline-danger" (click)="deleteAffectation()">Supprimer</button>
+      <button mat-icon-button class="back-button" (click)="goBack()">
+        <mat-icon aria-label="Retour">arrow_back</mat-icon>
+      </button>
+      <button type="button" class="btn btn-outline-danger" (click)="deleteAffectation()">Supprimer</button>&nbsp;
       <button type="button" class="btn btn-outline-success">Modifier</button>
     </div>
   </div>

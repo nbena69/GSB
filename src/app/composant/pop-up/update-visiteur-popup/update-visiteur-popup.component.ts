@@ -131,4 +131,8 @@ export class UpdateVisiteurPopupComponent {
   deleteAffectation() {
 
   }
+
+  goBack() {
+    this.valuePage = 1;
+  }
 }
