@@ -100,6 +100,9 @@ export class UpdateAffectationPopupComponent {
     }
     if (this.id_travail.value == 0) {
       this.errorMessage = "Aucune affectation sélectionnée.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
     }
   }
 
