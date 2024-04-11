@@ -3,7 +3,7 @@ import {GsbShortService} from "../../../service/gsb-short.service";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {UpdateVisiteurPopupComponent} from "../../pop-up/update-visiteur-popup/update-visiteur-popup.component";
+import {UpdateAffectationPopupComponent} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
 import {Visiteur} from "../../../metier/visiteur";
@@ -84,7 +84,7 @@ export class SearchVisiteurComponent {
   }
 
   openUpdate(id_visiteur: number) {
-    this.dialog.open(UpdateVisiteurPopupComponent, {
+    this.dialog.open(UpdateAffectationPopupComponent, {
       height: '55%',
       width: '30%',
       data: { id_visiteur: id_visiteur }

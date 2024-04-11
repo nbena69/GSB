@@ -23,7 +23,7 @@ import {GsbAffectationService} from "../../../service/gsb-affectation.service";
 import {Travailler} from "../../../metier/travailler";
 
 @Component({
-  selector: 'app-update-visiteur-popup',
+  selector: 'app-update-affectation-popup',
   standalone: true,
   imports: [
     MatDialogTitle,
@@ -35,11 +35,11 @@ import {Travailler} from "../../../metier/travailler";
     ErrorMessageComponent,
     MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle
   ],
-  templateUrl: './update-visiteur-popup.component.html',
-  styleUrl: './update-visiteur-popup.component.css'
+  templateUrl: './update-affectation-popup.component.html',
+  styleUrl: './update-affectation-popup.component.css'
 })
 
-export class UpdateVisiteurPopupComponent {
+export class UpdateAffectationPopupComponent {
   public id_visiteur: number = 0;
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
