@@ -74,10 +74,6 @@ export class UpdateAffectationPopupComponent {
     this.shortService.getListeLaboratoire();
   }
 
-  getListeLaboratoire() {
-    return this.shortService.appels_terminesLaboratoire;
-  }
-
   getListeAffectationVisiteur() {
     return this.affectationService.appels_terminesAffectationVisiteur;
   }
@@ -107,15 +103,28 @@ export class UpdateAffectationPopupComponent {
   }
 
   ajoutPage() {
-    this.id_secteur.setValue("");
-    this.id_region.setValue("");
-    this.role_visiteur.setValue("");
-    this.jjmmaa.setValue("");
+    this.actualiseValue();
 
     this.shortService.getListeSecteur();
     this.shortService.getListeRegion();
 
     this.valuePage = 2;
+  }
+
+  onSubmitAjoutAffectation() {
+
+  }
+
+  onSubmitUpdateAffectation() {
+
+  }
+
+  deleteAffectation() {
+
+  }
+
+  getListeLaboratoire() {
+    return this.shortService.appels_terminesLaboratoire;
   }
 
   getListeSecteur() {
@@ -127,15 +136,14 @@ export class UpdateAffectationPopupComponent {
     return this.shortService.appels_terminesRegion;
   }
 
-  onSubmit() {
-
-  }
-
-  deleteAffectation() {
-
-  }
-
   goBack() {
     this.valuePage = 1;
+  }
+
+  actualiseValue() {
+    this.id_secteur.setValue("");
+    this.id_region.setValue("");
+    this.role_visiteur.setValue("");
+    this.jjmmaa.setValue("");
   }
 }
