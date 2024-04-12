@@ -56,6 +56,7 @@ export class UpdateAffectationPopupComponent {
   boolPage: boolean = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
+    this.actualiseValue();
     this.id_visiteur = this.dialogData.id_visiteur;
     this.visiteurService.chargeVisiteur(this.id_visiteur).subscribe(
       dataVisiteur => {
