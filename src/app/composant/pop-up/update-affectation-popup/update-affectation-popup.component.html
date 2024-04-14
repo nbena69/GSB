@@ -49,7 +49,7 @@
     <mat-form-field class="form-group" *ngIf="valuePage == 2 || valuePage == 3">
       <mat-label>Région :</mat-label>
       <mat-select id="id_region" [formControl]="id_region">
-        <mat-option *ngFor="let region of getListeRegion() | async" [value]="region.id_region">
+        <mat-option *ngFor="let region of getListeRegionSecteur() | async" [value]="region.id_region" (click)="actualiseSecteur(region.id_secteur)">
           {{ region.nom_region }}
         </mat-option>
       </mat-select>
@@ -58,7 +58,7 @@
     <mat-form-field class="form-group" *ngIf="valuePage == 2 || valuePage == 3">
       <mat-label>Secteur :</mat-label>
       <mat-select id="id_secteur" [formControl]="id_secteur">
-        <mat-option *ngFor="let secteur of getListeSecteur() | async" [value]="secteur.id_secteur">
+        <mat-option *ngFor="let secteur of getListeRegionSecteur() | async" [value]="secteur.id_secteur">
           {{ secteur.lib_secteur }}
         </mat-option>
       </mat-select>

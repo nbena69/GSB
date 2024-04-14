@@ -47,6 +47,11 @@ export class GsbShortService {
   private _reponsesVisiteur = new BehaviorSubject<Visiteur[]>([]);
   readonly appels_terminesVisiteur = this._reponsesVisiteur.asObservable();
   public listeVisiteur: Visiteur[] = [];
+  // VISITEUR
+  private regionSecteur: Region = new Region();
+  private _reponsesRegionSecteur = new BehaviorSubject<Region[]>([]);
+  readonly appels_terminesRegionSecteur = this._reponsesRegionSecteur.asObservable();
+  public listeRegionSecteur: Region[] = [];
 
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
   }
@@ -59,7 +64,6 @@ export class GsbShortService {
       data => {
         this.listeEtat = data;
         this._reponsesEtat.next(this.listeEtat);
-        console.log("Appel API liste Etats reussi")
       },
       error => {
         console.log("Erreur Appel API liste Etats", error)
@@ -75,7 +79,6 @@ export class GsbShortService {
       data => {
         this.listeLaboratoire = data;
         this._reponsesLaboratoire.next(this.listeLaboratoire);
-        console.log("Appel API liste Laboratoire reussi")
       },
       error => {
         console.log("Erreur Appel API liste Laboratoire", error)
@@ -91,7 +94,6 @@ export class GsbShortService {
       data => {
         this.listeSecteur = data;
         this._reponsesSecteur.next(this.listeSecteur);
-        console.log("Appel API liste Secteur reussi")
       },
       error => {
         console.log("Erreur Appel API liste Secteur", error)
@@ -107,7 +109,6 @@ export class GsbShortService {
       data => {
         this.listeRegion = data;
         this._reponsesRegion.next(this.listeRegion);
-        console.log("Appel API liste Region reussi")
       },
       error => {
         console.log("Erreur Appel API liste Region", error)
@@ -123,10 +124,24 @@ export class GsbShortService {
       data => {
         this.listeSpecialite = data;
         this._reponsesSpecialite.next(this.listeSpecialite);
-        console.log("Appel API liste Specialite reussi")
       },
       error => {
         console.log("Erreur Appel API liste Specialite", error)
+      }
+    )
+  }
+
+  getListeRegionSecteur() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<Region[]>(`${this.Url}/region-secteur`, {headers: headers}).subscribe(
+      data => {
+        this.listeRegionSecteur = data;
+        this._reponsesRegionSecteur.next(this.listeRegionSecteur);
+      },
+      error => {
+        console.log("Erreur Appel API liste Etats", error)
       }
     )
   }

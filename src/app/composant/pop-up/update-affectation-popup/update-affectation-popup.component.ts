@@ -75,6 +75,7 @@ export class UpdateAffectationPopupComponent {
     this.id_secteur.disable();
     this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     this.shortService.getListeLaboratoire();
+    this.shortService.getListeRegionSecteur();
   }
 
   getListeAffectationVisiteur() {
@@ -122,12 +123,20 @@ export class UpdateAffectationPopupComponent {
 
   }
 
+  actualiseSecteur(id_regionValue: number) {
+    this.id_secteur.setValue(id_regionValue);
+  }
+
   deleteAffectation() {
 
   }
 
   getListeLaboratoire() {
     return this.shortService.appels_terminesLaboratoire;
+  }
+
+  getListeRegionSecteur() {
+    return this.shortService.appels_terminesRegionSecteur;
   }
 
   getListeSecteur() {
