@@ -64,6 +64,7 @@ export class UpdateAffectationPopupComponent {
         this.id_laboratoire.setValue(visiteur.id_laboratoire);
         this.nom_visiteur.setValue(visiteur.nom_visiteur);
         this.prenom_visiteur.setValue(visiteur.prenom_visiteur);
+        console.log(dataVisiteur)
       },
       error => console.log('Erreur Appel API')
     );
@@ -71,6 +72,7 @@ export class UpdateAffectationPopupComponent {
     this.prenom_visiteur.disable();
     this.id_laboratoire.disable();
     this.role_visiteur.disable();
+    this.id_secteur.disable();
     this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     this.shortService.getListeLaboratoire();
   }
