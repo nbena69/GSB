@@ -21,6 +21,7 @@ import {MatCardTitle} from "@angular/material/card";
 import {Visiteur} from "../../../metier/visiteur";
 import {GsbAffectationService} from "../../../service/gsb-affectation.service";
 import {Travailler} from "../../../metier/travailler";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-update-affectation-popup',
@@ -48,12 +49,11 @@ export class UpdateAffectationPopupComponent {
 
   id_secteur: FormControl = new FormControl('');
   id_region: FormControl = new FormControl('');
-  role_visiteur: FormControl = new FormControl('');
+  role_visiteur: FormControl = new FormControl('Visiteur');
   jjmmaa: FormControl = new FormControl('');
 
   errorMessage: string | null = null;
   valuePage: number = 1;
-  boolPage: boolean = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
     this.actualiseValue();
@@ -83,6 +83,7 @@ export class UpdateAffectationPopupComponent {
   }
 
   updatePage() {
+    this.actualiseValue();
     if (this.id_travail.value != 0) {
       this.affectationService.getListeAffectationUnique(this.id_travail.value).subscribe(
         dataUnique => {
@@ -115,8 +116,31 @@ export class UpdateAffectationPopupComponent {
     this.valuePage = 2;
   }
 
-  onSubmitAjoutAffectation() {
+  async onSubmitAjoutAffectation() {
+    if (
+      this.jjmmaa.value !== '' &&
+      this.id_region.value !== '' &&
+      this.role_visiteur.value !== ''
+    ) {
+      this.affectationService.ajoutAffectation(
+        this.id_visiteur,
+        this.jjmmaa.value,
+        this.id_region.value,
+        this.role_visiteur.value
+      );
+      this.valuePage = 1;
+      await this.delay(1000);
+      this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
+    } else {
+      this.errorMessage = "Veuillez remplir tous les champs.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+    }
+  }
 
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   onSubmitUpdateAffectation() {
@@ -155,15 +179,6 @@ export class UpdateAffectationPopupComponent {
     return this.shortService.appels_terminesRegionSecteur;
   }
 
-  getListeSecteur() {
-    return this.shortService.appels_terminesSecteur;
-  }
-
-
-  getListeRegion() {
-    return this.shortService.appels_terminesRegion;
-  }
-
   goBack() {
     this.valuePage = 1;
   }
@@ -171,7 +186,6 @@ export class UpdateAffectationPopupComponent {
   actualiseValue() {
     this.id_secteur.setValue("");
     this.id_region.setValue("");
-    this.role_visiteur.setValue("");
     this.jjmmaa.setValue("");
   }
 }

@@ -5,6 +5,8 @@
       <mat-icon aria-label="Close dialog">close</mat-icon>
     </button>
 
+    <!-- INFORMATIONS SUR LE VISITEUR. Ces Informations sont constamment afficher. -->
+
     <mat-form-field class="form-group">
       <mat-label>Nom:</mat-label>
       <input matInput type="text" id="nom_visiteur" [formControl]="nom_visiteur">
@@ -36,6 +38,8 @@
     <h3 mat-dialog-title *ngIf="valuePage == 2">Ajouter une affectation</h3>
     <h3 mat-dialog-title *ngIf="valuePage == 3">Affectation sélectionnée</h3>
 
+    <!-- MODIFICATION OU AJOUT D'UNE AFFECTATION -->
+
     <mat-form-field class="form-group" *ngIf="valuePage == 2 || valuePage == 3">
       <mat-label>Rôle :</mat-label>
       <input matInput type="text" id="role_visiteur" [formControl]="role_visiteur">
@@ -64,6 +68,8 @@
       </mat-select>
     </mat-form-field>
 
+    <!-- BOUTON DE MODIFICATION ET D'AJOUT -->
+
     <div class="form-button" *ngIf="valuePage == 1">
       <button type="button" class="btn btn-outline-primary" (click)="ajoutPage()">Ajouter une Affectation</button>&nbsp;
       <button type="button" class="btn btn-outline-success" (click)="updatePage()">Modifier l'affectation</button>
@@ -72,7 +78,7 @@
       <button mat-icon-button class="back-button" (click)="goBack()">
         <mat-icon aria-label="Retour">arrow_back</mat-icon>
       </button>
-      <button type="button" class="btn btn-outline-success">Ajouter</button>
+      <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutAffectation()">Ajouter</button>
     </div>
     <div class="form-button" *ngIf="valuePage == 3">
       <button mat-icon-button class="back-button" (click)="goBack()">
