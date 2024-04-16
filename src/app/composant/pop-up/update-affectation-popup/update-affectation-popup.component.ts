@@ -123,12 +123,28 @@ export class UpdateAffectationPopupComponent {
 
   }
 
-  actualiseSecteur(id_regionValue: number) {
-    this.id_secteur.setValue(id_regionValue);
+  deleteAffectation(id_travail: number) {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cette Affectation ?');
+
+    if (confirmation) {
+      this.affectationService.deleteAffectation(id_travail).subscribe(
+        () => {
+          console.log("Appel API suppression Affectation réussi");
+          this.valuePage = 1;
+          this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
+        },
+        error => {
+          this.errorMessage = "Erreur lors de l'appel API suppression Affectation : " + error;
+          setTimeout(() => {
+            this.errorMessage = null;
+          }, 5000);
+        }
+      );
+    }
   }
 
-  deleteAffectation() {
-
+  actualiseSecteur(id_regionValue: number) {
+    this.id_secteur.setValue(id_regionValue);
   }
 
   getListeLaboratoire() {

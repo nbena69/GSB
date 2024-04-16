@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Travailler} from "../metier/travailler";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbLoginService} from "./gsb-login.service";
-import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +53,40 @@ export class GsbAffectationService {
     const url = `${this.Url}/affectation/affectationUnique/${id_travail}`;
 
     return this.http.get<Travailler>(url, {headers: headers});
+  }
+
+  ajoutAffectation(id_visiteur: number, jjmmaa: string, id_region: number, role_visiteur: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "id_visiteur": id_visiteur,
+      "jjmmaa": jjmmaa,
+      "id_region": id_region,
+      "role_visiteur": role_visiteur
+    };
+    this.http.post<Travailler>(`${this.Url}/affectation/ajoutAffectation`, requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.travailler = new Travailler(data);
+          this.dataStore.travailler.push(this.travailler);
+          this._reponses.next(this.dataStore.travailler);
+          this.router.navigate(['searchVisiteur']);
+          console.log("Appel réussi");
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
+  deleteAffectation(id_travail: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `${this.Url}/affectation/deleteAffectation/${id_travail}`;
+
+    return this.http.delete<void>(url, {headers: headers});
   }
 }
