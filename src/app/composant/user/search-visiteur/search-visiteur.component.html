@@ -40,9 +40,11 @@
   </div>
   <app-error-message [errorMessage]="errorMessage"></app-error-message>
   <button class="btn btn-outline-primary" (click)="researchVisiteur()">Rechercher</button>&nbsp;
-  <button class="btn btn-outline-warning" (click)="goBack()" *ngIf="active == true">Masquer</button>&nbsp;
   <button class="btn btn-outline-info" (click)="researchAvancee()" *ngIf="selector == true">Essayer la recherche avancée !</button>
   <button class="btn btn-info" (click)="researchAvancee()" *ngIf="selector == false">Reprendre la recherche classique</button>
+  &nbsp;<button mat-icon-button class="btn" (click)="goBack()" *ngIf="active == true">
+    <mat-icon>visibility_off</mat-icon>
+  </button>
 </div>
 
 <div class="container" *ngIf="active == true" style="padding-bottom: 70px">
