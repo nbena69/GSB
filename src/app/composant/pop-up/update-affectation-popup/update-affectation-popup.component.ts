@@ -123,7 +123,7 @@ export class UpdateAffectationPopupComponent {
       this.role_visiteur.value !== ''
     ) {
       this.affectationService.ajoutAffectation(
-        this.id_visiteur,
+        this.id_visiteur.valueOf(),
         this.jjmmaa.value,
         this.id_region.value,
         this.role_visiteur.value
@@ -139,12 +139,28 @@ export class UpdateAffectationPopupComponent {
     }
   }
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  onSubmitUpdateAffectation() {
-
+  async onSubmitUpdateAffectation() {
+    if (
+      this.jjmmaa.value !== '' &&
+      this.id_region.value !== '' &&
+      this.role_visiteur.value !== ''
+    ) {
+      this.affectationService.updateAffectation(
+        this.id_travail.value,
+        this.id_visiteur.valueOf(),
+        this.jjmmaa.value,
+        this.id_region.value,
+        this.role_visiteur.value
+      );
+      this.valuePage = 1;
+      await this.delay(1000);
+      this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
+    } else {
+      this.errorMessage = "Veuillez remplir tous les champs.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+    }
   }
 
   deleteAffectation(id_travail: number) {
@@ -187,5 +203,9 @@ export class UpdateAffectationPopupComponent {
     this.id_secteur.setValue("");
     this.id_region.setValue("");
     this.jjmmaa.setValue("");
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

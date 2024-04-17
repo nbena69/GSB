@@ -66,6 +66,7 @@ export class GsbAffectationService {
       "id_region": id_region,
       "role_visiteur": role_visiteur
     };
+
     this.http.post<Travailler>(`${this.Url}/affectation/ajoutAffectation`, requestObject, {headers: headers})
       .subscribe(
         data => {
@@ -73,7 +74,34 @@ export class GsbAffectationService {
           this.dataStore.travailler.push(this.travailler);
           this._reponses.next(this.dataStore.travailler);
           this.router.navigate(['searchVisiteur']);
-          console.log("Appel réussi");
+          console.log("Appel réussi ajout affect");
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
+  updateAffectation(id_travail: number, id_visiteur: number, jjmmaa: string, id_region: number, role_visiteur: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "id_visiteur": id_visiteur,
+      "jjmmaa": jjmmaa,
+      "id_region": id_region,
+      "role_visiteur": role_visiteur,
+    };
+
+    this.http.put<Travailler>(`${this.Url}/affectation/updateAffectation/${id_travail}`, requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.travailler = new Travailler(data);
+          this.dataStore.travailler.push(this.travailler);
+          this._reponses.next(this.dataStore.travailler);
+          this.router.navigate(['searchVisiteur']);
+          console.log("Appel réussi Modif affect");
         },
         error => {
           console.log("Erreur Appel API", error);
