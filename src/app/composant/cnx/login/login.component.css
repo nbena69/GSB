@@ -1,108 +1,182 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url("../../../../assets/img/fondEcran/fondEcran-GsbLogin.jpg");
   background-size: cover;
   height: 100vh;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 400px;
+.flex {
+  display: flex;
+}
+
+.content-left {
+  background-color: #f1f7fe;
+  oxygen-core-font-family-roboto: Roboto, arial, sans-serif;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.content-right {
+  background-color: #00264c;
+  oxygen-core-common-white: #fff;
+  min-height: 100vh;
+  width: 50%;
+}
+
+.picture_img_header {
+
+}
+
+.content-center {
+
+}
+
+.footer {
+  padding: 16px;
+  column-gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background-color: #00264c;
+}
+
+.section__inner {
+  overflow: hidden;
+}
+
+.login {
+  align-items: center;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.login_inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 40px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: rgba(0, 100, 0, 0.7);
-  padding: 20px;
+.login_inside {
+  max-width: 794px;
+  padding: 64px 64px 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 80px;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.login_content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
 }
 
-.logo {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-.submit-button,
-.return-button {
-  padding: 14px 24px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-.submit-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-.return-button {
-  background-color: #a7001e;
-  color: white;
-}
-
-.submit-button:hover,
-.return-button:hover {
-  background-color: #45a049;
-}
-
-/* Style pour le lien de retour à la page d'accueil */
-a {
+.login_media {
+  max-width: 512px;
+  overflow: hidden;
+  width: 100%;
   display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #333;
-  text-decoration: none;
+}
+
+.login_intro {
+  flex-direction: column;
+  gap: 24px;
+  width: 666px;
+  height: 264px;
+}
+
+.login_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.picture_img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+  align-items: flex-end;}
+
+.title {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.title--xlarge {
+  line-height: 40px;
+}
+
+.title--small {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.icon-text {
+  align-items: center;
+  display: flex;
+}
+
+.icon-text__icon {
+  flex-shrink: 0;
+  height: 24px;
+  margin-right: 8px;
+  width: 24px;
+  color: #107aca;
+}
+
+.icon-text .paragraph {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.paragraph--bold {
+  font-weight: 700;
+}
+
+.paragraph {
+  font-family: "Roboto, Helvetica Neue, sans-serif", sans-serif;
   font-size: 16px;
-  transition: color 0.3s ease;
+  line-height: 24px;
 }
 
-a:hover {
-  color: #45a049;
+.button {
+  align-self: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto, Helvetica Neue, sans-serif", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 7px 15px;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+  word-break: keep-all;
+  border-radius: 7px;
+  color: white;
 }
 
-.ng-valid[required] {
-  border-left: 5px solid #42A948;
+.button-primary {
+  background-color: #107aca;
+  color: white;
+  align-self: flex-start;
 }
 
-.ng-invalid:not(form) {
-  border-left: 5px solid #A94442;
-}
-
-.example-container mat-form-field + mat-form-field {
-  margin-left: 8px;
-}
-
-.example-right-align {
-  text-align: right;
-}
-
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.example-right-align {
-  -moz-appearance: textfield;
+.button-primary:hover {
+  background-color: #045fae;
+  color: white;
 }
