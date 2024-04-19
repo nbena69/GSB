@@ -9,11 +9,12 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-login-facade',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatCheckbox],
   templateUrl: './login-facade.component.html',
   styleUrls: ['./login-facade.component.css']
 })

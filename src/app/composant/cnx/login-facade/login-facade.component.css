@@ -42,7 +42,7 @@
 .login_content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 5px;
   width: 100%;
   padding: 9px;
 }
@@ -50,7 +50,7 @@
 .dl-text {
   font-family: "Montserrat, arial, sans-serif", sans-serif;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 15px;
   color: black;
   text-align: center !important;
   margin: 0;
@@ -94,4 +94,13 @@
 .button-primary:hover {
   background-color: #045fae;
   color: white;
+}
+
+.checkbox {
+  align-items: center;
+  text-align: left;
+}
+
+.field {
+  width: 100% !important;
 }
