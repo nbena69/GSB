@@ -1,21 +1,43 @@
-<h1 routerLink="">Identifiez-vous</h1>
-<div class="container">
-  <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
-    <mat-label>Entrez votre login-facade</mat-label>
-    <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
-    <mat-hint align="end">{{input.value.length}}/15</mat-hint>
-  </mat-form-field>
-  <mat-form-field style="width: 100%;">
-    <mat-label>Entrez votre mot de passe</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
-  <br>
-  <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
-  <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
-  <a routerLink="/register-facade">Vous n'avez pas de compte ?</a>
-  <a routerLink="">Retour à la page d'accueil</a>
+<div class="section_inner">
+  <div class="login">
+    <div class="login_inner">
+      <div class="login_inside">
+        <div class="card">
+          <div class="login_content">
+            <div class="dl-text">
+              J'ai déjà un compte GSB
+            </div>
+            <div class="container">
+              <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
+                <mat-label>Username</mat-label>
+                <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
+                <mat-hint align="end">{{input.value.length}}/15</mat-hint>
+              </mat-form-field>
+              <mat-form-field style="width: 100%;">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              <div>
+                <button type="button" class="button button-primary" (click)="onSubmit()">SE CONNECTER</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="login_content">
+            <div class="dl-text">
+              Nouveau sur GSB ?
+            </div>
+            <div>
+              <a class="dl-button-label">S'INSCRIRE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
