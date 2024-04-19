@@ -96,6 +96,6 @@ export class GsbLoginService {
     this._reponses.next(this.dataStore.login);
 
     this.utilisateurConnecte = false;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login-facade']);
   }
 }

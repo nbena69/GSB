@@ -1,12 +1,12 @@
 import {CanActivateFn, Routes} from '@angular/router';
-import {LoginComponent} from "./composant/cnx/login/login.component";
+import {LoginFacadeComponent} from "./composant/cnx/login-facade/login-facade.component";
 import {ListeFraisComponent} from "./composant/classic/frais/liste-frais/liste-frais.component";
 import {HomeComponent} from "./composant/home/home.component";
 import {GsbLoginService} from "./service/gsb-login.service";
 import {inject} from "@angular/core";
 import {AfficheFraisComponent} from "./composant/classic/frais/affiche-frais/affiche-frais.component";
 import {AjoutFraisComponent} from "./composant/classic/frais/ajout-frais/ajout-frais.component";
-import {RegisterComponent} from "./composant/cnx/register/register.component";
+import {RegisterFacadeComponent} from "./composant/cnx/register-facade/register-facade.component";
 import {ListeFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/liste-fraishorsforfait/liste-fraishorsforfait.component";
 import {AfficheFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
 import {AjoutFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
@@ -19,8 +19,8 @@ import {ListeActiviteComponent} from "./composant/classic/activite/liste-activit
 import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
 
 export const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginFacadeComponent},
+  {path: 'register', component: RegisterFacadeComponent},
   {path: 'dashboard', component: DashboardUserComponent, canActivate: [authentificationGuard()]},
 
   {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},

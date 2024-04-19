@@ -32,6 +32,6 @@ export class AppComponent implements OnInit {
   afficheMenu(): boolean {
     const currentUrl = this.router.url;
 
-    return !((currentUrl === '/login') || (currentUrl === '/register'));
+    return !((currentUrl === '/login-facade') || (currentUrl === '/register-facade'));
   }
 }

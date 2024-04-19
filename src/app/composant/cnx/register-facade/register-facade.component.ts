@@ -15,15 +15,15 @@ import {provideNativeDateAdapter} from "@angular/material/core";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-register-facade',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatDatepickerModule, ErrorMessageComponent],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  templateUrl: './register-facade.component.html',
+  styleUrl: './register-facade.component.css'
 })
 
-export class RegisterComponent {
+export class RegisterFacadeComponent {
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
   repetPassword: FormControl = new FormControl('');

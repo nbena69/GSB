@@ -11,14 +11,14 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-facade',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login-facade.component.html',
+  styleUrls: ['./login-facade.component.css']
 })
 
-export class LoginComponent {
+export class LoginFacadeComponent {
   email: FormControl = new FormControl('Villechalane');
   password: FormControl = new FormControl('secret');
   hide = true;

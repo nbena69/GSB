@@ -5,7 +5,7 @@
     <h1 routerLink="">Identifiez-vous</h1>
     <div class="container">
       <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
-        <mat-label>Entrez votre login</mat-label>
+        <mat-label>Entrez votre login-facade</mat-label>
         <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
         <mat-hint align="end">{{input.value.length}}/15</mat-hint>
       </mat-form-field>
@@ -20,7 +20,7 @@
       <br>
       <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
       <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
-      <a routerLink="/register">Vous n'avez pas de compte ?</a>
+      <a routerLink="/register-facade">Vous n'avez pas de compte ?</a>
       <a routerLink="">Retour à la page d'accueil</a>
     </div>
     -->
