@@ -7,7 +7,7 @@
             <div class="dl-text">
               J'ai déjà un compte GSB
             </div>
-            <div class="container">
+            <div>
               <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
                 <mat-label>Username</mat-label>
                 <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
@@ -21,9 +21,6 @@
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
-              <div>
-
-              </div>
               <div>
                 <button type="button" class="button button-primary" (click)="onSubmit()">SE CONNECTER</button>
               </div>
