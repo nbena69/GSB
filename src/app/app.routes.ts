@@ -1,12 +1,10 @@
 import {CanActivateFn, Routes} from '@angular/router';
-import {LoginFacadeComponent} from "./composant/cnx/login-facade/login-facade.component";
 import {ListeFraisComponent} from "./composant/classic/frais/liste-frais/liste-frais.component";
 import {HomeComponent} from "./composant/home/home.component";
 import {GsbLoginService} from "./service/gsb-login.service";
 import {inject} from "@angular/core";
 import {AfficheFraisComponent} from "./composant/classic/frais/affiche-frais/affiche-frais.component";
 import {AjoutFraisComponent} from "./composant/classic/frais/ajout-frais/ajout-frais.component";
-import {RegisterFacadeComponent} from "./composant/cnx/register-facade/register-facade.component";
 import {ListeFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/liste-fraishorsforfait/liste-fraishorsforfait.component";
 import {AfficheFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
 import {AjoutFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
@@ -17,10 +15,10 @@ import {ContactSectionComponent} from "./composant/user/sections/contact-section
 import {SearchVisiteurComponent} from "./composant/user/search-visiteur/search-visiteur.component";
 import {ListeActiviteComponent} from "./composant/classic/activite/liste-activite/liste-activite.component";
 import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
+import {AuthComponent} from "./composant/cnx/auth/auth.component";
 
 export const routes: Routes = [
-  {path: 'login', component: LoginFacadeComponent},
-  {path: 'register', component: RegisterFacadeComponent},
+  {path: 'auth', component: AuthComponent},
   {path: 'dashboard', component: DashboardUserComponent, canActivate: [authentificationGuard()]},
 
   {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},

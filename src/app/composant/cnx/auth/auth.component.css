@@ -1,0 +1,21 @@
+.flex {
+  display: flex;
+}
+
+.content-left {
+  background-color: #f1f7fe;
+  oxygen-core-font-family-roboto: Roboto, arial, sans-serif;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.content-right {
+  background-color: #00264c;
+  oxygen-core-common-white: #fff;
+  min-height: 100vh;
+  width: 50%;
+}

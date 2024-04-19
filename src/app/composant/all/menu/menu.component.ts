@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    this.router.navigate(['/login-facade']);
+    this.router.navigate(['/auth']);
   }
 
   profil() {

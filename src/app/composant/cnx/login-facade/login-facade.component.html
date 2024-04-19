@@ -1,77 +1,21 @@
-<body>
-<div class="flex">
-  <div class="content-left">
-    <!--
-    <h1 routerLink="">Identifiez-vous</h1>
-    <div class="container">
-      <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
-        <mat-label>Entrez votre login-facade</mat-label>
-        <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
-        <mat-hint align="end">{{input.value.length}}/15</mat-hint>
-      </mat-form-field>
-      <mat-form-field style="width: 100%;">
-        <mat-label>Entrez votre mot de passe</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-      <br>
-      <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
-      <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
-      <a routerLink="/register-facade">Vous n'avez pas de compte ?</a>
-      <a routerLink="">Retour à la page d'accueil</a>
-    </div>
-    -->
-    <div class="footer flex">
-    </div>
-  </div>
-  <div class="content-right">
-    <div class="section_inner">
-      <div class="login">
-        <div class="login_inner">
-          <div class="login_inside">
-            <div class="login_content">
-              <div class="login_intro">
-                <h1 class="title title--xlarge">
-                  <div class="ifp1_title">
-                    La nouvelle génération de solutions pour les praticiens
-                  </div>
-                </h1>
-                <h2 class="title title--small">
-                  <p>Équipez vous de GSB et gagnez du temps au quotidien</p>
-                </h2>
-                <ul class="login_list">
-                  <li class="icon-text">
-                    <p class="paragraph icon-text__text paragraph--bold">
-                      <mat-icon class="icon-text__icon">check</mat-icon>
-                      Plus de 340 000 personnels de santé utilisent GSB
-                    </p>
-                  </li>
-                  <li class="icon-text">
-                    <p class="paragraph icon-text__text paragraph--bold">
-                      <mat-icon class="icon-text__icon">check</mat-icon>
-                      Plus de 80 millions de patients gèrent leur santé avec GSB
-                    </p>
-                  </li>
-                  <li class="icon-text">
-                    <p class="paragraph icon-text__text paragraph--bold">
-                      <mat-icon class="icon-text__icon">check</mat-icon>
-                      Le plus haut niveau de protection des données de santé
-                    </p>
-                  </li>
-                </ul>
-                <button type="button" class="button button-primary">En savoir plus</button>
-              </div>
-            </div>
-            <div class="login_media">
-              <img src="../../../../assets/img/practioner-on-tablet.png" alt="" width="512" height="476">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<h1 routerLink="">Identifiez-vous</h1>
+<div class="container">
+  <mat-form-field hintLabel="Max 15 caractères" style="padding-bottom: 5px;width: 100%">
+    <mat-label>Entrez votre login-facade</mat-label>
+    <input matInput #input maxlength="15" placeholder="Ex. Denis" [formControl]="email">
+    <mat-hint align="end">{{input.value.length}}/15</mat-hint>
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Entrez votre mot de passe</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <br>
+  <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Envoyer</button>&nbsp;
+  <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>
+  <a routerLink="/register-facade">Vous n'avez pas de compte ?</a>
+  <a routerLink="">Retour à la page d'accueil</a>
 </div>
-</body>
