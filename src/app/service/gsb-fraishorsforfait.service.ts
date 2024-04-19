@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Fraishorsforfait} from "../metier/fraishorsforfait";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {GsbLoginService} from "./gsb-login.service";
+import {GsbAuthService} from "./gsb-auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class GsbFraishorsforfaitService {
   readonly appels_termines = this._reponses.asObservable();
   public listeFraisHF: Fraishorsforfait[] = [];
   public dataStore: { fraisHorsForfait: Fraishorsforfait[] } = {fraisHorsForfait: []};
-  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
+  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
 
   }
 

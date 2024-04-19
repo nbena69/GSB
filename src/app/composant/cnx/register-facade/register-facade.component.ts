@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {GsbLoginService} from "../../../service/gsb-login.service";
+import {GsbAuthService} from "../../../service/gsb-auth.service";
 import {CommonModule, Location} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {GsbShortService} from "../../../service/gsb-short.service";
@@ -40,7 +40,7 @@ export class RegisterFacadeComponent {
   hide = true;
   errorMessage: string | null = null;
 
-  constructor(private loginService: GsbLoginService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
+  constructor(private loginService: GsbAuthService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
   }

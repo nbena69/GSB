@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Frais} from '../metier/frais';
-import {GsbLoginService} from "./gsb-login.service";
+import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -18,7 +18,7 @@ export class GsbFraisService {
   public listeFrais: Frais[] = [];
   public dataStore: { frais: Frais[] } = {frais: []};
 
-  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
+  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
   }
 
   listeFraisDuVisiteur() {

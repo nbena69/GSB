@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {ActiviteCompl} from "../metier/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {GsbLoginService} from "./gsb-login.service";
+import {GsbAuthService} from "./gsb-auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class GsbActiviteService {
   public listeActivite: ActiviteCompl[] = [];
   public dataStore: { activite: ActiviteCompl[] } = {activite: []};
 
-  constructor(private http: HttpClient, private gsb_api: GsbLoginService) { }
+  constructor(private http: HttpClient, private gsb_api: GsbAuthService) { }
 
   getListeActivite() {
     const headers = new HttpHeaders({

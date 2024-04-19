@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Travailler} from "../metier/travailler";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {GsbLoginService} from "./gsb-login.service";
+import {GsbAuthService} from "./gsb-auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class GsbAffectationService {
   readonly appels_terminesAffectationUnique = this._reponsesAffectationUnique.asObservable();
   public listeAffectationUnique: Travailler[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
+  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
   }
 
   getListeAffectationVisiteur(id_visiteur: number) {

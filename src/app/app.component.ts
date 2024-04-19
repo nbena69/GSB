@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MenuComponent} from "./composant/all/menu/menu.component";
-import {GsbLoginService} from "./service/gsb-login.service";
+import {GsbAuthService} from "./service/gsb-auth.service";
 import {FooterComponent} from "./composant/all/footer/footer.component";
 import {LoaderComponent} from "./composant/all/loader/loader.component";
 
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'GSB';
   isLoading: boolean = true;
 
-  constructor(private loginService: GsbLoginService, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(private loginService: GsbAuthService, private cdr: ChangeDetectorRef, private router: Router) {
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);

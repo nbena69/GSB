@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {Etat} from "../metier/etat";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {GsbLoginService} from "./gsb-login.service";
+import {GsbAuthService} from "./gsb-auth.service";
 import {Laboratoire} from "../metier/laboratoire";
 import {Secteur} from "../metier/secteur";
 import {Visiteur} from "../metier/visiteur";
@@ -53,7 +53,7 @@ export class GsbShortService {
   readonly appels_terminesRegionSecteur = this._reponsesRegionSecteur.asObservable();
   public listeRegionSecteur: Region[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbLoginService) {
+  constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
   }
 
   getListeEtats() {

@@ -9,7 +9,7 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 
-export class GsbLoginService {
+export class GsbAuthService {
   private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   public utilisateurConnecte: boolean = false;

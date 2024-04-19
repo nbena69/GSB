@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {GsbLoginService} from '../../../service/gsb-login.service';
+import {Component, Input} from '@angular/core';
+import {GsbAuthService} from '../../../service/gsb-auth.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule, Location} from "@angular/common";
 import {RouterLink} from "@angular/router";
@@ -23,7 +23,7 @@ export class LoginFacadeComponent {
   password: FormControl = new FormControl('secret');
   hide = true;
 
-  constructor(private loginService: GsbLoginService, private location: Location) {
+  constructor(private loginService: GsbAuthService, private location: Location) {
   }
 
   onSubmit() {

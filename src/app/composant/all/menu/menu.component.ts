@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
-import {GsbLoginService} from "../../../service/gsb-login.service";
+import {GsbAuthService} from "../../../service/gsb-auth.service";
 import {CommonModule} from "@angular/common";
 import {MatMenu, MatMenuItem, MatMenuModule} from "@angular/material/menu";
 import {MatButton, MatButtonModule} from "@angular/material/button";
@@ -21,7 +21,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class MenuComponent implements OnInit {
   utilisateurConnecte: boolean = false;
 
-  constructor(private loginService: GsbLoginService, private router: Router, public dialog: MatDialog) {
+  constructor(private loginService: GsbAuthService, private router: Router, public dialog: MatDialog) {
   }
 
   ngOnInit() {

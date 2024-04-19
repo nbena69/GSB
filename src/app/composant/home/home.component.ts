@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MenuComponent} from "../all/menu/menu.component";
 import {ListeFraisComponent} from "../classic/frais/liste-frais/liste-frais.component";
-import {GsbLoginService} from "../../service/gsb-login.service";
+import {GsbAuthService} from "../../service/gsb-auth.service";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
@@ -18,7 +18,7 @@ import {RouterLink} from "@angular/router";
 
 export class HomeComponent {
   utilisateurConnecte: boolean = false;
-  constructor(private loginService: GsbLoginService) {
+  constructor(private loginService: GsbAuthService) {
   }
 
   ngOnInit() {
