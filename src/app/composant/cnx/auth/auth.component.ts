@@ -20,7 +20,7 @@ import {NgIf} from "@angular/common";
 })
 
 export class AuthComponent {
-  auth: boolean = true;
+  auth: boolean = false;
 
   constructor() {}
 }
