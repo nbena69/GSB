@@ -203,6 +203,7 @@ export class UpdateAffectationPopupComponent {
     this.id_secteur.setValue("");
     this.id_region.setValue("");
     this.jjmmaa.setValue("");
+    this.role_visiteur.setValue("Visiteur");
   }
 
   delay(ms: number) {
