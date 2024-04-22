@@ -89,4 +89,8 @@ export class RegisterFacadeComponent {
       event.preventDefault();
     }
   }
+
+  authLogin() {
+    this.loginService.authLogin();
+  }
 }
