@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-.step {
-  transition: all .3s;
-}
-
 .section__inner {
   overflow: hidden;
 }
