@@ -133,3 +133,14 @@
 .field {
   width: 100% !important;
 }
+
+.back-button {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+}
+
+.content {
+  float: right;
+  display: flex;
+}

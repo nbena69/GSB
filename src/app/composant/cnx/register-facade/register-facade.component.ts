@@ -38,6 +38,7 @@ export class RegisterFacadeComponent {
   type_visiteur: FormControl = new FormControl('V');
   actuallyStep: number = 1;
   hide = true;
+  repeatHide = true;
   errorMessage: string | null = null;
 
   constructor(private loginService: GsbAuthService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {

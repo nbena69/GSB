@@ -35,10 +35,10 @@
               </mat-form-field>
               <mat-form-field style="width: 100%;">
                 <mat-label>Répétez votre mot de passe</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="repetPassword">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <input matInput [type]="repeatHide ? 'password' : 'text'" [formControl]="repetPassword">
+                <button mat-icon-button matSuffix (click)="repeatHide = !repeatHide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="repeatHide">
+                  <mat-icon>{{repeatHide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
               <div style="float: right;">
@@ -57,8 +57,10 @@
                 <input matInput #input maxlength="25" placeholder="Ex. Mathéo" [formControl]="prenom_visiteur">
                 <mat-hint align="end">{{input.value.length}}/25</mat-hint>
               </mat-form-field>
-              <div style="float: right;">
-                <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 1">Retour</button>&nbsp;
+              <div class="content">
+                <button mat-icon-button class="back-button" (click)="actuallyStep = 1">
+                  <mat-icon aria-label="Retour">arrow_back</mat-icon>
+                </button>
                 <button type="button" class="button button-primary" (click)="actuallyStep = 3">Suivant ▶︎</button>
               </div>
             </div>
@@ -81,8 +83,10 @@
                 <input matInput #input maxlength="30" placeholder="Ex. Lyon" [formControl]="ville_visiteur">
                 <mat-hint align="end">{{input.value.length}}/30</mat-hint>
               </mat-form-field>
-              <div style="float: right;">
-                <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 2">Retour</button>&nbsp;
+              <div class="content">
+                <button mat-icon-button class="back-button" (click)="actuallyStep = 2">
+                  <mat-icon aria-label="Retour">arrow_back</mat-icon>
+                </button>
                 <button type="button" class="button button-primary" (click)="actuallyStep = 4">Suivant ▶︎</button>
               </div>
             </div>
@@ -112,8 +116,10 @@
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-              <div style="float: right;">
-                <button type="button" class="btn btn-outline-warning" (click)="actuallyStep = 3">Retour</button>&nbsp;
+              <div class="content">
+                <button mat-icon-button class="back-button" (click)="actuallyStep = 3">
+                  <mat-icon aria-label="Retour">arrow_back</mat-icon>
+                </button>
                 <button type="button" style="float: right;" class="button button-primary"
                         (click)="onSubmitAjoutVisiteur()">
                   S'INSCRIRE
