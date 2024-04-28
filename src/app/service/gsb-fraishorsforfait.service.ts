@@ -28,7 +28,6 @@ export class GsbFraishorsforfaitService {
       data => {
         this.listeFraisHF = data;
         this._reponses.next(this.listeFraisHF);
-        console.log("Appel API liste Frais Hors Forfait reussi")
       },
       error => {
         console.log("Erreur Appel API liste frais Hors Forfait", error)
@@ -55,7 +54,6 @@ export class GsbFraishorsforfaitService {
           this.dataStore.fraisHorsForfait.push(this.fraisHorsForfait);
           this._reponses.next(this.dataStore.fraisHorsForfait);
           this.router.navigate(['fraisHF/liste', id_frais]);
-          console.log("Appel réussi");
         },
         error => {
           console.log("Erreur Appel API", error);
@@ -82,7 +80,6 @@ export class GsbFraishorsforfaitService {
           this.dataStore.fraisHorsForfait.push(this.fraisHorsForfait);
           this._reponses.next(this.dataStore.fraisHorsForfait);
           this.router.navigate(['fraisHF/liste', id_frais]);
-          console.log("Appel réussi");
         },
         error => {
           console.log("Erreur Appel API", error);
