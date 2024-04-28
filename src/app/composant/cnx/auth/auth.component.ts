@@ -3,7 +3,7 @@ import {LoginFacadeComponent} from "../login-facade/login-facade.component";
 import {MatIcon} from "@angular/material/icon";
 import {AuthContentFacadeComponent} from "../auth-content-facade/auth-content-facade.component";
 import {RegisterFacadeComponent} from "../register-facade/register-facade.component";
-import {NgIf} from "@angular/common";
+import {CommonModule, NgIf} from "@angular/common";
 import {GsbAuthService} from "../../../service/gsb-auth.service";
 import {Subscription} from "rxjs";
 
@@ -15,7 +15,8 @@ import {Subscription} from "rxjs";
     LoginFacadeComponent,
     AuthContentFacadeComponent,
     RegisterFacadeComponent,
-    NgIf
+    NgIf,
+    CommonModule
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
