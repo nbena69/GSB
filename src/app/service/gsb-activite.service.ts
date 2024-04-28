@@ -27,7 +27,6 @@ export class GsbActiviteService {
       data => {
         this.listeActivite = data;
         this._reponses.next(this.listeActivite);
-        console.log("Appel API liste Activite reussi", data)
       },
       error => {
         console.log("Erreur Appel API Activite Specialite", error)

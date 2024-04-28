@@ -22,7 +22,7 @@ import {Subscription} from "rxjs";
   styleUrl: './auth.component.css'
 })
 
-export class AuthComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit {
   auth: boolean = true;
   private authSubscription!: Subscription;
 
@@ -34,9 +34,5 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.auth$.subscribe(auth => {
       this.auth = auth;
     });
-  }
-
-  ngOnDestroy() {
-    this.authSubscription.unsubscribe();
   }
 }
