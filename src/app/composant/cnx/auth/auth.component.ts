@@ -22,7 +22,7 @@ import {Subscription} from "rxjs";
 })
 
 export class AuthComponent implements OnInit, OnDestroy {
-  auth: boolean = false;
+  auth: boolean = true;
   private authSubscription!: Subscription;
 
   constructor(private authService: GsbAuthService) {

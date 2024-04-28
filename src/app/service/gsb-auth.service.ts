@@ -13,6 +13,8 @@ export class GsbAuthService {
   private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
   public utilisateurConnecte: boolean = false;
+  private _authSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  auth$ = this._authSubject.asObservable();
 
   private login: Login = new Login;
   public _reponses = new BehaviorSubject<Login[]>([]);
@@ -89,9 +91,6 @@ export class GsbAuthService {
   estConnecte(): boolean {
     return this.utilisateurConnecte;
   }
-
-  private _authSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  auth$ = this._authSubject.asObservable();
 
   get auth(): boolean {
     return this._authSubject.value;
