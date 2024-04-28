@@ -38,7 +38,6 @@ export class GsbAffectationService {
       data => {
         this.listeAffectationVisiteur = data;
         this._reponsesAffectationVisiteur.next(this.listeAffectationVisiteur);
-        console.log("Appel API liste Affectation visiteur reussi")
       },
       error => {
         console.log("Erreur Appel API liste Etats", error)
@@ -74,7 +73,6 @@ export class GsbAffectationService {
           this.dataStore.travailler.push(this.travailler);
           this._reponses.next(this.dataStore.travailler);
           this.router.navigate(['searchVisiteur']);
-          console.log("Appel réussi ajout affect");
         },
         error => {
           console.log("Erreur Appel API", error);
@@ -101,7 +99,6 @@ export class GsbAffectationService {
           this.dataStore.travailler.push(this.travailler);
           this._reponses.next(this.dataStore.travailler);
           this.router.navigate(['searchVisiteur']);
-          console.log("Appel réussi Modif affect");
         },
         error => {
           console.log("Erreur Appel API", error);
