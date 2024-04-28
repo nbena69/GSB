@@ -72,7 +72,6 @@ export class GsbAuthService {
           this._reponsesRegister.next(this.dataStoreRegister.register);
           this.serviceEnvoieLogin(email, password);
           this.router.navigate(['/']);
-          console.log("Ajout de visiteur réussi", data);
         },
         error => {
           console.log("Erreur lors de l'ajout de visiteur", error);
