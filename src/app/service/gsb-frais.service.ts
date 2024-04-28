@@ -29,7 +29,6 @@ export class GsbFraisService {
       data => {
         this.listeFrais = data;
         this._reponses.next(this.listeFrais);
-        console.log("Appel API liste Frais reussi")
       },
       error => {
         console.log("Erreur Appel API liste frais", error)
@@ -61,7 +60,6 @@ export class GsbFraisService {
           this.dataStore.frais.push(this.frais);
           this._reponses.next(this.dataStore.frais);
           this.router.navigate(['frais/liste']);
-          console.log("Appel réussi");
         },
         error => {
           console.log("Erreur Appel API", error);
@@ -92,7 +90,6 @@ export class GsbFraisService {
           this.dataStore.frais.push(this.frais);
           this._reponses.next(this.dataStore.frais);
           this.router.navigate(['frais/liste']);
-          console.log("Appel réussi");
         },
         error => {
           console.log("Erreur Appel API", error);
