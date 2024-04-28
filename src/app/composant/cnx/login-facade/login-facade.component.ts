@@ -37,4 +37,8 @@ export class LoginFacadeComponent {
   return() {
     this.location.back();
   }
+
+  authRegister() {
+    this.loginService.authRegister();
+  }
 }

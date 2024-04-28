@@ -1,7 +1,7 @@
 <div class="flex">
   <div class="content-left">
     <app-login-facade *ngIf="auth"></app-login-facade>
-    <app-register-facade *ngIf="!auth"></app-register-facade>
+    <app-register-facade *ngIf="auth == false"></app-register-facade>
   </div>
   <div class="content-right">
     <app-auth-content-facade></app-auth-content-facade>
