@@ -154,7 +154,6 @@ export class GsbShortService {
       data => {
         this.listeVisiteur = data;
         this._reponsesVisiteur.next(this.listeVisiteur);
-        console.log("Appel API liste Visiteur reussi")
       },
       error => {
         console.log("Erreur Appel API liste Visiteur", error)
