@@ -51,7 +51,7 @@ export class RegisterFacadeComponent {
     setTimeout(() => {
       this.errorMessage = null;
     }, 5000);
-    /*this.loginService.ajoutRegister(
+    this.loginService.ajoutRegister(
       this.email.value,
       this.password.value,
       this.id_laboratoire.value,
@@ -63,7 +63,7 @@ export class RegisterFacadeComponent {
       this.ville_visiteur.value,
       this.date_embauche.value,
       this.type_visiteur.value
-    );*/
+    );
   }
 
   return() {

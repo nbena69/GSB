@@ -44,9 +44,9 @@ export const routes: Routes = [
 
 export function authentificationGuard(): CanActivateFn {
   return () => {
-    const loginService: GsbAuthService = inject(GsbAuthService);
+    const authService: GsbAuthService = inject(GsbAuthService);
 
-    if (loginService.visiteurId() > 0) {
+    if (authService.visiteurId() > 0) {
       return true;
     } else {
       console.log("Il faut vous connecter !");
@@ -57,13 +57,30 @@ export function authentificationGuard(): CanActivateFn {
 
 export function adminGuard(): CanActivateFn {
   return () => {
-    const loginService: GsbAuthService = inject(GsbAuthService);
+    const authService: GsbAuthService = inject(GsbAuthService);
 
-    if (loginService.visiteurId() > 0) {
-      if (loginService.visiteurType() === 'A') {
+    if (authService.visiteurId() > 0) {
+      if (authService.visiteurType() === 'A') {
         return true;
       } else {
         console.log('Accès refusé. Vous devez être un administrateur.');
+      }
+    } else {
+      console.log('Il faut vous connecter');
+    }
+    return false;
+  }
+}
+
+export function commercialGuard(): CanActivateFn {
+  return () => {
+    const authService: GsbAuthService = inject(GsbAuthService);
+
+    if (authService.visiteurId() > 0) {
+      if (authService.visiteurType() === 'C') {
+        return true;
+      } else {
+        console.log('Accès refusé. Vous devez être un Commercial.');
       }
     } else {
       console.log('Il faut vous connecter');
