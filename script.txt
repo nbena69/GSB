@@ -1,0 +1,40 @@
+Script ((post-commit)PAS D'EXTENSION !!)
+
+#!/bin/bash
+
+# Récupère la branche actuelle
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Déclenche le déploiement avec condition
+if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
+    cd C:/Users/naelb/WebstormProjects/GSB
+
+    ng build
+
+    sleep 25
+
+    # Envoyer les fichiers sur le serveur Infomaniak
+    ftp -n <<EOF
+    open lg9zzv.ftp.infomaniak.com
+    user lg9zzv_naelbenaissa Anc18613.
+    cd /sites/gsb.naelbenaissa.fr
+    prompt
+    mput -r dist/gsbfrais-client/browser/*
+    bye
+EOF
+
+    # Envoyer les fichiers sur le serveur etu.lmdsio.com
+    ftp -n <<EOF
+    open etu.lmdsio.com
+    user benaissagsb Sio2023.
+    cd /web
+    prompt
+    mput -r dist/gsbfrais-client/browser/*
+    bye
+EOF
+
+sleep 10
+
+    # Renommer le dossier dist en dist-old
+    mv dist dist-old
+fi
