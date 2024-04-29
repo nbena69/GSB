@@ -20,9 +20,12 @@ import {MatDialog} from "@angular/material/dialog";
 
 export class MenuComponent implements OnInit {
   utilisateurConnecte: boolean = false;
+  adminConnecte: boolean = false;
 
   constructor(private loginService: GsbAuthService, private router: Router, public dialog: MatDialog) {
-  }
+    if (loginService.visiteurType() === 'A') {
+      this.adminConnecte = true;
+    }  }
 
   ngOnInit() {
     this.utilisateurConnecte = this.loginService.estConnecte();
