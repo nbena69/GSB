@@ -32,11 +32,12 @@ export const routes: Routes = [
   {path: 'fraisHF/affiche/:id_fraishorsforfait', component: AfficheFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
   {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
 
-  {path: 'searchVisiteur', component: SearchVisiteurComponent, canActivate: [authentificationGuard()]},
+  {path: 'searchVisiteur', component: SearchVisiteurComponent, canActivate: [authentificationGuard(), adminGuard()]},
 
   {path: 'dashboard/account', component: AccountSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'dashboard/notif', component: NotificationSectionComponent, canActivate: [authentificationGuard()]},
   {path: 'dashboard/contact', component: ContactSectionComponent, canActivate: [authentificationGuard()]},
+
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
@@ -52,4 +53,21 @@ export function authentificationGuard(): CanActivateFn {
       return false;
     }
   };
+}
+
+export function adminGuard(): CanActivateFn {
+  return () => {
+    const loginService: GsbAuthService = inject(GsbAuthService);
+
+    if (loginService.visiteurId() > 0) {
+      if (loginService.visiteurType() === 'A') {
+        return true;
+      } else {
+        console.log('Accès refusé. Vous devez être un administrateur.');
+      }
+    } else {
+      console.log('Il faut vous connecter');
+    }
+    return false;
+  }
 }

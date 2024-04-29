@@ -103,6 +103,10 @@ export class GsbAuthService {
     this._authSubject.next(false);
   }
 
+  visiteurType(): string {
+    return this.login.visiteur.type_visiteur;
+  }
+
   logout() {
     this.login = new Login();
     this.dataStore.login = [];
