@@ -5,12 +5,12 @@
     <div class="header_menu">
       <div>
         <button mat-button class="button header-button"
-                [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais
+                [matMenuTriggerFor]="frais" *ngIf="utilisateurConnecte">Frais ▼
         </button>
       </div>
       <div>
         <button mat-button class="button header-button"
-                [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité
+                [matMenuTriggerFor]="activite" *ngIf="utilisateurConnecte">Activité ▼
         </button>
       </div>
       <div>
@@ -55,7 +55,7 @@
 </mat-menu>
 
 <mat-menu #options="matMenu" xPosition="before">
-  <button mat-menu-item (click)="profil()" *ngIf="utilisateurConnecte">Mon profil</button>
+  <!--<button mat-menu-item (click)="profil()" *ngIf="utilisateurConnecte">Mon profil</button>-->
   <button mat-menu-item routerLink="/auth" *ngIf="utilisateurConnecte  == false">Se connecter</button>
   <button mat-menu-item (click)="logout()" *ngIf="utilisateurConnecte">Se déconnecter</button>
 </mat-menu>

@@ -83,6 +83,14 @@ export class GsbAuthService {
     return this.login.access_token;
   }
 
+  visiteurType(): string {
+    return this.login.visiteur.type_visiteur;
+  }
+
+  visiteurNom(): string {
+    return this.login.visiteur.nom_visiteur;
+  }
+
   visiteurId(): number {
     return this.login.visiteur.id_visiteur;
   }
@@ -101,10 +109,6 @@ export class GsbAuthService {
 
   authRegister() {
     this._authSubject.next(false);
-  }
-
-  visiteurType(): string {
-    return this.login.visiteur.type_visiteur;
   }
 
   logout() {
