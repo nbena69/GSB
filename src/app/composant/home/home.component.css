@@ -109,3 +109,22 @@ h1 {
   background-color: #045fae;
   color: white;
 }
+
+.home-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.home-section ul li {
+  margin-bottom: 10px;
+}
+
+.home-section ul li a {
+  color: #107aca;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.home-section ul li a:hover {
+  color: #045fae;
+}

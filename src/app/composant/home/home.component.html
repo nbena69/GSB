@@ -1,13 +1,25 @@
 <body>
-<h1>Bienvenue sur votre nouvelle page d'accueil interactive et personnalisée</h1>
+<h1 *ngIf="adminConnecte == false">Bienvenue sur votre nouvelle page d'accueil interactive et personnalisée</h1>
 
-<div *ngIf="utilisateurConnecte">
-  <div *ngIf="adminConnecte" class="container">
+<div *ngIf="utilisateurConnecte && adminConnecte">
+  <div class="container">
     <section class="home-section" style="border-color: red">
       <h2 style="color: #8B0000">Vous êtes actuellement connecté en tant qu'administrateur</h2>
     </section>
   </div>
+  <div class="container">
+      <section class="home-section">
+        <h2>Liens Utiles</h2>
+        <ul>
+          <li><a routerLink="/frais/liste">Liste des Frais</a></li>
+          <li><a routerLink="/activite/liste">Liste des Activités</a></li>
+          <li><a routerLink="/searchVisiteur">Liste des Visiteurs</a></li>
+        </ul>
+      </section>
+  </div>
+</div>
 
+<div *ngIf="utilisateurConnecte && adminConnecte == false">
   <div class="container">
     <section class="home-section">
       <h2>Vous avez de nouveaux frais à déclarer ?</h2>
@@ -34,7 +46,8 @@
   <div class="container">
     <section class="home-section">
       <h2>GSB fait peau neuve : découvrez de nouvelle fonctionnalités</h2>
-      <p>GSB adopte une nouvelle interface qui inclut d'avantage d'options. Testez notre nouvelle interface modernisée et intuitive !</p>
+      <p>GSB adopte une nouvelle interface qui inclut d'avantage d'options. Testez notre nouvelle interface modernisée
+        et intuitive !</p>
 
       <div class="actions">
         <a routerLink="/auth" type="button" class="btn button button-primary">Testez</a>
@@ -64,19 +77,22 @@
       <h2>Ils ont aimé, alors pourquoi pas vous ?</h2>
       <div class="testimonial">
         <div class="testimonial-content">
-          <p>"Grâce à cette application, j'ai pu suivre mes dépenses de manière plus organisée et efficace. Cela m'a vraiment aidé à mieux gérer mes finances."</p>
+          <p>"Grâce à cette application, j'ai pu suivre mes dépenses de manière plus organisée et efficace. Cela m'a
+            vraiment aidé à mieux gérer mes finances."</p>
           <p class="author">- Jeanne D.</p>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-content">
-          <p>"Je recommande vivement cette application à tous ceux qui ont besoin d'un moyen simple et pratique de suivre leurs frais. Elle a simplifié ma vie de manière significative."</p>
+          <p>"Je recommande vivement cette application à tous ceux qui ont besoin d'un moyen simple et pratique de
+            suivre leurs frais. Elle a simplifié ma vie de manière significative."</p>
           <p class="author">- Paul R.</p>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-content">
-          <p>"L'interface conviviale et les fonctionnalités utiles de cette application en font mon outil de choix pour gérer mes dépenses quotidiennes. Merci pour ce superbe outil!"</p>
+          <p>"L'interface conviviale et les fonctionnalités utiles de cette application en font mon outil de choix pour
+            gérer mes dépenses quotidiennes. Merci pour ce superbe outil!"</p>
           <p class="author">- Marie L.</p>
         </div>
       </div>
