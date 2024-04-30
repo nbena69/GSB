@@ -3,6 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {ActiviteCompl} from "../metier/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
+import {Frais} from "../metier/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,21 @@ export class GsbActiviteService {
       },
       error => {
         console.log("Erreur Appel API Activite Specialite", error)
+      }
+    )
+  }
+
+  listeActiviteDuVisiteur() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<ActiviteCompl[]>(`${this.Url}/activite/visiteur/` + this.gsb_api.visiteurId(), {headers: headers}).subscribe(
+      data => {
+        this.listeActivite = data;
+        this._reponses.next(this.listeActivite);
+      },
+      error => {
+        console.log("Erreur Appel API liste frais", error)
       }
     )
   }

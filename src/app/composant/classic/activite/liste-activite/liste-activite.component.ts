@@ -12,6 +12,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {GsbAuthService} from "../../../../service/gsb-auth.service";
 
 @Component({
   selector: 'app-liste-activite',
@@ -23,8 +24,13 @@ import {MatOption, MatSelect} from "@angular/material/select";
 })
 
 export class ListeActiviteComponent {
-  constructor(private activite_api: GsbActiviteService, private router: Router, private location: Location) {
-    this.activite_api.getListeActivite();
+  constructor(private activite_api: GsbActiviteService, private authService: GsbAuthService, private router: Router, private location: Location) {
+    if (authService.visiteurType() === 'A') {
+      this.activite_api.getListeActivite();
+    } else {
+      this.activite_api.listeActiviteDuVisiteur();
+    }
+
   }
 
   getListeActivite() {

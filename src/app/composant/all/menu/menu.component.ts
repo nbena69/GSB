@@ -25,7 +25,8 @@ export class MenuComponent implements OnInit {
   constructor(private loginService: GsbAuthService, private router: Router, public dialog: MatDialog) {
     if (loginService.visiteurType() === 'A') {
       this.adminConnecte = true;
-    }  }
+    }
+  }
 
   ngOnInit() {
     this.utilisateurConnecte = this.loginService.estConnecte();
