@@ -2,6 +2,12 @@
 <h1>Bienvenue sur votre nouvelle page d'accueil interactive et personnalisée</h1>
 
 <div *ngIf="utilisateurConnecte">
+  <div *ngIf="adminConnecte" class="container">
+    <section class="home-section" style="border-color: red">
+      <h2 style="color: #8B0000">Vous êtes actuellement connecté en tant qu'administrateur</h2>
+    </section>
+  </div>
+
   <div class="container">
     <section class="home-section">
       <h2>Vous avez de nouveaux frais à déclarer ?</h2>

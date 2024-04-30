@@ -18,7 +18,12 @@ import {RouterLink} from "@angular/router";
 
 export class HomeComponent {
   utilisateurConnecte: boolean = false;
+  adminConnecte: boolean = false;
+
   constructor(private loginService: GsbAuthService) {
+    if (loginService.visiteurType() === 'A') {
+      this.adminConnecte = true;
+    }
   }
 
   ngOnInit() {
