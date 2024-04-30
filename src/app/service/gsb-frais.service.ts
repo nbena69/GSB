@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Frais} from '../metier/frais';
 import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";
+import {ActiviteCompl} from "../metier/activite-compl";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,21 @@ export class GsbFraisService {
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
   }
 
+  getListeFrais() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<Frais[]>(`${this.Url}/frais`, {headers: headers}).subscribe(
+      data => {
+        this.listeFrais = data;
+        this._reponses.next(this.listeFrais);
+      },
+      error => {
+        console.log("Erreur Appel API Frais", error)
+      }
+    )
+  }
+
   listeFraisDuVisiteur() {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
@@ -31,7 +47,7 @@ export class GsbFraisService {
         this._reponses.next(this.listeFrais);
       },
       error => {
-        console.log("Erreur Appel API liste frais", error)
+        console.log("Erreur Appel API Frais", error)
       }
     )
   }

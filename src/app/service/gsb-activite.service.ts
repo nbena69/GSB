@@ -30,7 +30,7 @@ export class GsbActiviteService {
         this._reponses.next(this.listeActivite);
       },
       error => {
-        console.log("Erreur Appel API Activite Specialite", error)
+        console.log("Erreur Appel API Activite", error)
       }
     )
   }
@@ -45,7 +45,7 @@ export class GsbActiviteService {
         this._reponses.next(this.listeActivite);
       },
       error => {
-        console.log("Erreur Appel API liste frais", error)
+        console.log("Erreur Appel API liste Activité", error)
       }
     )
   }

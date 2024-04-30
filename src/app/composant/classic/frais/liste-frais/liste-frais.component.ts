@@ -12,6 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {GsbAuthService} from "../../../../service/gsb-auth.service";
 
 @Component({
   selector: 'app-liste-frais',
@@ -24,8 +25,12 @@ import {MatOption, MatSelect} from "@angular/material/select";
 })
 
 export class ListeFraisComponent {
-  constructor(private frais_api: GsbFraisService, private router: Router, private location: Location) {
-    this.frais_api.listeFraisDuVisiteur();
+  constructor(private frais_api: GsbFraisService, private authService: GsbAuthService, private router: Router, private location: Location) {
+    if (authService.visiteurType() === 'A') {
+      this.frais_api.getListeFrais();
+    } else {
+      this.frais_api.listeFraisDuVisiteur();
+    }
   }
 
   getListeFrais() {

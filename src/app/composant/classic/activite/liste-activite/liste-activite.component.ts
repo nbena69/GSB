@@ -30,7 +30,6 @@ export class ListeActiviteComponent {
     } else {
       this.activite_api.listeActiviteDuVisiteur();
     }
-
   }
 
   getListeActivite() {
