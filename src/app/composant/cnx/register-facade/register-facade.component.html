@@ -116,6 +116,7 @@
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
+              <app-error-message [errorMessage]="errorMessage" style="padding: 1px"></app-error-message>
               <div class="content">
                 <button mat-icon-button class="back-button" (click)="actuallyStep = 3">
                   <mat-icon aria-label="Retour">arrow_back</mat-icon>
