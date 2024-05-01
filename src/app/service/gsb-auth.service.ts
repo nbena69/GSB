@@ -3,7 +3,7 @@ import {Login} from "../metier/login";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Visiteur} from "../metier/visiteur";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -30,20 +30,21 @@ export class GsbAuthService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  serviceEnvoieLogin(email: string, password: string) {
+  serviceEnvoieLogin(email: string, password: string): Observable<any> {
     const requestObject = new Visiteur({"login": email, "password": password});
 
-    return this.http.post<Login>(`${this.Url}/login`, requestObject).subscribe(
-      data => {
+    return this.http.post<Login>(`${this.Url}/login`, requestObject).pipe(
+      tap(data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
         this.utilisateurConnecte = true;
         this.router.navigate(['']);
-      },
-      error => {
+      }),
+      catchError(error => {
         console.log("Erreur Appel API", error);
-      }
+        return throwError(error);
+      })
     );
   }
 

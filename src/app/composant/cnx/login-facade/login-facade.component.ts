@@ -10,11 +10,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCheckbox} from "@angular/material/checkbox";
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 
 @Component({
   selector: 'app-login-facade',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatCheckbox],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatCheckbox, ErrorMessageComponent],
   templateUrl: './login-facade.component.html',
   styleUrls: ['./login-facade.component.css']
 })
@@ -23,6 +24,7 @@ export class LoginFacadeComponent {
   email: FormControl = new FormControl('Villechalane');
   password: FormControl = new FormControl('secret');
   hide = true;
+  errorMessage: string | null = null;
 
   constructor(private loginService: GsbAuthService, private location: Location) {
   }
@@ -31,6 +33,14 @@ export class LoginFacadeComponent {
     this.loginService.serviceEnvoieLogin(
       this.email.value,
       this.password.value
+    ).subscribe(
+      () => {},
+      error => {
+        this.errorMessage = "Une erreur s'est produite : " + error.error.error;
+        setTimeout(() => {
+          this.errorMessage = null;
+        }, 5000);
+      }
     );
   }
 
