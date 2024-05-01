@@ -51,7 +51,6 @@ export class SearchVisiteurComponent {
         .subscribe(
           data => {
             this.visiteurs = data;
-            console.log(data, "1");
           },
           error => {
             this.errorMessage = "Une erreur s'est produite : " + error.error.error;
@@ -65,7 +64,6 @@ export class SearchVisiteurComponent {
         .subscribe(
           data => {
             this.visiteurs = data;
-            console.log(data, "2");
           },
           error => {
             this.errorMessage = "Une erreur s'est produite : " + error.error.error;
@@ -81,6 +79,8 @@ export class SearchVisiteurComponent {
   researchAvancee() {
     this.selector = !this.selector;
     this.nom_visiteur.setValue("");
+    this.id_secteur.setValue("");
+    this.id_laboratoire.setValue("");
   }
 
   openUpdate(id_visiteur: number) {

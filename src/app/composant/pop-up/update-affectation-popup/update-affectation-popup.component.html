@@ -35,6 +35,8 @@
       </mat-select>
     </mat-form-field>
 
+    <app-error-message [errorMessage]="errorMessage"></app-error-message>
+
     <h3 mat-dialog-title *ngIf="valuePage == 2">Ajouter une affectation</h3>
     <h3 mat-dialog-title *ngIf="valuePage == 3">Affectation sélectionnée</h3>
 
