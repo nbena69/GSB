@@ -8,7 +8,7 @@
 
       <ng-container matColumnDef="date_fraishorsforfait">
         <th mat-header-cell *matHeaderCellDef>Date</th>
-        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.date_fraishorsforfait }}</td>
+        <td mat-cell *matCellDef="let fraisHF">{{ fraisHF.date_fraishorsforfait?.slice(0, 10) }}</td>
       </ng-container>
 
       <ng-container matColumnDef="montant_fraishorsforfait">

@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
   constructor(private loginService: GsbAuthService, private cdr: ChangeDetectorRef, private router: Router) {
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 800);
+    this.router.navigate(['/']);
   }
 
   ngOnInit() {

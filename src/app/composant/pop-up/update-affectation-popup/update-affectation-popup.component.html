@@ -27,7 +27,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group" *ngIf="valuePage == 1">
-      <mat-label>Affectation :</mat-label>
+      <mat-label>Sélectionner une Affectation</mat-label>
       <mat-select id="id_travail" [formControl]="id_travail">
         <mat-option *ngFor="let affectation of getListeAffectationVisiteur() | async" [value]="affectation.id_travail">
           {{ affectation.nom_region }} - {{ affectation.jjmmaa }}

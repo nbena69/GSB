@@ -38,7 +38,6 @@ export class AfficheFraishorsforfaitComponent {
         this.montant_fraishorsforfait.setValue(fraishorsforfait.montant_fraishorsforfait);
         this.lib_fraishorsforfait.setValue(fraishorsforfait.lib_fraishorsforfait);
         this.id_frais = fraishorsforfait.id_frais;
-        console.log(this.id_frais);
       },
       error => console.log('Erreur Appel API')
     );
