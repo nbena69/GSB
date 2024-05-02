@@ -4,7 +4,7 @@
   <mat-form-field class="form-group">
     <mat-label>Date:</mat-label>
     <input matInput type="text" id="date_fraishorsforfait" [formControl]="date_fraishorsforfait"
-           [value]="date_fraishorsforfait.value?.slice(0, 10)">
+           [value]="date_fraishorsforfait.value?.slice(0, 10)" placeholder="DD-MM-YYYY">
   </mat-form-field>
 
   <mat-form-field class="form-group">
@@ -16,7 +16,7 @@
     <mat-label>Libellé:</mat-label>
     <input matInput type="text" id="lib_fraishorsforfait" [formControl]="lib_fraishorsforfait">
   </mat-form-field>
-  <br>
+  <app-error-message [errorMessage]="errorMessage"></app-error-message>
   <div class="form-button">
     <button type="button" class="btn btn-outline-danger" (click)="return()">Retour</button>&nbsp;
     <button type="button" class="btn btn-outline-success" (click)="onSubmitFicheFraisHorsForfait()">Modifier</button>&nbsp;

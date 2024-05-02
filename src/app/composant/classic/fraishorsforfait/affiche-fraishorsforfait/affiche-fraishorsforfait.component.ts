@@ -3,7 +3,7 @@ import {CommonModule, Location} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Fraishorsforfait} from "../../../../metier/fraishorsforfait";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
@@ -14,11 +14,12 @@ import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCardTitle} from "@angular/material/card";
+import {ErrorMessageComponent} from "../../../all/error-message/error-message.component";
 
 @Component({
   selector: 'app-affiche-fraishorsforfait',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle, ErrorMessageComponent],
   templateUrl: './affiche-fraishorsforfait.component.html',
   styleUrl: './affiche-fraishorsforfait.component.css'
 })
@@ -28,6 +29,7 @@ export class AfficheFraishorsforfaitComponent {
   date_fraishorsforfait: FormControl = new FormControl('');
   montant_fraishorsforfait: FormControl = new FormControl('');
   lib_fraishorsforfait: FormControl = new FormControl('');
+  errorMessage: string | null = null;
 
   constructor(private location:Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
     this.id_fraishorsforfait = parseInt(route.snapshot.paramMap.get('id_fraishorsforfait')!);
@@ -47,8 +49,19 @@ export class AfficheFraishorsforfaitComponent {
     this.location.back();
   }
 
-  onSubmitFicheFraisHorsForfait()
-  {
+  onSubmitFicheFraisHorsForfait() {
+    if (!this.id_frais || !this.date_fraishorsforfait.value || !this.montant_fraishorsforfait.value || !this.lib_fraishorsforfait.value) {
+      this.errorMessage = "Veuillez remplir tous les champs.";
+
+      // Suppression du message après 5 secondes
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+
+      return;
+    }
+
+    // Envoi de la mise à jour du frais hors forfait
     this.fraishorsforfait_api.updateFraisHorsForfait(
       this.id_fraishorsforfait.valueOf(),
       this.id_frais,
@@ -57,4 +70,5 @@ export class AfficheFraishorsforfaitComponent {
       this.lib_fraishorsforfait.value
     );
   }
+
 }
