@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {GsbAuthService} from '../../../service/gsb-auth.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -11,6 +11,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-login-facade',
@@ -26,7 +27,7 @@ export class LoginFacadeComponent {
   hide = true;
   errorMessage: string | null = null;
 
-  constructor(private loginService: GsbAuthService, private location: Location) {
+  constructor(private all_service: GsbAllService, private loginService: GsbAuthService) {
   }
 
   onSubmit() {
@@ -45,7 +46,7 @@ export class LoginFacadeComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   authRegister() {

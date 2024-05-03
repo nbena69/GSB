@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {GsbAuthService} from "../../../service/gsb-auth.service";
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {GsbShortService} from "../../../service/gsb-short.service";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -13,6 +13,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-register-facade',
@@ -41,7 +42,7 @@ export class RegisterFacadeComponent {
   repeatHide = true;
   errorMessage: string | null = null;
 
-  constructor(private loginService: GsbAuthService, private location: Location, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
+  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
   }
@@ -72,7 +73,7 @@ export class RegisterFacadeComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   getListeSecteur() {

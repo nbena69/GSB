@@ -21,6 +21,7 @@ import {MatCardTitle} from "@angular/material/card";
 import {Visiteur} from "../../../metier/visiteur";
 import {GsbAffectationService} from "../../../service/gsb-affectation.service";
 import {Travailler} from "../../../metier/travailler";
+import {GsbAllService} from "../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-update-affectation-popup',
@@ -55,7 +56,7 @@ export class UpdateAffectationPopupComponent {
   valuePage: number = 1;
   affectationValue: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private all_service: GsbAllService, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
     this.actualiseValue();
     this.id_visiteur = this.dialogData.id_visiteur;
     this.visiteurService.chargeVisiteur(this.id_visiteur).subscribe(
@@ -135,7 +136,7 @@ export class UpdateAffectationPopupComponent {
         this.role_visiteur.value
       );
       this.valuePage = 1;
-      await this.delay(1000);
+      await this.all_service.delay(1000);
       this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     } else {
       this.errorMessage = "Veuillez remplir tous les champs.";
@@ -159,7 +160,7 @@ export class UpdateAffectationPopupComponent {
         this.role_visiteur.value
       );
       this.valuePage = 1;
-      await this.delay(1000);
+      await this.all_service.delay(1000);
       this.affectationService.getListeAffectationVisiteur(this.id_visiteur);
     } else {
       this.errorMessage = "Veuillez remplir tous les champs.";
@@ -210,9 +211,5 @@ export class UpdateAffectationPopupComponent {
     this.id_region.setValue("");
     this.jjmmaa.setValue(6/7/2004);
     this.role_visiteur.setValue("Visiteur");
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

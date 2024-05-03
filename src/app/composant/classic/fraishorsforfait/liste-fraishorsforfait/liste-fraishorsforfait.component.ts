@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
 import {MenuComponent} from "../../../all/menu/menu.component";
@@ -12,6 +12,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-liste-fraishorsforfait',
@@ -24,7 +25,7 @@ import {MatOption, MatSelect} from "@angular/material/select";
 export class ListeFraishorsforfaitComponent{
   public id_frais: number = 0;
 
-  constructor(private location: Location, private route: ActivatedRoute, private fraisHorsForfait_api: GsbFraishorsforfaitService, private router: Router) {
+  constructor(private all_service: GsbAllService, private route: ActivatedRoute, private fraisHorsForfait_api: GsbFraishorsforfaitService, private router: Router) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
     this.fraisHorsForfait_api.listeFraisHorsForfait(this.id_frais);
   }
@@ -38,7 +39,7 @@ export class ListeFraishorsforfaitComponent{
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   ajoutFraisHF(){
@@ -51,7 +52,6 @@ export class ListeFraishorsforfaitComponent{
     if (confirmation) {
       this.fraisHorsForfait_api.deleteFraisHorsForfait(id_fraishorsforfait).subscribe(
         () => {
-          console.log("Appel API suppression frais HF réussi");
         },
         error => {
           console.error("Erreur lors de l'appel API suppression frais HF :", error);
