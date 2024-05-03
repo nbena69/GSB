@@ -41,6 +41,7 @@
                   <mat-icon>{{repeatHide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
+              <app-error-message [errorMessage]="errorMessage" style="padding: 1px"></app-error-message>
               <div style="float: right;">
                 <button type="button" class="button button-primary" (click)="actuallyStep = 2">Suivant ▶︎</button>
               </div>
@@ -57,6 +58,7 @@
                 <input matInput #input3 maxlength="25" placeholder="Ex. Mathéo" [formControl]="prenom_visiteur">
                 <mat-hint align="end">{{input3.value.length}}/25</mat-hint>
               </mat-form-field>
+              <app-error-message [errorMessage]="errorMessage" style="padding: 1px"></app-error-message>
               <div class="content">
                 <button mat-icon-button class="back-button" (click)="actuallyStep = 1">
                   <mat-icon aria-label="Retour">arrow_back</mat-icon>
@@ -83,6 +85,7 @@
                 <input matInput #input6 maxlength="30" placeholder="Ex. Lyon" [formControl]="ville_visiteur">
                 <mat-hint align="end">{{input6.value.length}}/30</mat-hint>
               </mat-form-field>
+              <app-error-message [errorMessage]="errorMessage" style="padding: 1px"></app-error-message>
               <div class="content">
                 <button mat-icon-button class="back-button" (click)="actuallyStep = 2">
                   <mat-icon aria-label="Retour">arrow_back</mat-icon>

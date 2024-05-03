@@ -47,23 +47,28 @@ export class RegisterFacadeComponent {
   }
 
   onSubmitAjoutVisiteur() {
-    this.errorMessage = "Une erreur s'est produite : L'administrateur a bloquer les inscriptions.";
-    setTimeout(() => {
-      this.errorMessage = null;
-    }, 5000);
-    this.loginService.ajoutRegister(
-      this.email.value,
-      this.password.value,
-      this.id_laboratoire.value,
-      this.id_secteur.value,
-      this.nom_visiteur.value,
-      this.prenom_visiteur.value,
-      this.adresse_visiteur.value,
-      this.cp_visiteur.value,
-      this.ville_visiteur.value,
-      this.date_embauche.value,
-      this.type_visiteur.value
-    );
+    if (this.password == this.repetPassword){
+      this.loginService.ajoutRegister(
+        this.email.value,
+        this.password.value,
+        this.id_laboratoire.value,
+        this.id_secteur.value,
+        this.nom_visiteur.value,
+        this.prenom_visiteur.value,
+        this.adresse_visiteur.value,
+        this.cp_visiteur.value,
+        this.ville_visiteur.value,
+        this.date_embauche.value,
+        this.type_visiteur.value
+      );
+    } else {
+      this.errorMessage = "Les mots de passes ne correspondent pas.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+      this.actualiseValue();
+      this.actuallyStep = 1;
+    }
   }
 
   return() {
@@ -92,5 +97,10 @@ export class RegisterFacadeComponent {
 
   authLogin() {
     this.loginService.authLogin();
+  }
+
+  actualiseValue() {
+    this.password.setValue("");
+    this.repetPassword.setValue("");
   }
 }

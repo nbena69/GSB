@@ -71,11 +71,12 @@ export class GsbAuthService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
+          this.delay(1000);
           this.serviceEnvoieLogin(email, password);
           this.router.navigate(['/']);
         },
         error => {
-          console.log("Erreur lors de l'ajout de visiteur", error);
+          console.log("Erreur lors de la création du visiteur", error);
         }
       );
   }
@@ -119,5 +120,9 @@ export class GsbAuthService {
 
     this.utilisateurConnecte = false;
     this.router.navigate(['/login-facade']);
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
