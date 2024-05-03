@@ -4,6 +4,7 @@ import {ActiviteCompl} from "../metier/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
 import {Frais} from "../metier/frais";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class GsbActiviteService {
   public listeActivite: ActiviteCompl[] = [];
   public dataStore: { activite: ActiviteCompl[] } = {activite: []};
 
-  constructor(private http: HttpClient, private gsb_api: GsbAuthService) { }
+  constructor(private http: HttpClient, private gsb_api: GsbAuthService, private router: Router) { }
 
   getListeActivite() {
     const headers = new HttpHeaders({
@@ -48,5 +49,30 @@ export class GsbActiviteService {
         console.log("Erreur Appel API liste Activité", error)
       }
     )
+  }
+
+  ajoutActivite(date_activite: string, lieu_activite: number, theme_activite: number, motif_activite: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "date_activite": date_activite,
+      "lieu_activite": lieu_activite,
+      "theme_activite": theme_activite,
+      "motif_activite": motif_activite
+    };
+    this.http.post<ActiviteCompl>(`${this.Url}/activite/ajoutActivite`, requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.activite = new ActiviteCompl(data);
+          this.dataStore.activite.push(this.activite);
+          this._reponses.next(this.dataStore.activite);
+          this.router.navigate(['activite/liste']);
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
   }
 }

@@ -21,6 +21,8 @@
     <input matInput type="text" id="motif_activite" [formControl]="motif_activite">
   </mat-form-field>
 
+  <app-error-message [errorMessage]="errorMessage"></app-error-message>
+
   <div class="form-button">
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
     <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutActivite()">Ajouter</button>
