@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {GsbActiviteService} from "../../../../service/gsb-activite.service";
-import {Router, RouterLink} from "@angular/router";
-import {CommonModule, Location} from "@angular/common";
+import {RouterLink} from "@angular/router";
+import {CommonModule} from "@angular/common";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -13,6 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {GsbAuthService} from "../../../../service/gsb-auth.service";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-liste-activite',
@@ -24,7 +25,7 @@ import {GsbAuthService} from "../../../../service/gsb-auth.service";
 })
 
 export class ListeActiviteComponent {
-  constructor(private activite_api: GsbActiviteService, private authService: GsbAuthService, private router: Router, private location: Location) {
+  constructor(private activite_api: GsbActiviteService, private authService: GsbAuthService, private all_service: GsbAllService) {
     if (authService.visiteurType() === 'A') {
       this.activite_api.getListeActivite();
     } else {
@@ -41,7 +42,7 @@ export class ListeActiviteComponent {
   }*/
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   /*deleteFrais(id_frais: number) {

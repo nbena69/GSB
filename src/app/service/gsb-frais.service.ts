@@ -4,7 +4,6 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Frais} from '../metier/frais';
 import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";
-import {ActiviteCompl} from "../metier/activite-compl";
 
 @Injectable({
   providedIn: 'root'

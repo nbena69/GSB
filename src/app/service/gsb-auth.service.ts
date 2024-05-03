@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Visiteur} from "../metier/visiteur";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {GsbAllService} from "./gsb-all.service";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class GsbAuthService {
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private all_service: GsbAllService) {
   }
 
   serviceEnvoieLogin(email: string, password: string): Observable<any> {
@@ -71,7 +72,7 @@ export class GsbAuthService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
-          this.delay(1000);
+          this.all_service.delay(1000);
           this.serviceEnvoieLogin(email, password);
           this.router.navigate(['/']);
         },
@@ -120,9 +121,5 @@ export class GsbAuthService {
 
     this.utilisateurConnecte = false;
     this.router.navigate(['/login-facade']);
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
