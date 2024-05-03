@@ -16,6 +16,7 @@ import {SearchVisiteurComponent} from "./composant/user/search-visiteur/search-v
 import {ListeActiviteComponent} from "./composant/classic/activite/liste-activite/liste-activite.component";
 import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
 import {AuthComponent} from "./composant/cnx/auth/auth.component";
+import {AfficheActiviteComponent} from "./composant/classic/activite/affiche-activite/affiche-activite.component";
 
 export const routes: Routes = [
   {path: 'auth', component: AuthComponent},
@@ -25,6 +26,7 @@ export const routes: Routes = [
   {path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
 
+  {path: 'activite/liste/:id_activite', component: AfficheActiviteComponent, canActivate: [authentificationGuard()]},
   {path: 'activite/liste', component: ListeActiviteComponent, canActivate: [authentificationGuard()]},
   {path: 'activite/ajout', component: AjoutActiviteComponent, canActivate: [authentificationGuard()]},
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {GsbActiviteService} from "../../../../service/gsb-activite.service";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -25,7 +25,7 @@ import {GsbAllService} from "../../../../service/gsb-all.service";
 })
 
 export class ListeActiviteComponent {
-  constructor(private activite_api: GsbActiviteService, private authService: GsbAuthService, private all_service: GsbAllService) {
+  constructor(private activite_api: GsbActiviteService, private authService: GsbAuthService, private all_service: GsbAllService, private router: Router) {
     if (authService.visiteurType() === 'A') {
       this.activite_api.getListeActivite();
     } else {
@@ -37,26 +37,25 @@ export class ListeActiviteComponent {
     return this.activite_api.appels_termines;
   }
 
-  /*afficherDetailsActivite(id_activite: number) {
+  afficherDetailsActivite(id_activite: number) {
     this.router.navigate(['/activite/liste', id_activite]);
-  }*/
+  }
 
   return() {
     this.all_service.return();
   }
 
-  /*deleteFrais(id_frais: number) {
-    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais ?');
+  deleteActivite(id_activite: number) {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cette activité ?');
 
     if (confirmation) {
-      this.activite_api.deleteActivite(id_frais).subscribe(
+      this.activite_api.deleteActivite(id_activite).subscribe(
         () => {
-          console.log("Appel API suppression frais réussi");
         },
         error => {
-          console.error("Erreur lors de l'appel API suppression frais :", error);
+          console.error("Erreur lors de l'appel API suppression Activite :", error);
         }
       );
     }
-  }*/
+  }
 }

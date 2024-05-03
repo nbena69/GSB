@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {ActiviteCompl} from "../metier/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
@@ -59,7 +59,9 @@ export class GsbActiviteService {
       "date_activite": date_activite,
       "lieu_activite": lieu_activite,
       "theme_activite": theme_activite,
-      "motif_activite": motif_activite
+      "motif_activite": motif_activite,
+      "id_visiteur": this.gsb_api.visiteurId(),
+      "type_visiteur" : this.gsb_api.visiteurType()
     };
     this.http.post<ActiviteCompl>(`${this.Url}/activite/ajoutActivite`, requestObject, {headers: headers})
       .subscribe(
@@ -73,5 +75,14 @@ export class GsbActiviteService {
           console.log("Erreur Appel API", error);
         }
       );
+  }
+
+  deleteActivite(id_activite: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `${this.Url}/activite/deleteActivite/${id_activite}`;
+
+    return this.http.delete<void>(url, {headers: headers});
   }
 }
