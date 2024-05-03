@@ -14,18 +14,20 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
-import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
 import {Visiteur} from "../../../metier/visiteur";
 import {GsbAffectationService} from "../../../service/gsb-affectation.service";
 import {Travailler} from "../../../metier/travailler";
-import {delay} from "rxjs";
+import {MAT_DATE_LOCALE, provideNativeDateAdapter} from "@angular/material/core";
+import {MatDatepicker, MatDatepickerModule, MatDatepickerToggle} from "@angular/material/datepicker";
 
 @Component({
   selector: 'app-update-affectation-popup',
   standalone: true,
+  providers: [provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],
   imports: [
     MatDialogTitle,
     MatDialogContent,
@@ -34,7 +36,8 @@ import {delay} from "rxjs";
     ReactiveFormsModule,
     MatDialogActions,
     ErrorMessageComponent,
-    MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle
+    MatDatepickerModule,
+    MatInputModule, MatIcon, MatTableModule, MatButtonModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogModule, MatCardTitle, MatDatepickerToggle, MatDatepicker
   ],
   templateUrl: './update-affectation-popup.component.html',
   styleUrl: './update-affectation-popup.component.css'
@@ -50,7 +53,7 @@ export class UpdateAffectationPopupComponent {
   id_secteur: FormControl = new FormControl('');
   id_region: FormControl = new FormControl('');
   role_visiteur: FormControl = new FormControl('Visiteur');
-  jjmmaa: FormControl = new FormControl('');
+  jjmmaa: FormControl = new FormControl(6/7/2004);
 
   errorMessage: string | null = null;
   valuePage: number = 1;
@@ -209,7 +212,7 @@ export class UpdateAffectationPopupComponent {
   actualiseValue() {
     this.id_secteur.setValue("");
     this.id_region.setValue("");
-    this.jjmmaa.setValue("");
+    this.jjmmaa.setValue(6/7/2004);
     this.role_visiteur.setValue("Visiteur");
   }
 
