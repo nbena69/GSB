@@ -22,11 +22,11 @@ export const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'dashboard', component: DashboardUserComponent, canActivate: [authentificationGuard()]},
 
-  {path: 'frais/liste/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
+  {path: 'frais/affiche/:id_frais', component: AfficheFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/liste', component: ListeFraisComponent, canActivate: [authentificationGuard()]},
   {path: 'frais/ajout', component: AjoutFraisComponent, canActivate: [authentificationGuard()]},
 
-  {path: 'activite/liste/:id_activite', component: AfficheActiviteComponent, canActivate: [authentificationGuard()]},
+  {path: 'activite/affiche/:id_activite', component: AfficheActiviteComponent, canActivate: [authentificationGuard()]},
   {path: 'activite/liste', component: ListeActiviteComponent, canActivate: [authentificationGuard()]},
   {path: 'activite/ajout', component: AjoutActiviteComponent, canActivate: [authentificationGuard()]},
 

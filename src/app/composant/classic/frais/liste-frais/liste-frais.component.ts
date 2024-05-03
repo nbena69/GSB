@@ -39,7 +39,7 @@ export class ListeFraisComponent {
   }
 
   afficherDetailsFrais(id_frais: number) {
-    this.router.navigate(['/frais/liste', id_frais]);
+    this.router.navigate(['/frais/affiche', id_frais]);
   }
 
   return() {

@@ -38,7 +38,7 @@ export class ListeActiviteComponent {
   }
 
   afficherDetailsActivite(id_activite: number) {
-    this.router.navigate(['/activite/liste', id_activite]);
+    this.router.navigate(['/activite/affiche', id_activite]);
   }
 
   return() {
