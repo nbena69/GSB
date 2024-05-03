@@ -3,21 +3,20 @@
 
   <mat-form-field class="form-group">
     <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" [formControl]="date_fraishorsforfait">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <mat-hint>DD/MM/YYYY</mat-hint>
+    <input matInput type="number" id="date_fraishorsforfait" [formControl]="date_fraishorsforfait" placeholder="DD-MM-YYYY">
   </mat-form-field>
 
   <mat-form-field class="form-group">
-    <mat-label>Montant:</mat-label>
+    <mat-label>Montant</mat-label>
     <input matInput type="number" id="montant_fraishorsforfait" [formControl]="montant_fraishorsforfait">
   </mat-form-field>
 
   <mat-form-field class="form-group">
-    <mat-label>Libellé:</mat-label>
+    <mat-label>Libellé</mat-label>
     <input matInput type="text" id="lib_fraishorsforfait" [formControl]="lib_fraishorsforfait">
   </mat-form-field>
+  <app-error-message [errorMessage]="errorMessage"></app-error-message>
+
   <div class="form-button">
     <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
     <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutFraisHorsForfait()">Ajouter</button>
