@@ -54,6 +54,7 @@ export class UpdateAffectationPopupComponent {
 
   errorMessage: string | null = null;
   valuePage: number = 1;
+  affectationValue: boolean = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any, private shortService: GsbShortService, private visiteurService: GsbVisiteurService, private affectationService: GsbAffectationService) {
     this.actualiseValue();
@@ -79,7 +80,13 @@ export class UpdateAffectationPopupComponent {
   }
 
   getListeAffectationVisiteur() {
-    return this.affectationService.appels_terminesAffectationVisiteur;
+    if(this.affectationService.affectationValue) {
+      this.affectationValue = this.affectationService.affectationValue;
+      return this.affectationService.appels_terminesAffectationVisiteur;
+    } else {
+      this.affectationValue = this.affectationService.affectationValue;
+      return;
+    }
   }
 
   updatePage() {

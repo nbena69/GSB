@@ -26,6 +26,8 @@ export class GsbAffectationService {
   readonly appels_terminesAffectationUnique = this._reponsesAffectationUnique.asObservable();
   public listeAffectationUnique: Travailler[] = [];
 
+  public affectationValue: boolean = false;
+
   constructor(private http: HttpClient, private router: Router, private gsb_api: GsbAuthService) {
   }
 
@@ -38,9 +40,11 @@ export class GsbAffectationService {
       data => {
         this.listeAffectationVisiteur = data;
         this._reponsesAffectationVisiteur.next(this.listeAffectationVisiteur);
+        this.affectationValue = true;
       },
       error => {
-        console.log("Erreur Appel API liste Etats", error)
+        console.log("Erreur Appel API liste Affectation", error)
+        this.affectationValue = false;
       }
     )
   }
