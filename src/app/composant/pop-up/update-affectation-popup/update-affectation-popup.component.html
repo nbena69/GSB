@@ -49,11 +49,8 @@
     </mat-form-field>
 
     <mat-form-field class="form-group" *ngIf="valuePage == 2 || valuePage == 3">
-      <mat-label>Date de l'activité:</mat-label>
-      <mat-hint>DD-MM-YYYY</mat-hint>
-      <input matInput [matDatepicker]="picker" placeholder="Choisir une date" [formControl]="jjmmaa">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-label>Date :</mat-label>
+      <input matInput type="text" id="jjmmaa" [formControl]="jjmmaa">
     </mat-form-field>
 
     <mat-form-field class="form-group" *ngIf="valuePage == 2 || valuePage == 3">
