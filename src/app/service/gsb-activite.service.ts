@@ -3,7 +3,6 @@ import {BehaviorSubject} from "rxjs";
 import {ActiviteCompl} from "../metier/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
-import {Frais} from "../metier/frais";
 import {Router} from "@angular/router";
 
 @Injectable({

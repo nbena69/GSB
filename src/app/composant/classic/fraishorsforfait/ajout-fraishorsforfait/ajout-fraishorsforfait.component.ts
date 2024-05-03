@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
@@ -13,6 +13,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatCardTitle} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {ErrorMessageComponent} from "../../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-ajout-fraishorsforfait',
@@ -30,7 +31,7 @@ export class AjoutFraishorsforfaitComponent {
   lib_fraishorsforfait: FormControl = new FormControl('');
   errorMessage: string | null = null;
 
-  constructor(private location: Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
+  constructor(private all_service: GsbAllService, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
   }
 
@@ -61,6 +62,6 @@ export class AjoutFraishorsforfaitComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 }
