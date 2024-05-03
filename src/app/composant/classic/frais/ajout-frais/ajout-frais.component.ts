@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule, Location} from "@angular/common";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {GsbFraisService} from "../../../../service/gsb-frais.service";
 import {GsbShortService} from "../../../../service/gsb-short.service";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -31,7 +31,7 @@ export class AjoutFraisComponent {
   montantvalide: FormControl = new FormControl('');
   id_etat: FormControl = new FormControl(2);
 
-  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService, private router: Router) {
+  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService) {
     this.etat_api.getListeEtats();
   }
 

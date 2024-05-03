@@ -1,1 +1,31 @@
-<p>ajout-activite works!</p>
+<div class="container mat-elevation-z8">
+  <h1>Ajouter une Activité</h1>
+
+  <mat-form-field class="form-group">
+    <mat-label>Date de l'activité:</mat-label>
+    <mat-hint>DD-MM-YYYY</mat-hint>
+    <input matInput [matDatepicker]="picker" placeholder="Choisir une date" [formControl]="date_activite">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="form-group">
+    <mat-label>Lieu de l'activité:</mat-label>
+    <input matInput type="text" id="lieu_activite" [formControl]="lieu_activite">
+  </mat-form-field>
+
+  <mat-form-field class="form-group">
+    <mat-label>Thème de l'activité:</mat-label>
+    <input matInput type="text" id="theme_activite" [formControl]="theme_activite">
+  </mat-form-field>
+
+  <mat-form-field class="form-group">
+    <mat-label>Motif de l'activité:</mat-label>
+    <input matInput type="text" id="motif_activite" [formControl]="motif_activite">
+  </mat-form-field>
+
+  <div class="form-button">
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Annuler</button>&nbsp;
+    <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutActivite()">Ajouter</button>
+  </div>
+</div>
