@@ -40,7 +40,7 @@ export class AjoutFraishorsforfaitComponent {
     const montantFraishorsforfait = this.montant_fraishorsforfait.value;
     const libFraishorsforfait = this.lib_fraishorsforfait.value;
 
-    if (!id_frais || !dateFraishorsforfait || !montantFraishorsforfait || !libFraishorsforfait) {
+    if (!dateFraishorsforfait || !montantFraishorsforfait || !libFraishorsforfait) {
       this.errorMessage = "Tous les champs doivent être remplis.";
       setTimeout(() => {
         this.errorMessage = null;
