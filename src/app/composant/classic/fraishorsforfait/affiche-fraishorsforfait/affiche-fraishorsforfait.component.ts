@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
@@ -15,6 +15,7 @@ import {MatOption} from "@angular/material/autocomplete";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCardTitle} from "@angular/material/card";
 import {ErrorMessageComponent} from "../../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-affiche-fraishorsforfait',
@@ -31,7 +32,7 @@ export class AfficheFraishorsforfaitComponent {
   lib_fraishorsforfait: FormControl = new FormControl('');
   errorMessage: string | null = null;
 
-  constructor(private location:Location, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
+  constructor(private all_service: GsbAllService, route: ActivatedRoute, private fraishorsforfait_api: GsbFraishorsforfaitService) {
     this.id_fraishorsforfait = parseInt(route.snapshot.paramMap.get('id_fraishorsforfait')!);
     this.fraishorsforfait_api.chargeFraisHorsForfait(this.id_fraishorsforfait).subscribe(
       data => {
@@ -46,7 +47,7 @@ export class AfficheFraishorsforfaitComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   onSubmitFicheFraisHorsForfait() {

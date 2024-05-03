@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {GsbFraisService} from "../../../../service/gsb-frais.service";
 import {GsbShortService} from "../../../../service/gsb-short.service";
@@ -15,6 +15,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardTitle} from "@angular/material/card";
 import {ErrorMessageComponent} from "../../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-ajout-frais',
@@ -33,7 +34,7 @@ export class AjoutFraisComponent {
   id_etat: FormControl = new FormControl(2);
   errorMessage: string | null = null;
 
-  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService) {
+  constructor(private all_service: GsbAllService, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService) {
     this.etat_api.getListeEtats();
   }
 
@@ -66,6 +67,6 @@ export class AjoutFraisComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 }

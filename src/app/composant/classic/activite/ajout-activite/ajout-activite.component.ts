@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
-import {CommonModule, Location} from "@angular/common";
-import {ActivatedRoute, Router} from "@angular/router";
+import {CommonModule} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 import {GsbActiviteService} from "../../../../service/gsb-activite.service";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatFormFieldModule, MatHint, MatLabel} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {ErrorMessageComponent} from "../../../all/error-message/error-message.component";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-ajout-activite',
@@ -22,7 +23,7 @@ export class AjoutActiviteComponent {
   motif_activite: FormControl = new FormControl('');
   errorMessage: string | null = null;
 
-  constructor(private location: Location, route: ActivatedRoute, private activite_api: GsbActiviteService, private router: Router) {
+  constructor(private all_service: GsbAllService, route: ActivatedRoute, private activite_api: GsbActiviteService) {
   }
 
   onSubmitAjoutActivite() {
@@ -52,6 +53,6 @@ export class AjoutActiviteComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 }

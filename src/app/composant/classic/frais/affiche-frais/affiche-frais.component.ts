@@ -15,6 +15,7 @@ import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCardTitle} from "@angular/material/card";
+import {GsbAllService} from "../../../../service/gsb-all.service";
 
 @Component({
   selector: 'app-affiche-frais',
@@ -31,7 +32,7 @@ export class AfficheFraisComponent {
   montantvalide: FormControl = new FormControl('');
   id_etat: FormControl = new FormControl('');
 
-  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService, private router: Router) {
+  constructor(private location: Location, route: ActivatedRoute, private frais_api: GsbFraisService, private etat_api: GsbShortService, private router: Router, private all_service: GsbAllService) {
     this.id_frais = parseInt(route.snapshot.paramMap.get('id_frais')!);
     this.frais_api.chargeFrais(this.id_frais).subscribe(
       data => {
@@ -61,7 +62,7 @@ export class AfficheFraisComponent {
   }
 
   return() {
-    this.location.back();
+    this.all_service.return();
   }
 
   getFraisHorsForfait(id_frais: number) {
