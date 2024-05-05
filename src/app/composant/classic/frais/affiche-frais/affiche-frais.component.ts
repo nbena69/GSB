@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {GsbFraisService} from "../../../../service/gsb-frais.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Frais} from "../../../../metier/frais";
+import {Frais} from "../../../../metier/api-gsb/frais";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {CommonModule, Location} from "@angular/common";
 import {GsbShortService} from "../../../../service/gsb-short.service";

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {ActiviteCompl} from "../metier/activite-compl";
+import {ActiviteCompl} from "../metier/api-gsb/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";

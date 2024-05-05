@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Login} from "../metier/login";
+import {Login} from "../metier/api-gsb/login";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Visiteur} from "../metier/visiteur";
+import {Visiteur} from "../metier/api-gsb/visiteur";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {GsbAllService} from "./gsb-all.service";
 

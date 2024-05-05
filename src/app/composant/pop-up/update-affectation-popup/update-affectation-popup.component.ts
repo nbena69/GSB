@@ -18,9 +18,9 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
-import {Visiteur} from "../../../metier/visiteur";
+import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {GsbAffectationService} from "../../../service/gsb-affectation.service";
-import {Travailler} from "../../../metier/travailler";
+import {Travailler} from "../../../metier/api-gsb/travailler";
 import {GsbAllService} from "../../../service/gsb-all.service";
 
 @Component({

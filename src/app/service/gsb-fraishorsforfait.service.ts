@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Fraishorsforfait} from "../metier/fraishorsforfait";
+import {Fraishorsforfait} from "../metier/api-gsb/fraishorsforfait";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbAuthService} from "./gsb-auth.service";

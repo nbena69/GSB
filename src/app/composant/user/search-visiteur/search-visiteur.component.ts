@@ -6,7 +6,7 @@ import {RouterLink} from "@angular/router";
 import {UpdateAffectationPopupComponent} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
-import {Visiteur} from "../../../metier/visiteur";
+import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
