@@ -72,8 +72,14 @@ export class GsbAuthService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
-          this.all_service.delay(1000);
-          this.serviceEnvoieLogin(email, password);
+
+          this.serviceEnvoieLogin(email, password).subscribe(
+            () => {
+            },
+            error => {
+              console.log("Erreur lors de la connexion automatique après l'inscription", error);
+            }
+          );
         },
         error => {
           console.log("Erreur lors de la création du visiteur", error);
