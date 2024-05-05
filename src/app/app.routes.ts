@@ -1,7 +1,7 @@
 import {CanActivateFn, Routes} from '@angular/router';
 import {ListeFraisComponent} from "./composant/classic/frais/liste-frais/liste-frais.component";
 import {HomeComponent} from "./composant/home/home.component";
-import {GsbAuthService} from "./service/gsb-auth.service";
+import {GsbAuthService} from "./service/service-gsb/gsb-auth.service";
 import {inject} from "@angular/core";
 import {AfficheFraisComponent} from "./composant/classic/frais/affiche-frais/affiche-frais.component";
 import {AjoutFraisComponent} from "./composant/classic/frais/ajout-frais/ajout-frais.component";

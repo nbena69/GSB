@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
-import {GsbFraishorsforfaitService} from "../../../../service/gsb-fraishorsforfait.service";
+import {GsbFraishorsforfaitService} from "../../../../service/service-gsb/gsb-fraishorsforfait.service";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {MatInputModule} from "@angular/material/input";

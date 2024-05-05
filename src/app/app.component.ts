@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MenuComponent} from "./composant/all/menu/menu.component";
-import {GsbAuthService} from "./service/gsb-auth.service";
+import {GsbAuthService} from "./service/service-gsb/gsb-auth.service";
 import {FooterComponent} from "./composant/all/footer/footer.component";
 import {LoaderComponent} from "./composant/all/loader/loader.component";
 

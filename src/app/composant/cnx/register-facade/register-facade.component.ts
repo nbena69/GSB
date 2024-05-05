@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {GsbAuthService} from "../../../service/gsb-auth.service";
+import {GsbAuthService} from "../../../service/service-gsb/gsb-auth.service";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {GsbShortService} from "../../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/service-gsb/gsb-short.service";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";

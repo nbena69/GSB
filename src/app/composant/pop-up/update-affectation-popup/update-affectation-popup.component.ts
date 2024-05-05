@@ -6,9 +6,9 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {GsbShortService} from "../../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/service-gsb/gsb-short.service";
 import {AsyncPipe, CommonModule} from "@angular/common";
-import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
+import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
@@ -19,7 +19,7 @@ import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatCardTitle} from "@angular/material/card";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
-import {GsbAffectationService} from "../../../service/gsb-affectation.service";
+import {GsbAffectationService} from "../../../service/service-gsb/gsb-affectation.service";
 import {Travailler} from "../../../metier/api-gsb/travailler";
 import {GsbAllService} from "../../../service/gsb-all.service";
 

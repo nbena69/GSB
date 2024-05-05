@@ -13,7 +13,7 @@ import {MatCardTitle} from "@angular/material/card";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {merge} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {GsbShortService} from "../../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/service-gsb/gsb-short.service";
 
 @Component({
   selector: 'app-recontact-popup',

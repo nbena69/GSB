@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
-import {GsbAuthService} from "../../../service/gsb-auth.service";
+import {GsbAuthService} from "../../../service/service-gsb/gsb-auth.service";
 import {CommonModule} from "@angular/common";
 import {MatMenu, MatMenuItem, MatMenuModule} from "@angular/material/menu";
 import {MatButton, MatButtonModule} from "@angular/material/button";

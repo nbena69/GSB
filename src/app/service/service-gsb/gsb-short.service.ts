@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Etat} from "../metier/api-gsb/etat";
+import {Etat} from "../../metier/api-gsb/etat";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbAuthService} from "./gsb-auth.service";
-import {Laboratoire} from "../metier/api-gsb/laboratoire";
-import {Secteur} from "../metier/api-gsb/secteur";
-import {Visiteur} from "../metier/api-gsb/visiteur";
-import {Region} from "../metier/api-gsb/region";
-import {Specialite} from "../metier/api-gsb/specialite";
+import {Laboratoire} from "../../metier/api-gsb/laboratoire";
+import {Secteur} from "../../metier/api-gsb/secteur";
+import {Visiteur} from "../../metier/api-gsb/visiteur";
+import {Region} from "../../metier/api-gsb/region";
+import {Specialite} from "../../metier/api-gsb/specialite";
 
 @Injectable({
   providedIn: 'root'

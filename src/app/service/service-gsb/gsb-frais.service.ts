@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Frais} from '../metier/api-gsb/frais';
+import {Frais} from '../../metier/api-gsb/frais';
 import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";
 

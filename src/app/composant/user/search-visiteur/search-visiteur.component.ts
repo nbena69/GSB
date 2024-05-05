@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {GsbShortService} from "../../../service/gsb-short.service";
+import {GsbShortService} from "../../../service/service-gsb/gsb-short.service";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UpdateAffectationPopupComponent} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {GsbVisiteurService} from "../../../service/gsb-visiteur.service";
+import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatIcon} from "@angular/material/icon";

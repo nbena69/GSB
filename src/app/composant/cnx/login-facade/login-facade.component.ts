@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {GsbAuthService} from '../../../service/gsb-auth.service';
+import {GsbAuthService} from '../../../service/service-gsb/gsb-auth.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";

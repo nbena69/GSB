@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {GsbAuthService} from "./gsb-auth.service";
-import {Visiteur} from "../metier/api-gsb/visiteur";
+import {Visiteur} from "../../metier/api-gsb/visiteur";
 import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
