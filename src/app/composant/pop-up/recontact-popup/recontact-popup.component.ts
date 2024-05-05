@@ -38,7 +38,9 @@ export class RecontactPopupComponent {
   specialite: FormControl = new FormControl("");
   email: FormControl = new FormControl("", [Validators.required, Validators.email]);
   objetDemande: FormControl = new FormControl("");
-  errorMessage = '';
+  valuePage: boolean = false;
+  errorMessage: string | null = null;
+  errorM = '';
 
   constructor(private shortService: GsbShortService) {
     this.shortService.getListeSpecialite();
@@ -49,15 +51,32 @@ export class RecontactPopupComponent {
 
   updateErrorMessage() {
     if (this.email.hasError('required')) {
-      this.errorMessage = 'Veuillez saisir une adresse email\n';
+      this.errorM = 'Veuillez saisir une adresse email\n';
     } else if (this.email.hasError('email')) {
-      this.errorMessage = 'Veuillez saisir une adresse email valide\n';
+      this.errorM = 'Veuillez saisir une adresse email valide\n';
     } else {
-      this.errorMessage = '';
+      this.errorM = '';
     }
   }
 
   getListeSpecialite() {
     return this.shortService.appels_terminesSpecialite;
+  }
+
+  changeValue() {
+    if (this.nom.value !== '' &&
+      this.prenom.value !== '' &&
+      this.codePostal.value !== '' &&
+      this.telephone.value !== '' &&
+      this.specialite.value !== '' &&
+      this.email.value !== '' &&
+      this.objetDemande.value !== '') {
+      this.valuePage = true;
+    } else {
+      this.errorMessage = "Veuillez remplir tout les champs du formulaire.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 2500);
+    }
   }
 }

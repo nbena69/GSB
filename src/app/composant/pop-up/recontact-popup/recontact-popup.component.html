@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="valuePage == false;">
   <div class="content-left">
     <div class="content-tittle">
       <p class="tittle">Vous êtes praticien ? Un de nos conseillers vous recontacte</p>
@@ -56,7 +56,11 @@
     </mat-form-field>
 
     <p>* Champs obligatoires</p>
-    <button type="button" class="button button-primary">Valider ma demande</button>
+    <div style="padding-bottom: 1px">
+      <app-error-message [errorMessage]="errorMessage" style="padding: 1px"></app-error-message>
+    </div>
+
+    <button type="button" class="button button-primary" (click)="changeValue()">Valider ma demande</button>
   </div>
 
   <div class="content-right">
@@ -68,3 +72,12 @@
     </div>
   </div>
 </div>
+<div class="container confirmation-message" *ngIf="valuePage;">
+  <div class="alert alert-success" role="alert">
+    <p>Votre demande a bien été envoyée. Le délai de réponse est de 2 jours ouvrés.</p>
+  </div>
+  <button mat-icon-button mat-dialog-close class="close-button">
+    <mat-icon aria-label="Close dialog">close</mat-icon>
+  </button>
+</div>
+
