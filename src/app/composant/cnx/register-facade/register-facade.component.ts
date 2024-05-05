@@ -14,6 +14,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {GsbAllService} from "../../../service/gsb-all.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-register-facade',
@@ -48,7 +49,7 @@ export class RegisterFacadeComponent {
   }
 
   onSubmitAjoutVisiteur() {
-    if (this.password == this.repetPassword){
+    if (this.password){
       this.loginService.ajoutRegister(
         this.email.value,
         this.password.value,

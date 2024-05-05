@@ -74,7 +74,6 @@ export class GsbAuthService {
           this._reponsesRegister.next(this.dataStoreRegister.register);
           this.all_service.delay(1000);
           this.serviceEnvoieLogin(email, password);
-          this.router.navigate(['/']);
         },
         error => {
           console.log("Erreur lors de la création du visiteur", error);
