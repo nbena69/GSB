@@ -49,7 +49,7 @@ export class RegisterFacadeComponent {
   }
 
   onSubmitAjoutVisiteur() {
-    if (this.password){
+    if (this.password.value === this.repetPassword.value) {
       this.loginService.ajoutRegister(
         this.email.value,
         this.password.value,
@@ -64,7 +64,7 @@ export class RegisterFacadeComponent {
         this.type_visiteur.value
       );
     } else {
-      this.errorMessage = "Les mots de passes ne correspondent pas.";
+      this.errorMessage = "Les mots de passe ne correspondent pas.";
       setTimeout(() => {
         this.errorMessage = null;
       }, 5000);
