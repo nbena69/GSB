@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService as NgxCookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CookieService {
-  constructor(private ngxCookieService: CookieService) { }
+  constructor(private ngxCookieService: NgxCookieService) { }
 
   // Méthode pour stocker un cookie
   setCookie(key: string, value: string, expires?: number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: 'Lax' | 'Strict' | 'None') {
