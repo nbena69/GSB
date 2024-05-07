@@ -209,7 +209,7 @@ export class UpdateAffectationPopupComponent {
   actualiseValue() {
     this.id_secteur.setValue("");
     this.id_region.setValue("");
-    this.jjmmaa.setValue(6/7/2004);
+    this.jjmmaa.setValue("");
     this.role_visiteur.setValue("Visiteur");
   }
 }
