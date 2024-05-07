@@ -13,7 +13,6 @@ import { MatCheckbox } from "@angular/material/checkbox";
 import { ErrorMessageComponent } from "../../all/error-message/error-message.component";
 import { GsbAllService } from "../../../service/gsb-all.service";
 import { CookieService } from "../../../service/service-cookie/cookie.service";
-import { sha256 } from 'js-sha256'; // Importez sha256 à partir de js-sha256
 
 @Component({
   selector: 'app-login-facade',
@@ -34,9 +33,7 @@ export class LoginFacadeComponent {
     const savedPasswordHash = this.cookieService.getCookie('password');
     if (savedEmail && savedPasswordHash) {
       this.email.setValue(savedEmail);
-      // Déhasher le mot de passe stocké dans le cookie
-      const savedPassword = this.dehashPassword(savedPasswordHash);
-      this.password.setValue(savedPassword);
+      this.password.setValue(savedPasswordHash);
     }
   }
 
@@ -46,13 +43,11 @@ export class LoginFacadeComponent {
 
     const rememberMe = true; // Vous devez obtenir l'état de la case à cocher à partir de l'interface utilisateur
 
-    // Utilisez sha256.sha256 pour appeler la fonction de hachage
-    const hashedPassword = sha256(passwordValue);
 
     if (rememberMe) {
       // Stockez le mot de passe haché dans le cookie
       this.cookieService.setCookie('email', emailValue);
-      this.cookieService.setCookie('password', hashedPassword);
+      this.cookieService.setCookie('password', passwordValue);
     } else {
       // Si la case n'est pas cochée, supprimez les cookies précédemment stockés (s'ils existent)
       this.cookieService.deleteCookie('email');
@@ -77,12 +72,5 @@ export class LoginFacadeComponent {
 
   authRegister() {
     this.loginService.authRegister();
-  }
-
-  private dehashPassword(passwordHash: string): string | null {
-    // Vous pouvez implémenter la logique de vérification du mot de passe hashé ici
-    // Pour SHA-256, vous ne pouvez pas déhasher le mot de passe, vous pouvez seulement le comparer
-    // avec le mot de passe fourni par l'utilisateur pour vérifier s'ils correspondent
-    return null; // Cette fonctionnalité n'est pas disponible pour SHA-256
   }
 }
