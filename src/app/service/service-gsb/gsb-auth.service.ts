@@ -4,7 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Visiteur} from "../../metier/api-gsb/visiteur";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
-import {GsbAllService} from "../gsb-all.service";
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +21,12 @@ export class GsbAuthService {
   public dataStore: { login: Login[] } = {login: []};
   readonly appels_termines = this._reponses.asObservable();
 
-  private envoieRegister: boolean = false;
   private register: Visiteur = new Visiteur;
   public _reponsesRegister = new BehaviorSubject<Visiteur[]>([]);
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
 
-  constructor(private http: HttpClient, private router: Router, private all_service: GsbAllService) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   serviceEnvoieLogin(email: string, password: string): Observable<any> {
@@ -93,10 +91,6 @@ export class GsbAuthService {
 
   visiteurType(): string {
     return this.login.visiteur.type_visiteur;
-  }
-
-  visiteurNom(): string {
-    return this.login.visiteur.nom_visiteur;
   }
 
   visiteurId(): number {
