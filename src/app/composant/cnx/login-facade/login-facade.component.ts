@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GsbAuthService } from '../../../service/service-gsb/gsb-auth.service';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { RouterLink } from "@angular/router";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -58,8 +58,8 @@ export class LoginFacadeComponent {
     const encryptedPassword = CryptoJS.AES.encrypt(passwordValue, this.loginService.recupereBearer()).toString();
 
     if (this.rememberMe) {
-      this.cookieService.setCookie('email', emailValue);
-      this.cookieService.setCookie('password', encryptedPassword);
+      this.cookieService.setCookie('email', emailValue, 30);
+      this.cookieService.setCookie('password', encryptedPassword, 30);
     } else {
       this.cookieService.deleteCookie('email');
       this.cookieService.deleteCookie('password');
