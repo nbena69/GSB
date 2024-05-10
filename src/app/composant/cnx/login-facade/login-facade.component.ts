@@ -27,7 +27,6 @@ export class LoginFacadeComponent {
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
   rememberMe: boolean = true;
-  encryptedPassword: string = "";
   decryptedPassword: string = "";
   hide = true;
   errorMessage: string | null = null;
