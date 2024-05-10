@@ -41,7 +41,7 @@ export class LoginFacadeComponent {
     const emailValue = this.email.value;
     const passwordValue = this.password.value;
 
-    const rememberMe = true; // Vous devez obtenir l'état de la case à cocher à partir de l'interface utilisateur
+    const rememberMe = true; // Vous devez obtenir l'état de la case à cocher à partir de l'interface
 
 
     if (rememberMe) {
