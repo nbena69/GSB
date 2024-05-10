@@ -13,6 +13,7 @@ import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
 import { ErrorMessageComponent } from "../../all/error-message/error-message.component";
 import { GsbAllService } from "../../../service/gsb-all.service";
 import { CookieService } from "../../../service/service-cookie/cookie.service";
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login-facade',
@@ -26,28 +27,32 @@ export class LoginFacadeComponent {
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
   rememberMe: boolean = true;
+  encryptedPassword: string = "";
+  decryptedPassword: string = "";
   hide = true;
   errorMessage: string | null = null;
 
   constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private cookieService: CookieService) {
     const savedEmail = this.cookieService.getCookie('email');
-    const savedPasswordHash = this.cookieService.getCookie('password');
-    if (savedEmail && savedPasswordHash) {
+    const savedPassword = this.cookieService.getCookie('password');
+    this.decryptedPassword = savedPassword ? CryptoJS.AES.decrypt(savedPassword, this.loginService.recupereBearer()).toString(CryptoJS.enc.Utf8) : '';
+    if (savedEmail) {
       this.email.setValue(savedEmail);
-      this.password.setValue(savedPasswordHash);
+    }
+    if (this.decryptedPassword) {
+      this.password.setValue(this.decryptedPassword);
     }
   }
 
   onSubmit() {
     const emailValue = this.email.value;
     const passwordValue = this.password.value;
+    const encryptedPassword = CryptoJS.AES.encrypt(passwordValue, this.loginService.recupereBearer()).toString();
 
     if (this.rememberMe) {
-      // Stockez le mot de passe haché dans le cookie
       this.cookieService.setCookie('email', emailValue);
-      this.cookieService.setCookie('password', passwordValue);
+      this.cookieService.setCookie('password', encryptedPassword);
     } else {
-      // Si la case n'est pas cochée, supprimez les cookies précédemment stockés (s'ils existent)
       this.cookieService.deleteCookie('email');
       this.cookieService.deleteCookie('password');
     }
