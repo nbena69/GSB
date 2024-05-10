@@ -47,6 +47,15 @@ export class LoginFacadeComponent {
   onSubmit() {
     const emailValue = this.email.value;
     const passwordValue = this.password.value;
+
+    if (!emailValue || !passwordValue) {
+      this.errorMessage = "Veuillez saisir une adresse e-mail et un mot de passe.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+      return;
+    }
+
     const encryptedPassword = CryptoJS.AES.encrypt(passwordValue, this.loginService.recupereBearer()).toString();
 
     if (this.rememberMe) {
