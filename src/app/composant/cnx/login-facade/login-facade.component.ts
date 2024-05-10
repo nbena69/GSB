@@ -10,10 +10,10 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
-import { ErrorMessageComponent } from "../../all/error-message/error-message.component";
 import { GsbAllService } from "../../../service/gsb-all.service";
 import { CookieService } from "../../../service/service-cookie/cookie.service";
 import * as CryptoJS from 'crypto-js';
+import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 
 @Component({
   selector: 'app-login-facade',

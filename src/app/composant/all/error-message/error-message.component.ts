@@ -12,9 +12,6 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   styleUrl: './error-message.component.css'
 })
 export class ErrorMessageComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { errorMessage: string }) {
-    this.errorMessage = data.errorMessage;
-  }
   @Input() errorMessage: string | null = null;
   closeErrorMessage() {
     this.errorMessage = null;
