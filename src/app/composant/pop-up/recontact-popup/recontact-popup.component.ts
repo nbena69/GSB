@@ -3,7 +3,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {CommonModule} from "@angular/common";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatDialogActions, MatDialogContent, MatDialogModule, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialog, MatDialogActions, MatDialogContent, MatDialogModule, MatDialogTitle} from "@angular/material/dialog";
 import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
@@ -42,7 +42,7 @@ export class RecontactPopupComponent {
   errorMessage: string | null = null;
   errorM = '';
 
-  constructor(private shortService: GsbShortService) {
+  constructor(private shortService: GsbShortService, public dialog: MatDialog) {
     this.shortService.getListeSpecialite();
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
@@ -77,6 +77,19 @@ export class RecontactPopupComponent {
       setTimeout(() => {
         this.errorMessage = null;
       }, 2500);
+      this.openError(this.errorMessage);
     }
+  }
+
+  openError(errorMessage: string) {
+    const dialogRef = this.dialog.open(ErrorMessageComponent, {
+      data: { errorMessage: errorMessage }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, 4000);
+    });
   }
 }
