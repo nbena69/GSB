@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Visiteur} from "../../metier/api-gsb/visiteur";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class GsbAuthService {
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {
   }
 
   serviceEnvoieLogin(email: string, password: string): Observable<any> {
@@ -70,6 +71,7 @@ export class GsbAuthService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
+          this.cookieService.set('isLoggedIn', 'true');
 
           this.serviceEnvoieLogin(email, password).subscribe(
             () => {
@@ -117,8 +119,13 @@ export class GsbAuthService {
     this.login = new Login();
     this.dataStore.login = [];
     this._reponses.next(this.dataStore.login);
+    this.cookieService.delete('isLoggedIn');
 
     this.utilisateurConnecte = false;
     this.router.navigate(['/login-facade']);
+  }
+
+  isLoggedIn(): boolean {
+    return this.cookieService.check('isLoggedIn');
   }
 }
