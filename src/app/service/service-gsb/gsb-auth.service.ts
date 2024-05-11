@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Visiteur} from "../../metier/api-gsb/visiteur";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from "../service-cookie/cookie.service";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,7 @@ export class GsbAuthService {
         this.dataStore.login.push(this.login);
         this._reponses.next(this.dataStore.login);
         this.utilisateurConnecte = true;
+        this.cookieService.setCookie('isLoggedIn', 'true');
         this.router.navigate(['']);
       }),
       catchError(error => {
@@ -71,7 +72,6 @@ export class GsbAuthService {
           this.register = new Visiteur(data);
           this.dataStoreRegister.register.push(this.register);
           this._reponsesRegister.next(this.dataStoreRegister.register);
-          this.cookieService.set('isLoggedIn', 'true');
 
           this.serviceEnvoieLogin(email, password).subscribe(
             () => {
@@ -116,16 +116,16 @@ export class GsbAuthService {
   }
 
   logout() {
+    this.cookieService.deleteCookie('isLoggedIn');
     this.login = new Login();
     this.dataStore.login = [];
     this._reponses.next(this.dataStore.login);
-    this.cookieService.delete('isLoggedIn');
-
     this.utilisateurConnecte = false;
-    this.router.navigate(['/login-facade']);
+
+    this.router.navigate(['/auth']);
   }
 
   isLoggedIn(): boolean {
-    return this.cookieService.check('isLoggedIn');
+    return this.cookieService.checkCookie('isLoggedIn');
   }
 }

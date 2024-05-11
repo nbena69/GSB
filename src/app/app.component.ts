@@ -18,10 +18,16 @@ export class AppComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(private loginService: GsbAuthService, private cdr: ChangeDetectorRef, private router: Router) {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 800);
-    this.router.navigate(['/']);
+    if(!this.isLoggedIn()) {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 800);
+      this.router.navigate(['/']);
+    } else {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 0);
+    }
   }
 
   ngOnInit() {
@@ -34,5 +40,9 @@ export class AppComponent implements OnInit {
     const currentUrl = this.router.url;
 
     return !((currentUrl === '/auth') || (currentUrl === '/auth'));
+  }
+
+  isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn();
   }
 }
