@@ -13,7 +13,6 @@ import {CookieService} from "../service-cookie/cookie.service";
 export class GsbAuthService {
   private Url = 'https://gsbcore.naelbenaissa.fr/api';
 
-  public utilisateurConnecte: boolean = false;
   private _authSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   auth$ = this._authSubject.asObservable();
 
@@ -27,7 +26,10 @@ export class GsbAuthService {
   public dataStoreRegister: { register: Visiteur[] } = {register: []};
   readonly appels_terminesRegister = this._reponsesRegister.asObservable();
 
+  private isLogin = false;
+
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {
+    this.loadLoginState();
   }
 
   serviceEnvoieLogin(email: string, password: string): Observable<any> {
@@ -37,9 +39,9 @@ export class GsbAuthService {
       tap(data => {
         this.login = new Login(data);
         this.dataStore.login.push(this.login);
+        this.isLogin = true;
+        this.saveLoginState();
         this._reponses.next(this.dataStore.login);
-        this.utilisateurConnecte = true;
-        this.cookieService.setCookie('isLoggedIn', 'true');
         this.router.navigate(['']);
       }),
       catchError(error => {
@@ -100,7 +102,8 @@ export class GsbAuthService {
   }
 
   estConnecte(): boolean {
-    return this.utilisateurConnecte;
+    this.isLogin = this.getIsLogin();
+    return this.isLogin;
   }
 
   get auth(): boolean {
@@ -116,16 +119,38 @@ export class GsbAuthService {
   }
 
   logout() {
-    this.cookieService.deleteCookie('isLoggedIn');
     this.login = new Login();
     this.dataStore.login = [];
     this._reponses.next(this.dataStore.login);
-    this.utilisateurConnecte = false;
-
+    this.isLogin = false;
+    localStorage.removeItem('loginState');
+    localStorage.removeItem('isLogin');
     this.router.navigate(['/auth']);
   }
 
   isLoggedIn(): boolean {
     return this.cookieService.checkCookie('isLoggedIn');
+  }
+
+  public getIsLogin(): boolean {
+    return this.isLogin;
+  }
+
+  private saveLoginState() {
+    localStorage.setItem('loginState', JSON.stringify(this.login));
+    localStorage.setItem('isLogin', JSON.stringify(this.isLogin));
+  }
+
+  private loadLoginState() {
+    const savedLogin = localStorage.getItem('loginState');
+    const isLogin = localStorage.getItem('isLogin');
+
+    if (savedLogin) {
+      this.login = JSON.parse(savedLogin);
+    }
+
+    if (isLogin) {
+      this.isLogin = JSON.parse(isLogin);
+    }
   }
 }

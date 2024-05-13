@@ -17,16 +17,13 @@ import {LoaderComponent} from "./composant/all/loader/loader.component";
 export class AppComponent implements OnInit {
   title = 'GSB';
   isLoading: boolean = true;
+  errorMessage: string | null = null;
 
   constructor(private loginService: GsbAuthService, private cdr: ChangeDetectorRef, private router: Router) {
-    if(!this.isLoggedIn()) {
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 800);
+    if (!this.isLoggedIn()) {
+      this.timeOut(800);
     } else {
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 0);
+      this.timeOut(0);
     }
   }
 
@@ -38,11 +35,16 @@ export class AppComponent implements OnInit {
 
   afficheMenu(): boolean {
     const currentUrl = this.router.url;
-
     return !((currentUrl === '/auth') || (currentUrl === '/auth'));
   }
 
   isLoggedIn(): boolean {
     return this.loginService.isLoggedIn();
+  }
+
+  private timeOut(time: number) {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, time);
   }
 }
