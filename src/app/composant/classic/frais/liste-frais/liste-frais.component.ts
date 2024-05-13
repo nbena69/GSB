@@ -54,17 +54,22 @@ export class ListeFraisComponent {
     this.router.navigate(['/frais/ajout']);
   }
 
-  deleteFrais(id_frais: number) {
+  async deleteFrais(id_frais: number) {
     const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer ce frais ?');
 
     if (confirmation) {
-      this.frais_api.deleteFrais(id_frais).subscribe(
-        () => {
-        },
-        error => {
-          console.error("Erreur lors de l'appel API suppression frais :", error);
+      try {
+        await this.frais_api.deleteFrais(id_frais).toPromise();
+        await this.all_service.delay(1000);
+
+        if (this.authService.visiteurType() === 'A') {
+          await this.frais_api.getListeFrais();
+        } else {
+          await this.frais_api.listeFraisDuVisiteur();
         }
-      );
+      } catch (error) {
+        console.error("Erreur lors de l'appel API suppression Frais :", error);
+      }
     }
   }
 }
