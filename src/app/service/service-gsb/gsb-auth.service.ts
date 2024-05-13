@@ -128,10 +128,6 @@ export class GsbAuthService {
     this.router.navigate(['/auth']);
   }
 
-  isLoggedIn(): boolean {
-    return this.cookieService.checkCookie('isLoggedIn');
-  }
-
   public getIsLogin(): boolean {
     return this.isLogin;
   }

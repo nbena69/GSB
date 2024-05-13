@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return this.loginService.isLoggedIn();
+    return this.loginService.getIsLogin();
   }
 
   private timeOut(time: number) {
