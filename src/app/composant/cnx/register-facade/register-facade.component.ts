@@ -47,13 +47,12 @@ export class RegisterFacadeComponent {
   hide = true;
   repeatHide = true;
   errorMessage: string | null = null;
-  adresses: Adresse[] = []; // Tableau pour stocker les adresses retournées par le service
+  adresses: Adresse[] = [];
 
   constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
     this.addressSubscription = this.adresse_visiteur.valueChanges.subscribe(value => {
-      // Appeler la fonction de recherche d'adresse du service
       this.banService.searchAddress(value).subscribe(addresses => {
         // Traiter les adresses retournées
         // Par exemple, vous pouvez mettre à jour une liste d'autocomplétion avec les adresses retournées
@@ -68,11 +67,10 @@ export class RegisterFacadeComponent {
         this.adresses = addresses;
       });
     } else {
-      this.adresses = []; // Réinitialiser la liste des adresses si la requête est vide
+      this.adresses = [];
     }
   }
 
-  // Méthode pour sélectionner une adresse
   selectAddress(address: Adresse) {
     this.adresse_visiteur.setValue(address.name);
     this.cp_visiteur.setValue(address.postcode);
