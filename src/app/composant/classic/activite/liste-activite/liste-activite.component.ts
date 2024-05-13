@@ -45,17 +45,23 @@ export class ListeActiviteComponent {
     this.all_service.return();
   }
 
-  deleteActivite(id_activite: number) {
+  async deleteActivite(id_activite: number) {
     const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cette activité ?');
 
     if (confirmation) {
-      this.activite_api.deleteActivite(id_activite).subscribe(
-        () => {
-        },
-        error => {
-          console.error("Erreur lors de l'appel API suppression Activite :", error);
+      try {
+        await this.activite_api.deleteActivite(id_activite).toPromise();
+        await this.all_service.delay(1000);
+
+        if (this.authService.visiteurType() === 'A') {
+          await this.activite_api.getListeActivite();
+        } else {
+          await this.activite_api.listeActiviteDuVisiteur();
         }
-      );
+      } catch (error) {
+        console.error("Erreur lors de l'appel API suppression Activite :", error);
+      }
     }
   }
+
 }
