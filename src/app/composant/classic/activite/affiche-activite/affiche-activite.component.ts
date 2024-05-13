@@ -19,7 +19,7 @@ import {GsbAllService} from "../../../../service/gsb-all.service";
 import {ActivatedRoute} from "@angular/router";
 import {GsbActiviteService} from "../../../../service/service-gsb/gsb-activite.service";
 import {BanService} from "../../../../service/service-ban/ban.service";
-import {Frais} from "../../../../metier/api-gsb/frais";
+import {ActiviteCompl} from "../../../../metier/api-gsb/activite-compl";
 
 @Component({
   selector: 'app-affiche-activite',
@@ -29,6 +29,7 @@ import {Frais} from "../../../../metier/api-gsb/frais";
   styleUrl: './affiche-activite.component.css'
 })
 export class AfficheActiviteComponent {
+  public id_activite: number = 0;
   date_activite: FormControl = new FormControl('');
   lieu_activite: FormControl = new FormControl('');
   theme_activite: FormControl = new FormControl('');
@@ -40,21 +41,19 @@ export class AfficheActiviteComponent {
   constructor(private all_service: GsbAllService, route: ActivatedRoute, private activite_api: GsbActiviteService, private banService: BanService) {
     this.addressSubscription = this.lieu_activite.valueChanges.subscribe(value => {
       this.banService.searchAddress(value).subscribe(addresses => {
-        // Traiter les adresses retournées
-        // Par exemple, vous pouvez mettre à jour une liste d'autocomplétion avec les adresses retournées
       });
     });
-    /*
-    this.activite_api.chargeActivite(this.id_frais).subscribe(
+    this.id_activite = parseInt(route.snapshot.paramMap.get('id_activite')!);
+    this.activite_api.chargeActivite(this.id_activite).subscribe(
       data => {
-        let frais = new Frais(data);
-        this.anneemois.setValue(frais.anneemois);
-        this.nbjustificatifs.setValue(frais.nbjustificatifs);
-        this.montantvalide.setValue(frais.montantvalide);
-        this.id_etat.setValue(frais.id_etat);
+        let activiteCompl = new ActiviteCompl(data);
+        this.date_activite.setValue(activiteCompl.date_activite);
+        this.lieu_activite.setValue(activiteCompl.lieu_activite);
+        this.theme_activite.setValue(activiteCompl.theme_activite);
+        this.motif_activite.setValue(activiteCompl.motif_activite);
       },
       error => console.log('Erreur Appel API')
-    );*/
+    );
   }
 
   searchAddress() {

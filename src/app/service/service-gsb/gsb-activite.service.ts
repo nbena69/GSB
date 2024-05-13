@@ -4,6 +4,7 @@ import {ActiviteCompl} from "../../metier/api-gsb/activite-compl";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GsbAuthService} from "./gsb-auth.service";
 import {Router} from "@angular/router";
+import {Frais} from "../../metier/api-gsb/frais";
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,33 @@ export class GsbActiviteService {
       );
   }
 
+
+  updateActivite(id_activite_compl: number, date_activite: string, lieu_activite: number, theme_activite: number, motif_activite: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "id_activite_compl": id_activite_compl,
+      "date_activite": date_activite,
+      "lieu_activite": lieu_activite,
+      "theme_activite": theme_activite,
+      "motif_activite": motif_activite
+    };
+    this.http.put<ActiviteCompl>(`${this.Url}/activite/updateActivite/${id_activite_compl}`, requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.activite = new ActiviteCompl(data);
+          this.dataStore.activite.push(this.activite);
+          this._reponses.next(this.dataStore.activite);
+          this.router.navigate(['activite/liste']);
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
   deleteActivite(id_activite: number): Observable<void> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
@@ -84,5 +112,14 @@ export class GsbActiviteService {
     const url = `${this.Url}/activite/deleteActivite/${id_activite}`;
 
     return this.http.delete<void>(url, {headers: headers});
+  }
+
+  chargeActivite(id_activite: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    const url = `${this.Url}/activite/getUneActivite/${id_activite}`;
+
+    return this.http.get<ActiviteCompl>(url, {headers: headers});
   }
 }

@@ -32,8 +32,6 @@ export class AjoutActiviteComponent {
   constructor(private all_service: GsbAllService, route: ActivatedRoute, private activite_api: GsbActiviteService, private banService: BanService) {
     this.addressSubscription = this.lieu_activite.valueChanges.subscribe(value => {
       this.banService.searchAddress(value).subscribe(addresses => {
-        // Traiter les adresses retournées
-        // Par exemple, vous pouvez mettre à jour une liste d'autocomplétion avec les adresses retournées
       });
     });}
 
