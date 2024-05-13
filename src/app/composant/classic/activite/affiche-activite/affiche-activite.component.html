@@ -1,1 +1,34 @@
-<p>affiche-activite works!</p>
+<div class="container mat-elevation-z8">
+  <h1>Ajouter une Activité</h1>
+
+  <mat-form-field class="form-group">
+    <mat-label>Date de l'activité:</mat-label>
+    <input matInput type="text" id="date_activite" [formControl]="date_activite" placeholder="DD-MM-YYYY">
+  </mat-form-field>
+
+  <mat-form-field class="form-group">
+    <mat-label>Lieu de l'activité:</mat-label>
+    <input matInput type="text" id="lieu_activite" [formControl]="lieu_activite" (input)="searchAddress()">
+  </mat-form-field>
+  <mat-list>
+    <mat-list-item *ngFor="let address of adresses" (click)="selectAddress(address)" style="cursor: pointer">
+      {{ address.label }}
+    </mat-list-item>
+  </mat-list>
+  <mat-form-field class="form-group">
+    <mat-label>Thème de l'activité:</mat-label>
+    <input matInput type="text" id="theme_activite" [formControl]="theme_activite">
+  </mat-form-field>
+
+  <mat-form-field class="form-group">
+    <mat-label>Motif de l'activité:</mat-label>
+    <input matInput type="text" id="motif_activite" [formControl]="motif_activite">
+  </mat-form-field>
+
+  <app-error-message [errorMessage]="errorMessage"></app-error-message>
+
+  <div class="form-button">
+    <button type="button" class="btn btn-outline-danger" (click)="return()">Retour</button>&nbsp;
+    <button type="button" class="btn btn-outline-success" (click)="onSubmitAjoutActivite()">Ajouter</button>
+  </div>
+</div>
