@@ -15,12 +15,16 @@ import {provideNativeDateAdapter} from "@angular/material/core";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {GsbAllService} from "../../../service/gsb-all.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {Subscription} from "rxjs";
+import {BanService} from "../../../service/service-ban/ban.service";
+import {Adresse} from "../../../metier/api-ban/adresse";
+import {MatList, MatListItem} from "@angular/material/list";
 
 @Component({
   selector: 'app-register-facade',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatDatepickerModule, ErrorMessageComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSelectModule, MatDividerModule, MatDatepickerModule, ErrorMessageComponent, MatList, MatListItem],
   templateUrl: './register-facade.component.html',
   styleUrl: './register-facade.component.css'
 })
@@ -38,14 +42,42 @@ export class RegisterFacadeComponent {
   ville_visiteur: FormControl = new FormControl('');
   date_embauche: FormControl = new FormControl('');
   type_visiteur: FormControl = new FormControl('V');
+  addressSubscription: Subscription;
   actuallyStep: number = 1;
   hide = true;
   repeatHide = true;
   errorMessage: string | null = null;
+  adresses: Adresse[] = []; // Tableau pour stocker les adresses retournées par le service
 
-  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService) {
+  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
+    this.addressSubscription = this.adresse_visiteur.valueChanges.subscribe(value => {
+      // Appeler la fonction de recherche d'adresse du service
+      this.banService.searchAddress(value).subscribe(addresses => {
+        // Traiter les adresses retournées
+        // Par exemple, vous pouvez mettre à jour une liste d'autocomplétion avec les adresses retournées
+      });
+    });
+  }
+
+  searchAddress() {
+    const query = this.adresse_visiteur.value;
+    if (query) {
+      this.banService.searchAddress(query).subscribe((addresses: Adresse[]) => {
+        this.adresses = addresses;
+      });
+    } else {
+      this.adresses = []; // Réinitialiser la liste des adresses si la requête est vide
+    }
+  }
+
+  // Méthode pour sélectionner une adresse
+  selectAddress(address: Adresse) {
+    this.adresse_visiteur.setValue(address.name);
+    this.cp_visiteur.setValue(address.postcode);
+    this.ville_visiteur.setValue(address.city);
+    this.adresses = [];
   }
 
   onSubmitAjoutVisiteur() {
