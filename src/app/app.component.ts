@@ -13,6 +13,7 @@ import {LoaderComponent} from "./composant/all/loader/loader.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent implements OnInit {
   title = 'GSB';
   isLoading: boolean = true;
@@ -22,7 +23,6 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         this.isLoading = false;
       }, 800);
-      this.router.navigate(['/']);
     } else {
       setTimeout(() => {
         this.isLoading = false;
