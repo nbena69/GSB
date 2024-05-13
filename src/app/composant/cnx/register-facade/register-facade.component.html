@@ -75,7 +75,7 @@
                 <mat-hint align="end">{{input4.value.length}}/50</mat-hint>
               </mat-form-field>
               <mat-list>
-                <mat-list-item *ngFor="let address of adresses" (click)="selectAddress(address)">
+                <mat-list-item *ngFor="let address of adresses" (click)="selectAddress(address)" style="cursor: pointer">
                   {{ address.label }}
                 </mat-list-item>
               </mat-list>

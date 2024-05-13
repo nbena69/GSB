@@ -11,7 +11,7 @@
     <input matInput type="text" id="lieu_activite" [formControl]="lieu_activite" (input)="searchAddress()">
   </mat-form-field>
   <mat-list>
-    <mat-list-item *ngFor="let address of adresses" (click)="selectAddress(address)">
+    <mat-list-item *ngFor="let address of adresses" (click)="selectAddress(address)" style="cursor: pointer">
       {{ address.label }}
     </mat-list-item>
   </mat-list>
