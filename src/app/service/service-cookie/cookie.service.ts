@@ -23,6 +23,7 @@ export class CookieService {
     this.ngxCookieService.delete(key, path, domain);
   }
 
+  // Méthode pour regarder l'état d'un cookie
   checkCookie(key: string): boolean {
     return this.ngxCookieService.check(key);
   }
