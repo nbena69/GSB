@@ -67,6 +67,8 @@ export class UpdateUserComponent {
       this.banService.searchAddress(value).subscribe(addresses => {
       });
     });
+    this.nom_visiteur.disable();
+    this.prenom_visiteur.disable();
   }
 
   onSubmitUpdateVisiteur() {
