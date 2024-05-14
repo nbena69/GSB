@@ -33,6 +33,12 @@ export class UpdateUserComponent {
   adresse_visiteur: FormControl = new FormControl('');
   cp_visiteur: FormControl = new FormControl('');
   ville_visiteur: FormControl = new FormControl('');
+  actuallyPassword: FormControl = new FormControl('');
+  password: FormControl = new FormControl('');
+  repetPassword: FormControl = new FormControl('');
+  actuallyHide = true;
+  hide = true;
+  repeatHide = true;
   addressSubscription: Subscription;
   errorMessage: string | null = null;
   adresses: Adresse[] = [];
@@ -44,6 +50,10 @@ export class UpdateUserComponent {
       this.banService.searchAddress(value).subscribe(addresses => {
       });
     });
+  }
+
+  onSubmitUpdateVisiteur() {
+
   }
 
   searchAddress() {

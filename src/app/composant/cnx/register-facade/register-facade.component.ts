@@ -53,8 +53,6 @@ export class RegisterFacadeComponent {
     this.laboratoire_api.getListeLaboratoire();
     this.addressSubscription = this.adresse_visiteur.valueChanges.subscribe(value => {
       this.banService.searchAddress(value).subscribe(addresses => {
-        // Traiter les adresses retournées
-        // Par exemple, vous pouvez mettre à jour une liste d'autocomplétion avec les adresses retournées
       });
     });
   }
