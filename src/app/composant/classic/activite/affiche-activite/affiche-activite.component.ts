@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../../all/menu/menu.component";
@@ -76,7 +76,13 @@ export class AfficheActiviteComponent {
     this.all_service.return();
   }
 
-  onSubmitAjoutActivite() {
-
+  onSubmitFicheActivite() {
+    this.activite_api.updateActivite(
+      this.id_activite.valueOf(),
+      this.date_activite.value,
+      this.lieu_activite.value,
+      this.theme_activite.value,
+      this.motif_activite.value
+    )
   }
 }
