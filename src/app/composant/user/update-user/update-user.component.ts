@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {Adresse} from "../../../metier/api-ban/adresse";
@@ -72,11 +72,22 @@ export class UpdateUserComponent {
   }
 
   onSubmitUpdateVisiteur() {
-
+    this.visiteurService.updateVisiteur(
+      this.id_visiteur.valueOf(),
+      this.adresse_visiteur.value,
+      this.cp_visiteur.value,
+      this.ville_visiteur.value,
+      this.id_laboratoire.value,
+      this.id_secteur.value
+    );
   }
 
   onSubmitUpdatePassword() {
-
+    this.visiteurService.updatePwdVisiteur(
+      this.id_visiteur.valueOf(),
+      this.actuallyPassword.value,
+      this.password.value
+    );
   }
 
   searchAddress() {

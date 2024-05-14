@@ -58,6 +58,30 @@ export class GsbVisiteurService {
       );
   }
 
+  updatePwdVisiteur(id_visiteur: number, pwd_actually: string, pwd_visiteur: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    const requestObject = {
+      "id_visiteur": id_visiteur,
+      "pwd_actually": pwd_actually,
+      "pwd_visiteur": pwd_visiteur
+    };
+    this.http.put<Visiteur>(`${this.Url}/visiteur/updatePwdVisiteur/${id_visiteur}`, requestObject, {headers: headers})
+      .subscribe(
+        data => {
+          this.visiteur = new Visiteur(data);
+          this.dataStore.visiteur.push(this.visiteur);
+          this._reponses.next(this.dataStore.visiteur);
+          this.router.navigate(['']);
+        },
+        error => {
+          console.log("Erreur Appel API", error);
+        }
+      );
+  }
+
   //FILTRE VISITEUR
   searchVisiteur(nom: string, id_secteur: number, id_laboratoire: number): Observable<Visiteur[]> {
     const headers = new HttpHeaders({
