@@ -28,6 +28,7 @@ import {ActiviteCompl} from "../../../../metier/api-gsb/activite-compl";
   templateUrl: './affiche-activite.component.html',
   styleUrl: './affiche-activite.component.css'
 })
+
 export class AfficheActiviteComponent {
   public id_activite: number = 0;
   date_activite: FormControl = new FormControl('');
@@ -63,7 +64,7 @@ export class AfficheActiviteComponent {
         this.adresses = addresses;
       });
     } else {
-      this.adresses = [];
+      this.resetAddresses();
     }
   }
 
@@ -84,5 +85,9 @@ export class AfficheActiviteComponent {
       this.theme_activite.value,
       this.motif_activite.value
     )
+  }
+
+  private resetAddresses() {
+    this.adresses = [];
   }
 }
