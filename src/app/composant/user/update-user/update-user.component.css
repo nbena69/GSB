@@ -1,0 +1,9 @@
+.champ {
+  display: flex;
+}
+
+.container {
+  padding: 5px;
+  max-width: 50%;
+  max-height: 100%;
+}
