@@ -17,6 +17,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatList, MatListItem} from "@angular/material/list";
+import {Visiteur} from "../../../metier/api-gsb/visiteur";
+import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
 
 @Component({
   selector: 'app-update-user',
@@ -26,6 +28,7 @@ import {MatList, MatListItem} from "@angular/material/list";
   styleUrl: './update-user.component.css'
 })
 export class UpdateUserComponent {
+  public id_visiteur: number = 0;
   nom_visiteur: FormControl = new FormControl('');
   prenom_visiteur: FormControl = new FormControl('');
   id_laboratoire: FormControl = new FormControl(1);
@@ -43,9 +46,23 @@ export class UpdateUserComponent {
   errorMessage: string | null = null;
   adresses: Adresse[] = [];
 
-  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService) {
+  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService, private visiteurService: GsbVisiteurService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
+    this.id_visiteur = this.loginService.visiteurId();
+    this.visiteurService.chargeVisiteur(this.id_visiteur).subscribe(
+      dataVisiteur => {
+        let visiteur = new Visiteur(dataVisiteur);
+        this.id_laboratoire.setValue(visiteur.id_laboratoire);
+        this.id_secteur.setValue(visiteur.id_secteur);
+        this.nom_visiteur.setValue(visiteur.nom_visiteur);
+        this.prenom_visiteur.setValue(visiteur.prenom_visiteur);
+        this.adresse_visiteur.setValue(visiteur.adresse_visiteur);
+        this.cp_visiteur.setValue(visiteur.cp_visiteur);
+        this.ville_visiteur.setValue(visiteur.ville_visiteur);
+      },
+      error => console.log('Erreur Appel API')
+    );
     this.addressSubscription = this.adresse_visiteur.valueChanges.subscribe(value => {
       this.banService.searchAddress(value).subscribe(addresses => {
       });
