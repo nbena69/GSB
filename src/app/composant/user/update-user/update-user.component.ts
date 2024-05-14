@@ -56,6 +56,10 @@ export class UpdateUserComponent {
 
   }
 
+  onSubmitUpdatePassword() {
+
+  }
+
   searchAddress() {
     const query = this.adresse_visiteur.value;
     if (query) {
