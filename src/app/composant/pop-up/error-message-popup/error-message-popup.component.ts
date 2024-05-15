@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {CommonModule} from "@angular/common";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-error-message-popup',
@@ -10,6 +11,9 @@ import {CommonModule} from "@angular/common";
 })
 export class ErrorMessagePopupComponent {
   errorMessage: string | null = null;
+  constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any) {
+    this.errorMessage = this.dialogData.errorMessage;
+  }
   closeErrorMessage() {
     this.errorMessage = null;
   }

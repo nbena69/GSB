@@ -1,6 +1,5 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-error-message',

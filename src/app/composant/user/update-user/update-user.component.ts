@@ -19,6 +19,11 @@ import {ErrorMessageComponent} from "../../all/error-message/error-message.compo
 import {MatList, MatListItem} from "@angular/material/list";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
+import {
+  UpdateAffectationPopupComponent
+} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
+import {ErrorMessagePopupComponent} from "../../pop-up/error-message-popup/error-message-popup.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-update-user',
@@ -46,7 +51,7 @@ export class UpdateUserComponent {
   errorMessage: string | null = null;
   adresses: Adresse[] = [];
 
-  constructor(private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService, private visiteurService: GsbVisiteurService) {
+  constructor(public dialog: MatDialog, private all_service: GsbAllService, private loginService: GsbAuthService, private secteur_api: GsbShortService, private laboratoire_api: GsbShortService, private banService: BanService, private visiteurService: GsbVisiteurService) {
     this.secteur_api.getListeSecteur();
     this.laboratoire_api.getListeLaboratoire();
     this.id_visiteur = this.loginService.visiteurId();
@@ -71,6 +76,14 @@ export class UpdateUserComponent {
     this.prenom_visiteur.disable();
   }
 
+  openErrorMessage(errorMessage: string) {
+    this.dialog.open(ErrorMessagePopupComponent, {
+      height: '55%',
+      width: '30%',
+      data: { errorMessage: errorMessage }
+    });
+  }
+
   onSubmitUpdateVisiteur() {
     this.visiteurService.updateVisiteur(
       this.id_visiteur.valueOf(),
@@ -91,9 +104,7 @@ export class UpdateUserComponent {
       );
     } else {
       this.errorMessage = "Les mots de passe ne correspondent pas.";
-      setTimeout(() => {
-        this.errorMessage = null;
-      }, 5000);
+      this.openErrorMessage(this.errorMessage)
       console.log("Les mots de passe ne correspondent pas.");
     }
   }
