@@ -83,11 +83,19 @@ export class UpdateUserComponent {
   }
 
   onSubmitUpdatePassword() {
-    this.visiteurService.updatePwdVisiteur(
-      this.id_visiteur.valueOf(),
-      this.actuallyPassword.value,
-      this.password.value
-    );
+    if (this.password.value === this.repetPassword.value) {
+      this.visiteurService.updatePwdVisiteur(
+        this.id_visiteur.valueOf(),
+        this.actuallyPassword.value,
+        this.password.value
+      );
+    } else {
+      this.errorMessage = "Les mots de passe ne correspondent pas.";
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+      console.log("Les mots de passe ne correspondent pas.");
+    }
   }
 
   searchAddress() {
