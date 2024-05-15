@@ -1,1 +1,5 @@
-<p>error-message-popup works!</p>
+<div class="error-overlay" (click)="closeErrorMessage()" *ngIf="errorMessage">
+  <div class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
