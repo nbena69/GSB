@@ -22,7 +22,7 @@ import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.serv
 import {
   UpdateAffectationPopupComponent
 } from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
-import {ErrorMessagePopupComponent} from "../../pop-up/error-message-popup/error-message-popup.component";
+import {ErrorMessagePopupComponent} from "../../pop-up/event/error-message-popup/error-message-popup.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
