@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   templateUrl: './error-message-popup.component.html',
   styleUrl: './error-message-popup.component.css'
 })
+
 export class ErrorMessagePopupComponent {
   errorMessage: string | null = null;
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any) {

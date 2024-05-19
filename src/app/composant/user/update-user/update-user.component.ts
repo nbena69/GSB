@@ -32,6 +32,7 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
+
 export class UpdateUserComponent {
   public id_visiteur: number = 0;
   nom_visiteur: FormControl = new FormControl('');
