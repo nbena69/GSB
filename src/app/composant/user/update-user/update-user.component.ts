@@ -19,9 +19,6 @@ import {ErrorMessageComponent} from "../../all/error-message/error-message.compo
 import {MatList, MatListItem} from "@angular/material/list";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
-import {
-  UpdateAffectationPopupComponent
-} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {ErrorMessagePopupComponent} from "../../pop-up/event/error-message-popup/error-message-popup.component";
 import {MatDialog} from "@angular/material/dialog";
 
