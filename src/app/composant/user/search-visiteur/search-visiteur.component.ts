@@ -5,7 +5,6 @@ import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UpdateAffectationPopupComponent} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatIcon} from "@angular/material/icon";
@@ -14,6 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
+import {GsbSearchService} from "../../../service/service-gsb/gsb-search.service";
 
 @Component({
   selector: 'app-search-visiteur',
@@ -32,7 +32,7 @@ export class SearchVisiteurComponent {
   visiteurs: Visiteur[] = [];
   errorMessage: string | null = null;
 
-  constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
+  constructor(private shortService: GsbShortService, public dialog: MatDialog, private searchService: GsbSearchService) {
     this.shortService.getListeSecteur();
     this.shortService.getListeLaboratoire();
   }
@@ -47,7 +47,7 @@ export class SearchVisiteurComponent {
 
   researchVisiteur() {
     if(this.selector) {
-      this.visiteurService.searchVisiteur(this.nom_visiteur.value, this.id_secteur.value, this.id_laboratoire.value)
+      this.searchService.searchVisiteur(this.nom_visiteur.value, this.id_secteur.value, this.id_laboratoire.value)
         .subscribe(
           data => {
             this.visiteurs = data;
@@ -60,7 +60,7 @@ export class SearchVisiteurComponent {
           }
         );
     } else {
-      this.visiteurService.searchShort(this.nom_visiteur.value)
+      this.searchService.searchShort(this.nom_visiteur.value)
         .subscribe(
           data => {
             this.visiteurs = data;

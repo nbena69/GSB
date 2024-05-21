@@ -13,11 +13,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {Visiteur} from "../../../metier/api-gsb/visiteur";
 import {Praticien} from "../../../metier/api-gsb/praticien";
 import {MatRadioModule} from "@angular/material/radio";
-import {
-  UpdateAffectationPopupComponent
-} from "../../pop-up/update-affectation-popup/update-affectation-popup.component";
 import {GsbShortService} from "../../../service/service-gsb/gsb-short.service";
-import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.service";
+import {GsbSearchService} from "../../../service/service-gsb/gsb-search.service";
 
 @Component({
   selector: 'app-search-ville',
@@ -26,6 +23,7 @@ import {GsbVisiteurService} from "../../../service/service-gsb/gsb-visiteur.serv
   templateUrl: './search-ville.component.html',
   styleUrl: './search-ville.component.css'
 })
+
 export class SearchVilleComponent {
   ville: FormControl = new FormControl("");
   selectedOption = new FormControl('visiteur');
@@ -34,12 +32,12 @@ export class SearchVilleComponent {
   praticien: Praticien[] = [];
   errorMessage: string | null = null;
 
-  constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService, private router: Router) {
+  constructor(private shortService: GsbShortService, public dialog: MatDialog, private searchService: GsbSearchService, private router: Router) {
   }
 
   researchVisiteur() {
     if (this.selectedOption.value == "visiteur") {
-      this.visiteurService.searchVilleVisiteur(this.ville.value)
+      this.searchService.searchVilleVisiteur(this.ville.value)
         .subscribe(
           data => {
             this.visiteurs = data;
@@ -52,7 +50,7 @@ export class SearchVilleComponent {
           }
         );
     } else {
-      this.visiteurService.searchVillePraticien(this.ville.value)
+      this.searchService.searchVillePraticien(this.ville.value)
         .subscribe(
           data => {
             this.praticien = data;

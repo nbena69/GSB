@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GsbActiviteService} from "../../../../service/service-gsb/gsb-activite.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -79,7 +79,11 @@ export class ListeActiviteComponent {
 
   siDatePasser(date: string): boolean {
     const currentDate = new Date();
-    const activityDate = new Date(date);
+
+    const [day, month, year] = date.split('-').map(part => parseInt(part, 10));
+
+    const activityDate = new Date(year, month - 1, day);
+
     return activityDate < currentDate;
   }
 }
