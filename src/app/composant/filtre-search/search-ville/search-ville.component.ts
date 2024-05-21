@@ -49,7 +49,7 @@ export class SearchVilleComponent {
             }, 5000);
           }
         );
-    } else {
+    } else if (this.selectedOption.value == "praticien") {
       this.searchService.searchVillePraticien(this.ville.value)
         .subscribe(
           data => {

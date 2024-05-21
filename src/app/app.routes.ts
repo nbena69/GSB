@@ -9,12 +9,12 @@ import {ListeFraishorsforfaitComponent} from "./composant/classic/fraishorsforfa
 import {AfficheFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/affiche-fraishorsforfait/affiche-fraishorsforfait.component";
 import {AjoutFraishorsforfaitComponent} from "./composant/classic/fraishorsforfait/ajout-fraishorsforfait/ajout-fraishorsforfait.component";
 import {DashboardUserComponent} from "./composant/user/dashboard-user/dashboard-user.component";
-import {SearchVisiteurComponent} from "./composant/user/search-visiteur/search-visiteur.component";
+import {SearchVisiteurComponent} from "./composant/filtre-search/search-visiteur/search-visiteur.component";
 import {ListeActiviteComponent} from "./composant/classic/activite/liste-activite/liste-activite.component";
 import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
 import {AuthComponent} from "./composant/cnx/auth/auth.component";
 import {AfficheActiviteComponent} from "./composant/classic/activite/affiche-activite/affiche-activite.component";
-import {SearchVilleComponent} from "./composant/user/search-ville/search-ville.component";
+import {SearchVilleComponent} from "./composant/filtre-search/search-ville/search-ville.component";
 
 export const routes: Routes = [
   {path: 'auth', component: AuthComponent},
