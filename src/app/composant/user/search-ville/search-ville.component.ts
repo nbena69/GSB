@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {ErrorMessageComponent} from "../../all/error-message/error-message.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
@@ -33,11 +33,12 @@ export class SearchVilleComponent {
   visiteurs: Visiteur[] = [];
   praticien: Praticien[] = [];
   errorMessage: string | null = null;
-  constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService) {
+
+  constructor(private shortService: GsbShortService, public dialog: MatDialog, private visiteurService: GsbVisiteurService, private router: Router) {
   }
 
   researchVisiteur() {
-    if(this.selectedOption.value == "visiteur") {
+    if (this.selectedOption.value == "visiteur") {
       this.visiteurService.searchVilleVisiteur(this.ville.value)
         .subscribe(
           data => {
@@ -67,20 +68,12 @@ export class SearchVilleComponent {
     this.active = true;
   }
 
-  openUpdate(id_visiteur: number) {
-    this.dialog.open(UpdateAffectationPopupComponent, {
-      height: '55%',
-      width: '30%',
-      data: { id_visiteur: id_visiteur }
-    });
-  }
-
-  openUpdatePraticien(id_praticien: number) {
-    this.dialog.open(UpdateAffectationPopupComponent, {
-      height: '55%',
-      width: '30%',
-      data: { id_visiteur: id_praticien }
-    });
+  openUpdate(id_visiteur: number, id_praticien: number) {
+    if (this.selectedOption.value == "visiteur") {
+      this.router.navigate(['/activite/liste'], { queryParams: { id_visiteur: id_visiteur}});
+    } else {
+      this.router.navigate(['/activite/liste'], { queryParams: { id_praticien: id_praticien}});
+    }
   }
 
   goBack() {

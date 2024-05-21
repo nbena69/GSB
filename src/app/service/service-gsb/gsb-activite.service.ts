@@ -51,6 +51,36 @@ export class GsbActiviteService {
     )
   }
 
+  listeActiviteDuPraticien(id_praticien: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<ActiviteCompl[]>(`${this.Url}/activite/praticien/` + id_praticien, {headers: headers}).subscribe(
+      data => {
+        this.listeActivite = data;
+        this._reponses.next(this.listeActivite);
+      },
+      error => {
+        console.log("Erreur Appel API liste Activité", error)
+      }
+    )
+  }
+
+  listeActiviteDuVisiteurV2(id_visiteur: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+    return this.http.get<ActiviteCompl[]>(`${this.Url}/activite/visiteur/` + id_visiteur, {headers: headers}).subscribe(
+      data => {
+        this.listeActivite = data;
+        this._reponses.next(this.listeActivite);
+      },
+      error => {
+        console.log("Erreur Appel API liste Activité", error)
+      }
+    )
+  }
+
   ajoutActivite(date_activite: string, lieu_activite: number, theme_activite: number, motif_activite: number) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
