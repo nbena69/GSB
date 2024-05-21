@@ -18,7 +18,11 @@
                 routerLink="/searchVisiteur" *ngIf="utilisateurConnecte && adminConnecte">Rechercher un visiteur
         </button>
       </div>
-    </div>
+      <div>
+        <button mat-button class="button header-button"
+                routerLink="/searchVille" *ngIf="utilisateurConnecte && adminConnecte">Rechercher par Ville
+        </button>
+      </div></div>
     <div class="header_links">
       <button type="button" class="button button-primary" (click)="openRecontact()"
               *ngIf="utilisateurConnecte  == false">Être recontacté

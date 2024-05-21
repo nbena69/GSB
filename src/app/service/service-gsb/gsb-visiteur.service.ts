@@ -5,6 +5,7 @@ import {GsbAuthService} from "./gsb-auth.service";
 import {Visiteur} from "../../metier/api-gsb/visiteur";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Frais} from "../../metier/api-gsb/frais";
+import {Praticien} from "../../metier/api-gsb/praticien";
 
 @Injectable({
   providedIn: 'root'
@@ -102,5 +103,21 @@ export class GsbVisiteurService {
     const params = new HttpParams().set('nom', nom);
 
     return this.http.get<Visiteur[]>(`${this.Url}/visiteur/filtreAffectAvancee`, {headers: headers, params: params});
+  }
+
+  searchVilleVisiteur(ville: string): Observable<Visiteur[]> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    return this.http.get<Visiteur[]>(`${this.Url}/visiteur/ville/${ville}`, {headers: headers});
+  }
+
+  searchVillePraticien(ville: string): Observable<Praticien[]> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.gsb_api.recupereBearer()
+    });
+
+    return this.http.get<Praticien[]>(`${this.Url}/visiteur/villePraticien/${ville}`, {headers: headers});
   }
 }

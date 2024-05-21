@@ -1,0 +1,77 @@
+<div class="container">
+  <div>
+    <mat-radio-group [formControl]="selectedOption" aria-label="Select an option">
+      <mat-radio-button value="visiteur">Visiteur</mat-radio-button>
+      <mat-radio-button value="praticien">Praticien</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <h2>Filtrez votre recherche !</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field hintLabel="Max 25 caractères" style="padding-bottom: 5px;width: 100%">
+        <mat-label>Ville</mat-label>
+        <input matInput #input maxlength="25" placeholder="Ex. Lyon" [formControl]="ville">
+        <mat-hint align="end">{{input.value.length}}/25</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+  <app-error-message [errorMessage]="errorMessage"></app-error-message>
+  <button class="btn btn-outline-primary" (click)="researchVisiteur()">Rechercher</button>&nbsp;
+  &nbsp;<button mat-icon-button class="btn" (click)="goBack()" *ngIf="active == true">
+  <mat-icon>visibility_off</mat-icon>
+</button>
+</div>
+
+<div class="container" *ngIf="active == true && selectedOption.value == 'visiteur'" style="padding-bottom: 70px">
+  <section class="home-section">
+    <table mat-table [dataSource]="visiteurs" class="mat-elevation-z8">
+      <ng-container matColumnDef="nom_visiteur">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let visiteur">{{ visiteur.nom_visiteur }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prenom_visiteur">
+        <th mat-header-cell *matHeaderCellDef>Prénom</th>
+        <td mat-cell *matCellDef="let visiteur">{{ visiteur.prenom_visiteur }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Modifier</th>
+        <td mat-cell *matCellDef="let visiteur" style="text-align: center">
+          <button mat-icon-button color="warn" (click)="openUpdate(visiteur.id_visiteur)">
+            <mat-icon>update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['nom_visiteur', 'prenom_visiteur', 'modifier']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['nom_visiteur', 'prenom_visiteur', 'modifier'];"></tr>
+    </table>
+  </section>
+</div>
+
+<div class="container" *ngIf="active == true && selectedOption.value == 'praticien'" style="padding-bottom: 70px">
+  <section class="home-section">
+    <table mat-table [dataSource]="praticien" class="mat-elevation-z8">
+      <ng-container matColumnDef="nom_praticien">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let praticien">{{ praticien.nom_praticien }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prenom_praticien">
+        <th mat-header-cell *matHeaderCellDef>Prénom</th>
+        <td mat-cell *matCellDef="let praticien">{{ praticien.prenom_praticien }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Modifier</th>
+        <td mat-cell *matCellDef="let praticien" style="text-align: center">
+          <button mat-icon-button color="warn" (click)="openUpdate(praticien.id_praticien)">
+            <mat-icon>update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['nom_praticien', 'prenom_praticien', 'modifier']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['nom_praticien', 'prenom_praticien', 'modifier'];"></tr>
+    </table>
+  </section>
+</div>

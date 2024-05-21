@@ -14,6 +14,7 @@ import {ListeActiviteComponent} from "./composant/classic/activite/liste-activit
 import {AjoutActiviteComponent} from "./composant/classic/activite/ajout-activite/ajout-activite.component";
 import {AuthComponent} from "./composant/cnx/auth/auth.component";
 import {AfficheActiviteComponent} from "./composant/classic/activite/affiche-activite/affiche-activite.component";
+import {SearchVilleComponent} from "./composant/user/search-ville/search-ville.component";
 
 export const routes: Routes = [
   {path: 'auth', component: AuthComponent},
@@ -32,6 +33,7 @@ export const routes: Routes = [
   {path: 'fraisHF/ajout/:id_frais', component: AjoutFraishorsforfaitComponent, canActivate: [authentificationGuard()]},
 
   {path: 'searchVisiteur', component: SearchVisiteurComponent, canActivate: [authentificationGuard(), adminGuard()]},
+  {path: 'searchVille', component: SearchVilleComponent, canActivate: [authentificationGuard(), adminGuard()]},
 
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
