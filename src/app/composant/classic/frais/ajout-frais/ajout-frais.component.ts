@@ -3,7 +3,7 @@ import {MenuComponent} from "../../../all/menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
-import {GsbFraisService} from "../../../../service/service-gsb/gsb-frais.service";
+import {GsbFraisService} from "../../../../service/service-gsb/classic/gsb-frais.service";
 import {GsbShortService} from "../../../../service/service-gsb/gsb-short.service";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption} from "@angular/material/autocomplete";

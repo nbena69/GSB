@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MenuComponent} from "../../../all/menu/menu.component";
-import {GsbFraishorsforfaitService} from "../../../../service/service-gsb/gsb-fraishorsforfait.service";
+import {GsbFraishorsforfaitService} from "../../../../service/service-gsb/classic/gsb-fraishorsforfait.service";
 import {ActivatedRoute} from "@angular/router";
 import {Fraishorsforfait} from "../../../../metier/api-gsb/fraishorsforfait";
 import {MatInputModule} from "@angular/material/input";

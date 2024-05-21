@@ -17,7 +17,7 @@ import {Subscription} from "rxjs";
 import {Adresse} from "../../../../metier/api-ban/adresse";
 import {GsbAllService} from "../../../../service/gsb-all.service";
 import {ActivatedRoute} from "@angular/router";
-import {GsbActiviteService} from "../../../../service/service-gsb/gsb-activite.service";
+import {GsbActiviteService} from "../../../../service/service-gsb/classic/gsb-activite.service";
 import {BanService} from "../../../../service/service-ban/ban.service";
 import {ActiviteCompl} from "../../../../metier/api-gsb/activite-compl";
 

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
-import {GsbActiviteService} from "../../../../service/service-gsb/gsb-activite.service";
+import {GsbActiviteService} from "../../../../service/service-gsb/classic/gsb-activite.service";
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatFormFieldModule, MatHint, MatLabel} from "@angular/material/form-field";

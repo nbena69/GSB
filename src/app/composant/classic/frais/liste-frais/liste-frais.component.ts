@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MenuComponent} from "../../../all/menu/menu.component";
 import {Router, RouterLink} from "@angular/router";
-import {GsbFraisService} from "../../../../service/service-gsb/gsb-frais.service";
+import {GsbFraisService} from "../../../../service/service-gsb/classic/gsb-frais.service";
 import {CommonModule} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";

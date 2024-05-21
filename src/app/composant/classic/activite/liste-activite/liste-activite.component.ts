@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {GsbActiviteService} from "../../../../service/service-gsb/gsb-activite.service";
+import {GsbActiviteService} from "../../../../service/service-gsb/classic/gsb-activite.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {MenuComponent} from "../../../all/menu/menu.component";
