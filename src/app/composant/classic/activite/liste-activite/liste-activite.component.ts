@@ -76,4 +76,10 @@ export class ListeActiviteComponent {
       }
     }
   }
+
+  siDatePasser(date: string): boolean {
+    const currentDate = new Date();
+    const activityDate = new Date(date);
+    return activityDate < currentDate;
+  }
 }
