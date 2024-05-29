@@ -1,7 +1,6 @@
 TSLint :
 commande : ./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'
 
-
 Deployment :
 Chemin : C:\Users\naelb\WebstormProjects\GSB\dist\gsbfrais-client\browser
 
